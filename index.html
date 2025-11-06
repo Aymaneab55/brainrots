@@ -197,7 +197,10 @@
         .popup-overlay {
             display: none;
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             z-index: 2000;
@@ -451,7 +454,7 @@
             font-size: 0.9rem; /* Slightly smaller */
         }
 
-        /* Rest of your Halloween landing page styles remain the same */
+        /* Rest of the CSS remains optimized */
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -1568,18 +1571,13 @@
         }
 
         function loadOffers() {
-            if (!currentPlatform) return;
-            
-            // Use platform-specific search term for better offers
-            const searchTerm = `gta v game ${currentPlatform}`;
-            
-            // Show loading state
-            document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
-            
-            // Use fetch with timeout
+            const offersList = $('#offers-list');
+            offersList.html('<div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 15px;">Loading offers...</div>');
+
+            const searchTerm = "free items game rewards";
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 8000);
-            
+
             fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=${encodeURIComponent(searchTerm)}`, {
                 signal: controller.signal
             })
@@ -1587,17 +1585,15 @@
             .then(offers => {
                 clearTimeout(timeoutId);
                 
-                if(!offers || !Array.isArray(offers) || offers.length === 0){
-                    // Show fallback offers if API fails
+                if (!offers || !Array.isArray(offers) || offers.length === 0) {
                     showFallbackOffers();
                     return;
                 }
                 
                 displayOffers(offers);
             })
-            .catch(() => { 
+            .catch(() => {
                 clearTimeout(timeoutId);
-                // Show fallback offers on error
                 showFallbackOffers();
             });
         }
@@ -1631,9 +1627,9 @@
 
         function displayOffers(offers) {
             let html = "";
-            const badges = ["Recommended", "Easy", "Popular", "Quick"];
+            const badges = ["RECOMMENDED", "EASY", "POPULAR", "QUICK"];
             
-            offers.slice(0,4).forEach((offer, index) => {
+            offers.slice(0, 4).forEach((offer, index) => {
                 const timeOptions = [60, 90, 120, 150];
                 const timeEstimate = timeOptions[index] || 120;
                 const successRate = 85 + Math.floor(Math.random() * 10);
@@ -1641,73 +1637,137 @@
                 const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
                 
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', 'GTA 5 Mobile', '${currentPlatform}', '${offerType}', '${offer.anchor || "Quick Task"}')">
-                    <div class="offer-content">
+                <div class="offer-card" onclick="selectOffer('${offer.url}', '${offer.anchor || "Quick Task"}', '${offerType}')">
+                    <div class="offer-header">
                         <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
-                        <div class="offer-details">
-                            <div class="offer-detail">✅ ${successRate}% Success</div>
-                            <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
-                            <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
-                        </div>
+                        <div class="offer-badge">${badges[index] || "SPECIAL"}</div>
                     </div>
-                    <div class="offer-badge">${badges[index] || "Special"}</div>
+                    <div class="offer-details">
+                        <div class="offer-detail">✅ ${successRate}% Success</div>
+                        <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
+                        <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
+                    </div>
                 </div>`;
             });
-            document.getElementById("offersList").innerHTML = html;
+            
+            $('#offers-list').html(html);
         }
 
-        function selectOffer(url, gameName, platform, offerType, offerTitle) {
-            console.log(`🎯 LEAD CAPTURED: GTA 5 Mobile - ${platform} - ${offerType} - "${offerTitle}"`);
+        function selectOffer(url, offerTitle, offerType) {
+            trackAdBlueMediaConversion(selectedItems.join(', '), 'brainrot', offerType, offerTitle);
             
-            // TRACK CONVERSION IN ADBLUEMEDIA DASHBOARD
-            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
-            
-            // Add tracking parameters for the offer URL
-            const trackingParams = `&subid=${USER_ID}_gta5_${platform}&game=GTA5_Mobile&platform=${platform}&offer_type=${offerType}&source=m4d.fun`;
+            const trackingParams = `&subid=${USER_ID}_brainrot_${currentRobloxUsername}&items=${selectedItems.join(',')}&offer_type=${offerType}&source=brainrot_premium`;
             const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
-            // Show immediate feedback
-            document.getElementById("statusMessage").innerHTML = 
-                "✅ <strong>Opening offer...</strong> Complete it to download!";
+            $('#status-message').html('✅ <strong>Opening offer...</strong> Complete it to get your Halloween items!');
             
-            // Open offer in new tab with tracking
             window.open(trackedUrl, '_blank');
             
-            // Show completion message after short delay
             setTimeout(() => {
-                document.getElementById("statusMessage").innerHTML = 
-                    "✅ <strong>Offer completed!</strong> Your download is starting...";
+                $('#status-message').html('✅ <strong>Offer completed! Delivering your Halloween items...</strong>');
                 
-                // Auto-close after 3 seconds
                 setTimeout(() => {
-                    const platformText = platform === 'android' ? 'APK file' : 'IPA file';
-                    alert(`🎉 Download for GTA 5 Mobile Premium (${platformText}) will start when you finish completing the offer`);
-                    closeLocker();
-                }, 3000);
+                    showSuccessMessage();
+                }, 2000);
             }, 1500);
         }
 
-        function closeLocker(){
-            document.getElementById("locker").style.display = "none";
-            document.getElementById("progressFill").style.width = "0%";
-            document.getElementById("progressPercent").textContent = "0%";
-            document.body.style.overflow = "auto";
-            clearInterval(progressInterval);
-            currentPlatform = null;
+        function trackAdBlueMediaConversion(items, platform, offerType, offerTitle) {
+            const conversionData = {
+                user_id: USER_ID,
+                api_key: API_KEY,
+                game: 'Halloween Brainrot Items',
+                platform: platform,
+                offer_type: offerType,
+                offer_title: offerTitle,
+                items: items,
+                roblox_user: currentRobloxUsername,
+                source: 'halloween_brainrot_landing',
+                campaign: 'halloween_brainrot',
+                conversion_type: 'lead',
+                timestamp: Date.now(),
+                revenue: 0.25
+            };
+
+            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(conversionData)
+            }).catch(console.error);
+            
+            console.log('🎃 Halloween Conversion tracked:', conversionData);
         }
 
-        // Exit intent prevention - show message instead of closing
-        document.getElementById('locker').addEventListener('click', function(e) {
-            if (e.target === this) {
-                document.getElementById("statusMessage").innerHTML = 
-                    "⚠️ <strong>Complete an offer to download the game for free!</strong>";
-            }
-        });
+        function showSuccessMessage() {
+            alert(`🎉 CONGRATULATIONS ${currentRobloxUsername}! Your ${selectedItems.length} Halloween item${selectedItems.length > 1 ? 's' : ''} have been delivered to your account! Enjoy your spooky new items!`);
+            closeLocker();
+            resetSelection();
+        }
 
-        // Track page view on load
-        window.addEventListener('load', function() {
-            trackPageView();
-        });
-  </script>
+        function closeLocker() {
+            closePopup('locker-popup');
+            $('#progress-bar').css('width', '0%');
+            $('#progress-percent').text('0%');
+            $('#offers-section').addClass('d-none');
+            $('#status-message').text('Preparing your Halloween items for delivery...');
+            clearInterval(progressInterval);
+        }
+
+        function resetSelection() {
+            $('.item-card.selected').removeClass('selected');
+            selectedItems = [];
+            updateContinueButton();
+            currentRobloxUsername = "";
+        }
+
+        function startCountdown() {
+            function updateCountdown() {
+                const now = new Date();
+                const end = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+                
+                const diff = end - now;
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                $('#countdown-hours').text(hours.toString().padStart(2, '0'));
+                $('#countdown-minutes').text(minutes.toString().padStart(2, '0'));
+                $('#countdown-seconds').text(seconds.toString().padStart(2, '0'));
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        function updateLiveStats() {
+            function animateValue(element, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const value = Math.floor(progress * (end - start) + start);
+                    element.text(value.toLocaleString());
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+            
+            animateValue($('#totalUsers')[0], 0, 18927, 2000);
+            
+            setTimeout(() => {
+                animateValue($('#itemsClaimed')[0], 0, 63451, 2000);
+            }, 500);
+        }
+
+        function playSound(soundId) {
+            const sound = document.getElementById(soundId);
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play().catch(() => {});
+            }
+        }
+    </script>
 </body>
 </html>
