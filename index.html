@@ -3,57 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Claim FREE Brainrot Items - Limited Time!</title>
-    <meta name="description" content="Get exclusive NEW Halloween Brainrot items for FREE! Limited time offer. Claim Starfruit Plant Vs Brainrots and more!">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <title>Steal a Brainrot - Free Items</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* ===== CSS RESET & GLOBAL STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #FF6B00;
-            --primary-dark: #FF4500;
-            --secondary: #8A2BE2;
-            --secondary-light: #9370DB;
-            --halloween-orange: #FF8C00;
-            --halloween-purple: #8B008B;
-            --dark: #0A0A0A;
-            --darker: #050505;
-            --light: #1A1A1A;
-            --text: #FFFFFF;
-            --text-muted: #B0B0B0;
-            --success: #00FF88;
-            --error: #FF4444;
-            --warning: #FFAA00;
-            --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            --halloween-gradient: linear-gradient(135deg, var(--halloween-orange), var(--halloween-purple));
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            font-family: 'Cairo', Arial, sans-serif;
-            background: var(--darker);
-            color: var(--text);
-            position: relative;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(255, 107, 0, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(139, 0, 139, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 140, 0, 0.1) 0%, transparent 50%);
-            font-size: 14px;
-            touch-action: pan-y;
-        }
-
-        /* FIXED: Body scroll lock when popup is open */
+        /* Prevent scrolling when locker is open */
         body.no-scroll {
             overflow: hidden;
             position: fixed;
@@ -61,372 +17,926 @@
             height: 100%;
         }
 
-        /* Halloween themed header */
-        .header {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--halloween-orange);
-            padding: 12px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        /* LTR Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+            font-family: 'Cairo', Arial, sans-serif;
+            position: relative;
+            overflow-x: hidden;
+            text-align: left;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%2354d33a" width="100" height="100"/><rect fill="%2363e645" width="50" height="50" x="25" y="25" opacity="0.8"/><rect fill="%234f8a2f" width="30" height="30" x="35" y="35" opacity="0.6"/></svg>') repeat;
+            background-size: 100px 100px;
+            background-position: center;
+            padding-bottom: 100px;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .logo {
+        .logo-container {
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        .logo-container img {
+            max-width: 180px;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-bar {
+            width: 100vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            box-sizing: border-box;
+            padding: 16px 0 0 0;
+            margin-bottom: 8px;
+        }
+
+        .active-users-box {
+            background: #0066cc;
+            border: 2.3px solid #fff;
+            border-radius: 13px;
+            padding: 13px 18px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 1.1rem;
+            font-size: 1.5em;
+            min-width: 220px;
+            max-width: 70vw;
+            margin: 0;
+            box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.09);
             font-weight: 900;
-            color: var(--halloween-orange);
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            font-size: 1.4rem;
-            filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.5));
-        }
-
-        /* Halloween themed hero section */
-        .hero {
-            text-align: center;
-            padding: 30px 15px 20px;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(5, 5, 5, 0.95));
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero h1 {
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: var(--halloween-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
-            position: relative;
-            line-height: 1.2;
-        }
-
-        /* Halloween themed countdown */
-        .countdown {
-            background: rgba(255, 107, 0, 0.1);
-            border: 2px solid var(--halloween-orange);
-            border-radius: 12px;
-            padding: 15px;
-            margin: 20px auto;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .countdown-title {
-            font-size: 0.9rem;
-            color: var(--halloween-orange);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .countdown-unit {
-            background: var(--dark);
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid var(--halloween-orange);
-            min-width: 60px;
-        }
-
-        .countdown-number {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--halloween-orange);
-        }
-
-        /* Halloween themed items */
-        .item-card {
-            background: linear-gradient(145deg, #1A1A1A, #0F0F0F);
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 15px 10px;
-            text-align: center;
-            transition: all 0.3s ease;
+            font-family: 'Cairo', Arial, sans-serif;
+            height: 54px;
+            justify-content: center;
             cursor: pointer;
+            transition: transform 0.17s cubic-bezier(.17, .67, .83, .67);
+            will-change: transform;
             position: relative;
             overflow: hidden;
-            min-height: 160px;
+        }
+
+        .active-users-box:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .active-users-box:hover:after {
+            left: 100%;
+        }
+
+        .active-users-box:active {
+            transform: scale(1.09) rotate(-2deg);
+            box-shadow: 0 0 0 6px #fff5, 0 2px 6px #0003;
+            z-index: 2;
+            filter: brightness(1.08);
+            background: #0055aa;
+        }
+
+        .active-users-box span:first-child {
+            color: #fff;
+            margin-right: 8px;
+            font-weight: 900;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        .active-users-count {
+            font-weight: 900;
+            font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
+            margin-left: 8px;
+            font-size: 1.15em;
+            color: #FFD700;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+        }
+
+        .select-title {
+            margin: 30px 0 10px 0;
+            text-align: center;
+            font-size: 1.7em;
+            color: #fff;
+            font-family: 'Cairo', Arial, sans-serif;
+            letter-spacing: .4px;
+            font-weight: 900;
+            text-shadow: 0 1px 5px #2225;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .select-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ffd700, transparent);
+        }
+
+        .items-grid {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
+            gap: 26px;
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        .items-row {
+            display: flex;
+            gap: 22px;
+            width: 100%;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .item-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #0002;
+            padding: 10px 8px 8px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 170px;
+            min-width: 100px;
+            max-width: 31vw;
+            border: 2px solid #eee;
+            margin: 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            will-change: transform;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        .item-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-card:active {
+            transform: scale(1.09) rotate(-2deg);
+            box-shadow: 0 0 0 6px #ffd70033, 0 2px 12px #0003;
+            z-index: 2;
+            filter: brightness(1.08);
         }
 
         .item-card.selected {
-            background: linear-gradient(145deg, #2A1A00, #1A1000);
-            border-color: var(--halloween-orange);
-            box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
-            animation: pulse 2s infinite;
+            background: linear-gradient(135deg, #ffd700, #ffbf00);
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            animation: goldenGlow 1.5s infinite alternate;
         }
 
-        .item-badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: var(--halloween-gradient);
-            color: var(--dark);
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 0.65rem;
-            font-weight: 900;
-            text-transform: uppercase;
+        @keyframes goldenGlow {
+            from {
+                box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            }
+            to {
+                box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+            }
+        }
+
+        .item-img {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #eaeaea;
+            margin-bottom: 10px;
+            border: none;
+            image-rendering: pixelated;
+            box-shadow: 0 0 13px #0001;
+            transition: box-shadow 0.12s, filter 0.12s;
+            display: block;
+            position: relative;
+            z-index: 1;
         }
 
         .item-card.selected .item-img {
-            border-color: var(--halloween-orange);
-            box-shadow: 0 0 12px rgba(255, 107, 0, 0.4);
-            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            filter: brightness(1.05) contrast(1.1);
         }
 
-        /* Halloween themed buttons */
-        #continue-btn {
-            background: var(--halloween-gradient);
-            color: var(--dark);
-            border: none;
-            padding: 14px 35px;
-            font-size: 1rem;
+        .item-name {
+            font-size: 1.08em;
+            color: #333;
+            font-family: 'Cairo', Arial, sans-serif;
+            text-align: center;
             font-weight: 900;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: .2px;
+            margin-bottom: 0;
+            line-height: 1.2;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            background: none;
+            border-radius: 0;
+            border: none;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            min-height: 28px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* ===== IMPROVED LOCKER POPUP STYLES ===== */
-        .popup-overlay {
+        .item-card.selected .item-name {
+            color: #8b7500;
+            text-shadow: 0 0 2px rgba(255, 215, 0, 0.5);
+        }
+
+        .selection-controls {
+            text-align: center;
+            padding: 5px 0 20px 0;
+            min-height: 25px;
+        }
+
+        #continue-btn {
+            display: none;
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1001;
+            padding: 15px 40px;
+            font-size: 1.4em;
+            font-weight: 900;
+            font-family: 'Cairo', Arial, sans-serif;
+            color: white;
+            background: #333333;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            touch-action: manipulation;
+        }
+
+        #continue-btn:hover {
+            background: #444444;
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        #continue-btn:active {
+            background: #222222;
+            transform: translateX(-50%) translateY(1px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        #selection-limit-message {
+            display: none;
+            color: #ff4d4d;
+            font-weight: bold;
+            font-size: 1em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cliameds {
+            position: fixed;
+            bottom: 65px;
+            left: 15px;
+            z-index: 9999;
+        }
+
+        .message {
+            background-color: rgba(135, 206, 250, 0.85);
+            display: flex;
+            font-size: .8rem;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 2px solid rgba(238, 204, 159, 0.7);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .message:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+
+        .message:hover:after {
+            left: 120%;
+        }
+
+        .message .img {
+            padding-right: 10px;
+            z-index: 2;
+        }
+
+        .message .img img {
+            width: 50px;
+            background: #fff;
+            border-radius: 50%;
+            height: 50px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .message .more {
+            z-index: 2;
+        }
+
+        .message .more div:first-child {
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        .message .more div:last-child {
+            color: #333;
+            font-weight: 700;
+        }
+
+        /* Purchase popup styles */
+        .purchase-popup {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
-            animation: fadeIn 0.3s ease;
-            overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            box-sizing: border-box;
         }
 
         .popup-content {
-            background: linear-gradient(145deg, #1A1A1A, #0F0F0F);
-            border: 2px solid var(--halloween-orange);
-            border-radius: 15px;
-            padding: 20px;
+            background-color: #333;
+            padding: 25px;
+            border-radius: 10px;
             width: 100%;
-            max-width: 420px;
-            margin: 0 auto;
+            max-width: 380px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            color: white;
+            margin: auto;
             position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-            animation: slideUp 0.4s ease;
-            top: 50%;
-            transform: translateY(-50%);
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(-40%); opacity: 0; }
-            to { transform: translateY(-50%); opacity: 1; }
         }
 
         .popup-header {
-            text-align: center;
-            margin-bottom: 15px;
             position: relative;
-            flex-shrink: 0;
+            padding-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .popup-header h3 {
-            font-size: 1.3rem;
-            color: var(--halloween-orange);
-            margin-bottom: 6px;
-            font-weight: 900;
+            font-size: 24px;
+            margin: 0;
+            color: white;
+            font-weight: 700;
         }
 
-        .popup-header p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
+        .popup-header:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background-color: #666;
+        }
+
+        .selected-images-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 15px auto;
+            flex-wrap: wrap;
+        }
+
+        .item-popup-image-small {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #444;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-confirm {
+            font-size: 18px;
+            margin: 0.3cm 0;
+            color: white;
+            font-weight: 700;
             line-height: 1.4;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: none;
+        }
+
+        .input-group input {
+            width: 92%;
+            padding: 15px 12px;
+            background-color: white;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .input-group input::placeholder {
+            color: #999;
+            font-weight: 700;
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .cancel-btn {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            flex: 1;
+            font-size: 15px;
+            touch-action: manipulation;
+        }
+
+        .free-btn {
+            background-color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            touch-action: manipulation;
+        }
+
+        .free-btn .free-badge {
+            color: #333;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        .free-btn .free-icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('https://tse4.mm.bing.net/th?id=OIP.AZtpRYaMROCrDtdpzAYzvgHaH5&pid=Api&P=0&h=180');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* Searching state styles */
+        .searching-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .folding {
+            margin: 20px auto;
+            width: 70px;
+            height: 70px;
+            position: relative;
+            transform: rotateZ(45deg);
+        }
+
+        .folding .sk-cube {
+            float: left;
+            width: 50%;
+            height: 50%;
+            position: relative;
+            transform: scale(1.1);
+        }
+
+        .folding .sk-cube:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            animation: sk-foldCubeAngle 2.4s infinite linear both;
+            transform-origin: 100% 100%;
+        }
+
+        .folding .sk-cube2 {
+            transform: scale(1.1) rotateZ(90deg);
+        }
+
+        .folding .sk-cube3 {
+            transform: scale(1.1) rotateZ(180deg);
+        }
+
+        .folding .sk-cube4 {
+            transform: scale(1.1) rotateZ(270deg);
+        }
+
+        .folding .sk-cube2:before {
+            animation-delay: 0.3s;
+        }
+
+        .folding .sk-cube3:before {
+            animation-delay: 0.6s;
+        }
+
+        .folding .sk-cube4:before {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes sk-foldCubeAngle {
+            0%, 10% {
+                transform: perspective(140px) rotateX(-180deg);
+                opacity: 0;
+            }
+            25%, 75% {
+                transform: perspective(140px) rotateX(0deg);
+                opacity: 1;
+            }
+            90%, 100% {
+                transform: perspective(140px) rotateY(180deg);
+                opacity: 0;
+            }
+        }
+
+        .searching-text {
+            color: white;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        /* Success state styles */
+        .result-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 15px auto;
+            border: 3px solid #444;
+        }
+
+        .result-username {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .get-item-now-btn {
+            background-color: white;
+            color: #333;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: all 0.3s;
+            touch-action: manipulation;
+        }
+
+        .get-item-now-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .d-none {
+            display: none !important;
+        }
+
+        .user-error {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* ADBLUEMEDIA LOCKER STYLES - FIXED POSITION */
+        .locker-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        .locker-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .locker-box {
+            width: 100%;
+            max-width: 420px;
+            max-height: 90vh;
+            background: linear-gradient(145deg, #1a1a1a, #121212);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            color: #e0e0e0;
+            box-shadow: 0 0 40px rgba(255,107,53,0.4);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .locker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .locker-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: #ff6b35;
+            font-size: 1rem;
+        }
+
+        .locker-box h2 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            text-shadow: 0 0 15px rgba(255,107,53,0.5);
+        }
+
+        .cta-strong {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #00e5ff;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            background: rgba(0,229,255,0.1);
+            padding: 8px;
+            border-radius: 8px;
+            border-left: 3px solid #00e5ff;
+        }
+
+        .game-preview-locker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            text-align: left;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 10px;
+            border-left: 3px solid #ff6b35;
+        }
+
+        .game-preview-locker img {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .game-preview-content h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            line-height: 1.3;
+        }
+
+        .file-info {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .progress-container {
+            margin: 12px 0;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #333;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255,107,53,0.1) inset;
+            margin-bottom: 6px;
+        }
+
+        #progressFill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b35, #ff8e53);
+            transition: width 0.4s ease;
+            border-radius: 6px;
+        }
+
+        .progress-text {
+            font-size: 0.75rem;
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #statusMessage {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: #ff6b35;
+            min-height: 20px;
+            line-height: 1.4;
+            background: rgba(255,107,53,0.1);
+            padding: 6px;
+            border-radius: 6px;
         }
 
         .close-btn {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.2rem;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: #ff5555;
             cursor: pointer;
-            transition: color 0.3s ease;
-            width: 28px;
-            height: 28px;
+            transition: all 0.3s ease;
+            width: 26px;
+            height: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             z-index: 10;
+            touch-action: manipulation;
         }
 
         .close-btn:hover {
-            color: var(--error);
-            background: rgba(255, 68, 68, 0.1);
+            background: rgba(255,85,85,0.2);
+            transform: scale(1.1);
         }
 
-        /* Improved locker content area with smooth scrolling */
-        .locker-content {
-            flex: 1;
-            overflow-y: auto;
-            padding-right: 5px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--halloween-orange) #333;
+        .offers-section {
+            margin-top: 10px;
         }
 
-        .locker-content::-webkit-scrollbar {
-            width: 6px;
+        .offers-section h3 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
         }
 
-        .locker-content::-webkit-scrollbar-track {
-            background: #333;
-            border-radius: 3px;
-        }
-
-        .locker-content::-webkit-scrollbar-thumb {
-            background: var(--halloween-gradient);
-            border-radius: 3px;
-        }
-
-        .locker-content::-webkit-scrollbar-thumb:hover {
-            background: var(--halloween-orange);
-        }
-
-        /* Improved verification step sizing */
-        .verification-step {
-            text-align: center;
-            margin: 15px 0;
-            flex-shrink: 0;
-        }
-
-        .step-icon {
-            font-size: 2.2rem;
-            color: var(--halloween-orange);
-            margin-bottom: 12px;
-            filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.5));
-        }
-
-        .step-title {
-            font-size: 1.2rem;
-            color: var(--text);
-            margin-bottom: 8px;
-            font-weight: 900;
-        }
-
-        .step-description {
-            color: var(--text-muted);
-            line-height: 1.4;
-            font-size: 0.85rem;
-            max-width: 90%;
-            margin: 0 auto;
-        }
-
-        /* Improved progress bar */
-        .progress-container {
-            margin: 15px 0;
-            flex-shrink: 0;
-        }
-
-        /* ULTRA MINIMIZED OFFER CARDS - ALL VISIBLE WITHOUT SCROLLING */
-        .offers-container {
-            margin: 10px 0;
-        }
-
-        .offers-title {
-            text-align: center;
-            color: var(--halloween-orange);
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            flex-shrink: 0;
+        #offersList {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .offer-card {
-            background: linear-gradient(145deg, #2A2A2A, #1A1A1A);
-            border: 1px solid #444;
-            border-radius: 6px;
-            padding: 8px;
-            margin-bottom: 6px;
+            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
+            border: 1px solid #ff6b35;
+            padding: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             position: relative;
             overflow: hidden;
-            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(255,107,53,0.2);
+            min-height: 60px;
+            touch-action: manipulation;
         }
 
         .offer-card::before {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
-            width: 2px;
+            width: 3px;
             height: 100%;
-            background: var(--halloween-gradient);
+            background: linear-gradient(to bottom, #ff6b35, #ff8e53);
         }
 
         .offer-card:hover {
+            background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
+            border-color: #ff8e53;
             transform: translateY(-1px);
-            border-color: var(--halloween-orange);
-            box-shadow: 0 2px 8px rgba(255, 107, 0, 0.2);
+            box-shadow: 0 3px 8px rgba(255,107,53,0.3);
         }
 
-        .offer-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 4px;
+        .offer-content {
+            flex: 1;
+            text-align: left;
+            min-width: 0;
         }
 
         .offer-title {
-            color: var(--text);
-            font-weight: 700;
-            font-size: 0.75rem;
-            flex: 1;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 4px;
             line-height: 1.2;
-        }
-
-        .offer-badge {
-            background: var(--halloween-gradient);
-            color: var(--dark);
-            padding: 1px 4px;
-            border-radius: 8px;
-            font-size: 0.55rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .offer-details {
             display: flex;
-            gap: 8px;
-            color: var(--text-muted);
+            gap: 6px;
             font-size: 0.65rem;
+            color: #888;
             flex-wrap: wrap;
         }
 
@@ -434,494 +944,192 @@
             display: flex;
             align-items: center;
             gap: 2px;
+            white-space: nowrap;
         }
 
-        /* Improved trust badges */
+        .offer-badge {
+            background: linear-gradient(135deg, #00e5ff, #0099ff);
+            color: #000;
+            padding: 2px 5px;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 1px 3px rgba(0,229,255,0.3);
+            flex-shrink: 0;
+        }
+
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #444;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.1);
             flex-wrap: wrap;
-            flex-shrink: 0;
         }
 
         .trust-badge {
             display: flex;
             align-items: center;
-            gap: 4px;
-            color: var(--text-muted);
+            gap: 3px;
             font-size: 0.65rem;
-            font-weight: 700;
+            color: #888;
         }
 
         .trust-badge i {
-            color: var(--success);
-            font-size: 0.7rem;
+            color: #ff6b35;
         }
 
-        /* Rest of the CSS remains optimized */
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--halloween-orange);
-            background: rgba(255, 107, 0, 0.1);
-        }
-
-        .hero-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--halloween-orange);
-            font-family: 'Orbitron', monospace;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            font-family: 'Orbitron', monospace;
-        }
-
-        .countdown-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 15px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 900;
-            margin-bottom: 25px;
-            color: var(--text);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--halloween-gradient);
-            border-radius: 2px;
-        }
-
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 0, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(255, 107, 0, 0.5); }
-        }
-
-        .item-img {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            border: 2px solid #333;
-            transition: all 0.3s ease;
-        }
-
-        .item-name {
-            font-size: 0.85rem;
-            font-weight: 900;
-            color: var(--text);
-            margin-bottom: 5px;
-            line-height: 1.2;
-        }
-
-        .item-description {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            line-height: 1.2;
-        }
-
-        .selection-controls {
-            text-align: center;
-            padding: 15px 0;
-            position: sticky;
-            bottom: 0;
-            background: linear-gradient(transparent, var(--darker));
-            z-index: 100;
-        }
-
-        #selection-limit-message {
-            display: none;
-            color: var(--error);
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding: 8px 15px;
-            background: rgba(255, 68, 68, 0.1);
-            border: 1px solid var(--error);
-            border-radius: 8px;
-            animation: shake 0.5s ease;
-            font-size: 0.8rem;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-3px); }
-            75% { transform: translateX(3px); }
-        }
-
-        #continue-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
-        }
-
-        .testimonials {
-            background: rgba(255, 107, 0, 0.05);
-            border-top: 2px solid var(--halloween-orange);
-            border-bottom: 2px solid var(--halloween-orange);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .testimonial-card {
-            background: var(--light);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 3px solid var(--halloween-orange);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            color: var(--text);
-            margin-bottom: 12px;
-            line-height: 1.4;
-            font-size: 0.85rem;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .testimonial-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            border: 2px solid var(--halloween-orange);
-        }
-
-        .testimonial-info h4 {
-            color: var(--halloween-orange);
-            margin-bottom: 2px;
-            font-size: 0.9rem;
-        }
-
-        .testimonial-info p {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
-        .faq-grid {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--light);
-            border-radius: 8px;
-            margin-bottom: 12px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 15px;
-            background: rgba(255, 107, 0, 0.1);
-            border: none;
-            color: var(--text);
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-align: left;
-            width: 100%;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: rgba(255, 107, 0, 0.2);
-        }
-
-        .faq-answer {
-            padding: 0 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            color: var(--text-muted);
-            line-height: 1.5;
-            font-size: 0.8rem;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 15px;
-            max-height: 500px;
-        }
-
-        .username-input {
-            width: 100%;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid #444;
-            border-radius: 8px;
-            color: var(--text);
-            font-size: 0.95rem;
-            margin: 15px 0;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .username-input:focus {
-            outline: none;
-            border-color: var(--halloween-orange);
-            background: rgba(255, 107, 0, 0.05);
-            box-shadow: 0 0 12px rgba(255, 107, 0, 0.2);
-        }
-
-        .roblox-profile {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 107, 0, 0.1);
-            padding: 12px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border: 1px solid var(--halloween-orange);
-        }
-
-        .profile-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid var(--halloween-orange);
-        }
-
-        .profile-info h4 {
-            color: var(--halloween-orange);
-            margin-bottom: 4px;
-            font-size: 1rem;
-        }
-
-        /* REMOVED: .profile-info p (User since text) */
-
-        .action-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--halloween-gradient);
-            color: var(--dark);
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 900;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 8px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(255, 107, 0, 0.4);
-        }
-
-        .action-btn.secondary {
-            background: transparent;
-            color: var(--text);
-            border: 2px solid #444;
-            box-shadow: none;
-        }
-
-        .action-btn.secondary:hover {
-            border-color: var(--halloween-orange);
-            color: var(--halloween-orange);
-            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
-        }
-
-        .footer {
-            background: var(--darker);
-            border-top: 2px solid var(--halloween-orange);
-            padding: 25px 15px;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 12px 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.75rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--halloween-orange);
-        }
-
-        .copyright {
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            margin-top: 12px;
-        }
-
-        /* Responsive Design */
+        /* MOBILE OPTIMIZATIONS */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 10px;
+            .select-title {
+                font-size: 1.3em;
+                margin: 20px 0 8px 0;
             }
 
-            .nav-links {
-                gap: 10px;
+            .active-users-box {
+                font-size: 1.1em;
+                min-width: 160px;
+                padding: 10px 15px;
+                height: 45px;
             }
 
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-
-            .hero-subtitle {
-                font-size: 0.85rem;
-            }
-
-            .stats-container {
+            .items-grid {
                 gap: 15px;
+                padding: 0 5px;
             }
 
-            .stat-number {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 1.3rem;
-            }
-
-            .items-grid {
-                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-                gap: 10px;
-            }
-
-            .popup-content {
-                padding: 15px;
-                max-width: 380px;
-                max-height: 80vh;
-            }
-
-            .countdown-timer {
-                gap: 8px;
-            }
-
-            .countdown-unit {
-                min-width: 50px;
-                padding: 6px 8px;
-            }
-
-            .countdown-number {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.4rem;
-            }
-
-            .items-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .items-row {
                 gap: 8px;
             }
 
             .item-card {
-                padding: 12px 8px;
-                min-height: 140px;
+                width: 30vw;
+                padding: 8px 4px 6px 4px;
+                border-radius: 8px;
+            }
+
+            .item-img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .item-name {
+                font-size: 0.9em;
+                min-height: 20px;
+            }
+
+            #continue-btn {
+                padding: 12px 30px;
+                font-size: 1.2em;
+                bottom: 20px;
+            }
+
+            /* Mobile popup optimizations */
+            .purchase-popup {
+                padding: 10px;
+            }
+
+            .popup-content {
+                padding: 20px 15px;
+                max-width: 95%;
+            }
+
+            .popup-header h3 {
+                font-size: 20px;
+            }
+
+            .item-popup-image-small {
+                width: 60px;
+                height: 60px;
+            }
+
+            .item-confirm {
+                font-size: 16px;
+            }
+
+            .input-group input {
+                padding: 12px 10px;
+                font-size: 14px;
+            }
+
+            /* Mobile locker optimizations */
+            .locker-overlay {
+                padding: 10px;
+            }
+
+            .locker-box {
+                padding: 15px;
+                max-height: 85vh;
+            }
+
+            .locker-box h2 {
+                font-size: 1.1rem;
+            }
+
+            .cta-strong {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+
+            .game-preview-locker {
+                padding: 8px;
+                gap: 8px;
+            }
+
+            .game-preview-locker img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .game-preview-content h3 {
+                font-size: 0.9rem;
+            }
+
+            .offer-card {
+                padding: 8px;
+                min-height: 55px;
+            }
+
+            .offer-title {
+                font-size: 0.75rem;
+            }
+
+            .offer-details {
+                font-size: 0.6rem;
+                gap: 4px;
+            }
+
+            .trust-badges {
+                gap: 6px;
+            }
+
+            .trust-badge {
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .select-title {
+                font-size: 1.1em;
+                padding: 6px 0;
+            }
+
+            .active-users-box {
+                font-size: 0.9em;
+                min-width: 140px;
+                padding: 8px 12px;
+                height: 40px;
+            }
+
+            .items-row {
+                gap: 5px;
+            }
+
+            .item-card {
+                width: 28vw;
+                padding: 6px 2px 4px 2px;
             }
 
             .item-img {
@@ -930,464 +1138,231 @@
             }
 
             .item-name {
-                font-size: 0.8rem;
+                font-size: 0.8em;
+                min-height: 18px;
             }
 
-            .testimonials-grid {
-                grid-template-columns: 1fr;
+            #continue-btn {
+                padding: 10px 25px;
+                font-size: 1.1em;
+                bottom: 15px;
             }
 
-            .footer-links {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .stats-container {
-                gap: 10px;
-            }
-
-            .stat-item {
-                flex: 1;
-                min-width: 70px;
-            }
-
-            .popup-content {
-                max-width: 340px;
+            .locker-box {
                 padding: 12px;
-                max-height: 75vh;
             }
-            
-            .popup-overlay {
-                padding: 10px;
+
+            .game-preview-locker {
+                flex-direction: column;
+                text-align: center;
+                gap: 6px;
+            }
+
+            .offer-details {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .offer-detail {
+                font-size: 0.55rem;
             }
         }
 
         @media (max-width: 360px) {
-            .items-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .item-card {
-                min-height: 130px;
+                width: 27vw;
             }
 
             .item-img {
-                width: 55px;
-                height: 55px;
+                width: 50px;
+                height: 50px;
             }
 
-            .hero h1 {
-                font-size: 1.3rem;
+            .item-name {
+                font-size: 0.75em;
             }
 
-            .popup-content {
-                max-width: 300px;
+            .locker-box {
+                padding: 10px;
             }
         }
 
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        .text-primary { color: var(--halloween-orange); }
-        .text-success { color: var(--success); }
-        .text-error { color: var(--error); }
-        .mb-12 { margin-bottom: 12px; }
-        .mt-12 { margin-top: 12px; }
-        .d-none { display: none !important; }
-        .d-flex { display: flex !important; }
-
-        /* Touch device improvements */
-        @media (hover: none) {
-            .item-card:hover {
-                transform: none;
-            }
-            
-            .action-btn:hover {
-                transform: none;
-            }
-            
-            .offer-card:hover {
-                transform: none;
-            }
+        body {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
-        /* Disable double-tap zoom */
-        * {
-            -webkit-tap-highlight-color: transparent;
+        /* Prevent body scroll when locker is open */
+        .locker-open {
+            overflow: hidden !important;
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <a href="#" class="logo">
-                <i class="fas fa-ghost logo-icon"></i>
-                 BRAINROT ITEMS
-            </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#items">Items</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>CLAIM   BRAINROT ITEMS!</h1>
-        <p class="hero-subtitle">Get the exclusive items everyone is searching for! Limited time only - claim Starfruit Plant Vs Brainrots and more!</p>
-        
-        <div class="stats-container">
-            <div class="stat-item">
-                <span class="stat-number" id="totalUsers">18,927</span>
-                <span class="stat-label">Collectors Online</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="itemsClaimed">63,451</span>
-                <span class="stat-label"> Items Claimed</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">24/7</span>
-                <span class="stat-label">Spooky Support</span>
+    <div class="select-title">STEAL A BRAINROT</div>
+    <div class="content">
+        <div class="top-bar">
+            <div class="active-users-box">
+                <span>Active users :</span>
+                <span class="active-users-count" id="activeUsersCount"></span>
             </div>
         </div>
-    </section>
-
-    <!-- Items Selection Section -->
-    <section class="section" id="items">
-        <h2 class="section-title">CHOOSE YOUR  ITEMS</h2>
-        <p class="text-center text-muted mb-12">Select up to 3 exclusive Brainrot items</p>
-        
-        <div class="items-grid">
-            <!-- NEW HALLOWEEN ITEMS -->
-            <div class="item-card" data-item="starfruit-plant">
-                <div class="item-badge">HOT</div>
-                <img src="https://i.postimg.cc/HxSVrwV2/BOIIIIIII-SIX-SEVEN-3F3F3F3F3F.webp" alt="Starfruit Plant Vs Brainrots" class="item-img">
-                <h3 class="item-name">67</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="pumpkin-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://i.postimg.cc/QMmMzQkN/Clear-background-clear-meowl-image.webp" alt="Pumpkin Brainrot" class="item-img">
-                <h3 class="item-name">Meowl</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="ghostly-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://i.postimg.cc/MG661ckt/Dragoncanneloni.png" alt="Ghostly Brainrot" class="item-img">
-                <h3 class="item-name">Dragon Cannelloni</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="zombie-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://i.postimg.cc/TP3yfNPR/Spooky-block.webp" alt="Zombie Brainrot" class="item-img">
-                <h3 class="item-name">Spooky block</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="vampire-brainrot">
-                <div class="item-badge">RARE</div>
-                <img src="https://i.postimg.cc/nL4mh94m/Strawberryelephant.webp" alt="Vampire Brainrot" class="item-img">
-                <h3 class="item-name">Strawberry Elephant</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="witch-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/7/79/Brr_Brr_Patapem.png" alt="Witch Brainrot" class="item-img">
-                <h3 class="item-name">Witch Brainrot</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="werewolf-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://i.postimg.cc/L5pZPtSt/Headlesshorseman.webp" alt="Werewolf Brainrot" class="item-img">
-                <h3 class="item-name">Headless Horseman</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="frankenstein-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/d/d0/TO_TO_TO_SAHUR_IS_COOL.png" alt="Frankenstein Brainrot" class="item-img">
-                <h3 class="item-name">Frankenstein Brainrot</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="mummy-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/6/61/UPokf8FmxyJj4JnktOIdNuJvgtV0vcQRYJLslXal.png" alt="Mummy Brainrot" class="item-img">
-                <h3 class="item-name">Mummy Brainrot</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="skeleton-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/c/c9/Tictac_Sahur_png.png" alt="Skeleton Brainrot" class="item-img">
-                <h3 class="item-name">Skeleton Brainrot</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="candy-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/e/e3/Tung_Tung_Tung_Sahur.png" alt="Candy Brainrot" class="item-img">
-                <h3 class="item-name">Candy Brainrot</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="haunted-brainrot">
-                <div class="item-badge">RARE</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/5/5f/Candy_La_Vacca_Saturno_Saturnita.png" alt="Haunted Brainrot" class="item-img">
-                <h3 class="item-name">Haunted Brainrot</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="spider-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/d/d8/Carti.png" alt="Spider Brainrot" class="item-img">
-                <h3 class="item-name">Spider Brainrot</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="bat-brainrot">
-                <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/4/46/La_Cucaracha.png" alt="Bat Brainrot" class="item-img">
-                <h3 class="item-name">Bat Brainrot</h3>
-                <p class="item-description"></p>
-            </div>
-
-            <div class="item-card" data-item="full-moon-brainrot">
-                <div class="item-badge">LIMITED</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/5/53/BROOOOOOOO.png" alt="Full Moon Brainrot" class="item-img">
-                <h3 class="item-name">Full Moon Brainrot</h3>
-                <p class="item-description"></p>
-            </div>
-        </div>
+        <div class="select-title">SELECT UP TO 3 ITEMS YOU WISH TO GET FREE ITEM</div>
 
         <div class="selection-controls">
-            <div id="selection-limit-message">You can only select up to 3 items. Please deselect one to choose another.</div>
-            <button id="continue-btn" class="d-none">CLAIM ITEMS NOW</button>
+            <div id="selection-limit-message">You can only select up to 3 items.</div>
         </div>
-    </section>
 
-    <!-- How It Works Section -->
-    <section class="section" id="how-it-works" style="background: rgba(255,107,0,0.03);">
-        <h2 class="section-title">HOW IT WORKS</h2>
-        <div class="items-grid">
-            <div class="item-card">
-                <div class="step-icon">1</div>
-                <h3 class="item-name">Select Items</h3>
-                <p class="item-description">Choose up to 3 exclusive Halloween Brainrot items</p>
-            </div>
-            <div class="item-card">
-                <div class="step-icon">2</div>
-                <h3 class="item-name">Verify Account</h3>
-                <p class="item-description">Enter your Roblox username</p>
-            </div>
-            <div class="item-card">
-                <div class="step-icon">3</div>
-                <h3 class="item-name">Complete Offer</h3>
-                <p class="item-description">Unlock your free items instantly</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section testimonials" id="testimonials">
-        <h2 class="section-title">WHAT COLLECTORS SAY</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">"I got the Starfruit Plant Vs Brainrots item and it's absolutely amazing! The Halloween effects are incredible and everyone's asking me how I got it!"</p>
-                <div class="testimonial-author">
-                    <img src="https://dress2.pages.dev/avatars/avatar1.png" alt="Alex" class="testimonial-avatar">
-                    <div class="testimonial-info">
-                        <h4>Alex M.</h4>
-                        <p>Got Starfruit Plant</p>
-                    </div>
+        <div class="items-grid" id="itemsGrid">
+            <!-- Your items rows remain the same -->
+            <div class="items-row">
+                <div class="item-card">
+                    <img alt="ancient" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png" />
+                    <div class="item-name">Childhood gambling</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Dragon-Pepper" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/9/93/Tacorita_Bicicleta_.png" />
+                    <div class="item-name">Dragon Pepper</div>
+                </div>
+                <div class="item-card">
+                    <img alt="boneblossom" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/8c/Crack.png" />
+                    <div class="item-name">Dragomfruitini</div>
                 </div>
             </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"These Halloween Brainrot items are the hottest thing right now! The Pumpkin Brainrot looks so cool and I got it completely free!"</p>
-                <div class="testimonial-author">
-                    <img src="https://dress2.pages.dev/avatars/avatar2.png" alt="Sarah" class="testimonial-avatar">
-                    <div class="testimonial-info">
-                        <h4>Sarah J.</h4>
-                        <p>Halloween Collector</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FAQ Section -->
-    <section class="section" id="faq">
-        <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
-        <div class="faq-grid">
-            <div class="faq-item">
-                <button class="faq-question">
-                    How long does it take to receive my  items?
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    Halloween items are typically delivered instantly after completing the verification process. Don't miss out on these limited-time items!
+            <div class="items-row">
+                <div class="item-card">
+                    <img alt="Mimic Octopus" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/3/31/Nah_uh.png" />
+                    <div class="item-name">Dragon cannelloni</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Brontosaurus-Icon" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/83/BOIIIIIII_SIX_SEVEN_%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82.png" />
+                    <div class="item-name">67</div>
+                </div>
+                <div class="item-card">
+                    <img alt="T-Rex-Dinosaur-Icon" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/79/Brr_Brr_Patapem.png" />
+                    <div class="item-name">Tralaledon</div>
                 </div>
             </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    Are these Halloween items really free?
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    Yes! All Halloween Brainrot items are completely free for a limited time. You only need to complete one simple offer to verify your account.
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    Is the Starfruit Plant Vs Brainrots really that rare?
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    Absolutely! The Starfruit Plant Vs Brainrots is the most sought-after Halloween item right now. Everyone in the community is trying to get it before it's gone!
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="logo">
-                <i class="fas fa-ghost logo-icon"></i>
-                HALLOWEEN BRAINROT COLLECTIBLES
+            <div class="items-row">
+                <div class="item-card">
+                    <img alt="Super-Seed" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/58/Strawberryelephant.png" />
+                    <div class="item-name">Strawberry Elephant</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Candy-Blossom" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/d/d0/TO_TO_TO_SAHUR_IS_COOL.png" />
+                    <div class="item-name">ToToTo Sahur</div>
+                </div>
+                <div class="item-card">
+                    <img alt="dinoegg" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/6/61/UPokf8FmxyJj4JnktOIdNuJvgtV0vcQRYJLslXal.png" />
+                    <div class="item-name">Helicopterino</div>
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Support</a>
-            </div>
-            <p class="copyright">© 2024 Halloween Brainrot Collectibles. All rights reserved. Not affiliated with Roblox Corporation.</p>
-        </div>
-    </footer>
 
-    <!-- Username Verification Popup -->
-    <div id="username-popup" class="popup-overlay">
-        <div class="popup-content">
-            <button class="close-btn" onclick="closePopup('username-popup')">×</button>
-            <div class="popup-header">
-                <h3>Verify Your Account</h3>
-                <p>Enter your Roblox username to claim your Halloween items</p>
+            <div class="items-row">
+                <div class="item-card">
+                    <img alt="Dragon fruit" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/c/c9/Tictac_Sahur_png.png" />
+                    <div class="item-name">Tictac sahur</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Rainbow-Sack-Pack" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/e/e3/Tung_Tung_Tung_Sahur.png" />
+                    <div class="item-name">Tung Tung sahur</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Raccon-Better-Quality" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/5f/Candy_La_Vacca_Saturno_Saturnita.png" />
+                    <div class="item-name">La vacca saturno</div>
+                </div>
             </div>
             
-            <div class="locker-content">
-                <div class="verification-step">
-                    <i class="fas fa-user-check step-icon"></i>
-                    <h4 class="step-title">Account Verification</h4>
-                    <p class="step-description">We need to verify your Roblox account to deliver your selected Halloween items securely.</p>
+            <div class="items-row">
+                <div class="item-card">
+                    <img alt="pterodactyl" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/d/d8/Carti.png" />
+                    <div class="item-name">La grande</div>
                 </div>
-
-                <input type="text" class="username-input" id="roblox-username" placeholder="Enter your Roblox username">
-                <div id="username-error" class="d-none" style="color: var(--error); text-align: center; margin: 6px 0; font-size: 0.75rem;"></div>
-
-                <button class="action-btn" onclick="verifyUsername()">VERIFY USERNAME</button>
-                <button class="action-btn secondary" onclick="closePopup('username-popup')">CANCEL</button>
+                <div class="item-card">
+                    <img alt="Elephant-Ears-Produce" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/4/46/La_Cucaracha.png" />
+                    <div class="item-name">La Cucaracha</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Ember Lily" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/53/BROOOOOOOO.png" />
+                    <div class="item-name">La Bros</div>
+                </div>
             </div>
         </div>
+        
+        <button id="continue-btn">Continue</button>
     </div>
 
-    <!-- Profile Selection Popup -->
-    <div id="profile-popup" class="popup-overlay">
-        <div class="popup-content">
-            <button class="close-btn" onclick="closePopup('profile-popup')">×</button>
-            <div class="popup-header">
-                <h3>Confirm Your Profile</h3>
-                <p>Is this your Roblox account?</p>
-            </div>
-
-            <div class="locker-content">
-                <div class="roblox-profile">
-                    <img src="https://dress2.pages.dev/avatars/avatar1.png" alt="Profile Avatar" class="profile-avatar" id="profile-avatar">
-                    <div class="profile-info">
-                        <h4 id="profile-display-name">@Username</h4>
-                        <!-- REMOVED: User since text element -->
-                    </div>
-                </div>
-
-                <div class="selected-items-preview">
-                    <h4 style="color: var(--halloween-orange); margin-bottom: 10px; font-size: 0.85rem;">Your Selected Halloween Items:</h4>
-                    <div id="selected-items-list" style="text-align: left; color: var(--text-muted); font-size: 0.75rem;"></div>
-                </div>
-
-                <button class="action-btn" onclick="openLocker()">YES, CLAIM MY HALLOWEEN ITEMS</button>
-                <button class="action-btn secondary" onclick="closePopup('profile-popup')">NO, GO BACK</button>
-            </div>
-        </div>
+    <!-- Purchase Popup (Username & Profile Selection) -->
+    <div class="purchase-popup" id="purchase-popup">
+        <div class="popup-content"></div>
     </div>
 
-    <!-- IMPROVED Locker Popup with Ultra Minimized Offer Cards -->
-    <div id="locker-popup" class="popup-overlay">
-        <div class="popup-content">
-            <button class="close-btn" onclick="closeLocker()">×</button>
+    <!-- ADBLUEMEDIA LOCKER (Opens after profile selection) -->
+    <div id="locker" class="locker-overlay">
+        <div class="locker-box">
+            <span class="close-btn" onclick="closeLocker()">×</span>
             
-            <div class="popup-header">
-                <h3>Complete to Unlock Halloween Items</h3>
-                <p>Complete one quick offer to get your free Halloween items instantly</p>
+            <div class="locker-header">
+                <div class="locker-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure Download</span>
+                </div>
             </div>
-
-            <div class="locker-content">
-                <div class="verification-step">
-                    <i class="fas fa-lock step-icon"></i>
-                    <h4 class="step-title">Security Verification</h4>
-                    <p class="step-description">This quick verification ensures your Halloween items are delivered securely to your account.</p>
+            
+            <div class="game-preview-locker" id="gamePreviewLocker"></div>
+            
+            <h2>⚡ Download Verification</h2>
+            <p class="cta-strong">Complete one quick offer to unlock your selected items + exclusive bonus content!</p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span>Security Check</span>
+                    <span id="progressPercent">0%</span>
                 </div>
-
-                <!-- Progress Bar -->
-                <div class="progress-container">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                        <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: 700;">Processing...</span>
-                        <span style="color: var(--halloween-orange); font-weight: 900; font-size: 0.85rem;" id="progress-percent">0%</span>
-                    </div>
-                    <div style="width: 100%; height: 8px; background: #333; border-radius: 4px; overflow: hidden;">
-                        <div id="progress-bar" style="width: 0%; height: 100%; background: var(--halloween-gradient); transition: width 0.4s ease;"></div>
-                    </div>
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
                 </div>
-
-                <div id="status-message" style="text-align: center; color: var(--halloween-orange); font-weight: 900; margin: 15px 0; min-height: 20px; font-size: 0.9rem;">
-                    Preparing your Halloween items for delivery...
+                <div class="progress-text">
+                    <span>Preparing your items...</span>
+                    <span>Secure</span>
                 </div>
-
-                <!-- Offers Section with Ultra Minimized Cards -->
-                <div id="offers-section" class="d-none">
-                    <div class="offers-title">CHOOSE YOUR OFFER</div>
-                    <div class="offers-container" id="offers-list">
-                        <!-- Offers will be loaded here -->
+            </div>
+            
+            <p id="statusMessage">🔄 Initializing secure download...</p>
+            
+            <!-- Offers Section -->
+            <div id="offersSection" class="offers-section">
+                <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
+                <div id="offersList"></div>
+                
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-shield-check"></i>
+                        <span>100% Secure</span>
                     </div>
-                    
-                    <div class="trust-badges">
-                        <div class="trust-badge">
-                            <i class="fas fa-shield-check"></i>
-                            <span>100% Secure</span>
-                        </div>
-                        <div class="trust-badge">
-                            <i class="fas fa-clock"></i>
-                            <span>1-3 Minutes</span>
-                        </div>
-                        <div class="trust-badge">
-                            <i class="fas fa-download"></i>
-                            <span>Instant Delivery</span>
-                        </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-clock"></i>
+                        <span>1-3 Minutes</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-download"></i>
+                        <span>Instant Access</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Audio Elements -->
+    <div class="cliameds"></div>
+    
     <audio id="dingSound" preload="auto">
         <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
     </audio>
@@ -1397,197 +1372,319 @@
     </audio>
 
     <script>
+        // ADBLUEMEDIA API CONFIGURATION
         const API_KEY = "3b17a09c1ca2bba2d52ffadab4894374";
         const USER_ID = "504359";
 
-        let selectedItems = [];
+        // Current selection state
+        let currentSelectedItems = [];
         let currentRobloxUsername = "";
         let progressInterval;
 
-        // Store the current scroll position
-        let scrollPosition = 0;
+        // Function to disable body scroll
+        function disableBodyScroll() {
+            document.body.classList.add('no-scroll');
+            document.body.style.overflow = 'hidden';
+        }
 
-        $(document).ready(function() {
-            initializePage();
-            startCountdown();
-            updateLiveStats();
-        });
+        // Function to enable body scroll
+        function enableBodyScroll() {
+            document.body.classList.remove('no-scroll');
+            document.body.style.overflow = '';
+        }
 
-        function initializePage() {
-            $('.item-card').click(function() {
-                const itemId = $(this).data('item');
-                const isSelected = $(this).hasClass('selected');
-                
-                if (isSelected) {
-                    $(this).removeClass('selected');
-                    selectedItems = selectedItems.filter(id => id !== itemId);
-                } else {
-                    if (selectedItems.length < 3) {
-                        $(this).addClass('selected');
-                        selectedItems.push(itemId);
-                        playSound('dingSound');
-                    } else {
-                        showSelectionLimitMessage();
-                        return;
-                    }
+        // Active Users Counter
+        function randomUsers() {
+            return Math.floor(Math.random() * (900 - 90 + 1)) + 90;
+        }
+
+        function updateActiveUsers() {
+            document.getElementById('activeUsersCount').textContent = randomUsers();
+        }
+        updateActiveUsers();
+        setInterval(updateActiveUsers, 4500);
+
+        // Notifications System
+        const avatars = [
+            'https://dress2.pages.dev/avatars/avatar1.png', 'https://dress2.pages.dev/avatars/avatar2.png', 'https://dress2.pages.dev/avatars/avatar3.png', 'https://dress2.pages.dev/avatars/avatar4.png', 'https://dress2.pages.dev/avatars/avatar5.png', 'https://dress2.pages.dev/avatars/avatar6.png', 'https://dress2.pages.dev/avatars/avatar7.png', 'https://dress2.pages.dev/avatars/avatar8.png', 'https://dress2.pages.dev/avatars/avatar9.png', 'https://dress2.pages.dev/avatars/avatar10.png'
+        ];
+        
+        const items = [
+            'Childhood gambling', 'Dragon Pepper', 'Dragomfruitini', 'Dragon cannelloni', '67', 'Tralaledon', 'Strawberry Elephant', 'ToToTo Sahur', 'Helicopterino', 'Tictac sahur', 'Tung Tung sahur', 'La vacca saturno', 'La grande', 'La Cucaracha', 'La Bros'
+        ];
+        
+        const usernames = [
+            'MADELYN2', 'zontir99', 'marcos10', 'Queen_lisa1', 'LANA11', 'HAMZA22', 'tbonmk2', 'caroline34', 'dimaraja10', 'asktiyal9hba', 'ronaldo7', 'sidi_binzarn1', 'DERKAOUI_ZAML1', 'Tizit.botsot', 'Achnid22'
+        ];
+        
+        let notificationInterval;
+        let popupOpen = false;
+
+        function startNotifications() {
+            if (popupOpen) return;
+            notificationInterval = setInterval(function() {
+                if (popupOpen) return;
+                $(".cliameds").fadeIn();
+                var html = `
+                    <div class="message">
+                        <div class="img"><img src="${avatars[Math.floor(Math.random() * avatars.length)]}" alt=""></div>
+                        <div class="more">
+                            <div>${usernames[Math.floor(Math.random() * usernames.length)]}</div>
+                            <div> JUST CLAIMED '${items[Math.floor(Math.random() * items.length)]}'</div>
+                        </div>
+                    </div>
+                `;
+                $(".cliameds").html(html);
+                setTimeout(function() {
+                    $(".cliameds").fadeOut();
+                }, 3000);
+            }, 5000);
+        }
+
+        function stopNotifications() {
+            clearInterval(notificationInterval);
+            $(".cliameds").fadeOut();
+        }
+        startNotifications();
+
+        // ADBLUEMEDIA Conversion Tracking
+        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
+            const conversionData = {
+                user_id: USER_ID,
+                api_key: API_KEY,
+                game: gameName,
+                platform: platform,
+                offer_type: offerType,
+                offer_title: offerTitle,
+                source: 'brainrot_landing',
+                campaign: 'steal_a_brainrot',
+                conversion_type: 'lead',
+                timestamp: Date.now(),
+                revenue: 0.15
+            };
+
+            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(conversionData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('✅ AdBlueMedia Conversion Tracked:', data);
+                console.log('🎮 Items:', gameName);
+                console.log('👤 Roblox User:', currentRobloxUsername);
+                console.log('💰 This lead will show in your AdBlueMedia dashboard');
+            })
+            .catch(error => {
+                console.log('⚠️ AdBlueMedia tracking failed:', error);
+            });
+        }
+
+        // Purchase Popup Functions (Username & Profile Selection)
+        const showPurchasePopup = (itemName, itemImages) => {
+            popupOpen = true;
+            stopNotifications();
+            disableBodyScroll();
+            
+            const popup = document.getElementById('purchase-popup');
+            const popupContent = popup.querySelector('.popup-content');
+
+            const selectedCount = itemImages.length;
+            const promptText = selectedCount > 1 ?
+                `Would you like to get these ${selectedCount} items?` :
+                `Would you like to Get "<span>${itemName}</span>"?`;
+
+            let imagesHTML = '<div class="selected-images-container">';
+            itemImages.forEach(src => {
+                imagesHTML += `<img src="${src}" alt="Selected Item" class="item-popup-image-small">`;
+            });
+            imagesHTML += '</div>';
+
+            popupContent.innerHTML = `
+                <div class="popup-header">
+                    <h3>Get Item(s)</h3>
+                </div>
+                ${imagesHTML}
+                <p class="item-confirm">${promptText}</p>
+                <div class="input-group">
+                    <input type="text" id="username-input" placeholder="Enter your Roblox username">
+                </div>
+                <div class="user-error d-none">Please enter a valid username</div>
+                <div class="popup-buttons">
+                    <button class="cancel-btn">Cancel</button>
+                    <button class="free-btn" id="search-user-btn">
+                        <span class="free-icon"></span>
+                        <span class="free-badge">Continue</span>
+                    </button>
+                </div>
+            `;
+            
+            popupContent.querySelector('.cancel-btn').addEventListener('click', closePurchasePopup);
+            popupContent.querySelector('#search-user-btn').addEventListener('click', function() {
+                const clickSound = document.getElementById('clickSound');
+                clickSound.currentTime = 0;
+                clickSound.play();
+                const username = document.getElementById('username-input').value.trim();
+                if (!username) {
+                    document.querySelector('.user-error').classList.remove('d-none');
+                    return;
                 }
-                
-                updateContinueButton();
-            });
-
-            $('.faq-question').click(function() {
-                $(this).parent().toggleClass('active');
-                $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
-            });
-
-            $('#continue-btn').click(function() {
-                if (selectedItems.length > 0) {
-                    openPopup('username-popup');
-                }
-            });
-        }
-
-        function updateContinueButton() {
-            const continueBtn = $('#continue-btn');
-            if (selectedItems.length > 0) {
-                continueBtn.removeClass('d-none');
-                continueBtn.text(`CLAIM ${selectedItems.length} HALLOWEEN ITEM${selectedItems.length > 1 ? 'S' : ''} NOW`);
-            } else {
-                continueBtn.addClass('d-none');
-            }
-        }
-
-        function showSelectionLimitMessage() {
-            const message = $('#selection-limit-message');
-            message.fadeIn();
-            setTimeout(() => message.fadeOut(), 3000);
-        }
-
-        function openPopup(popupId) {
-            // Store current scroll position
-            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Add no-scroll class to body
-            $('body').addClass('no-scroll');
-            
-            // Apply the scroll position to body to prevent jump
-            $('body').css({
-                'top': `-${scrollPosition}px`,
-                'position': 'fixed',
-                'width': '100%'
+                currentRobloxUsername = username;
+                showSearchingState(username, itemName, itemImages);
             });
             
-            $(`#${popupId}`).fadeIn(300);
-        }
+            popup.style.display = 'flex';
+            document.getElementById('username-input').focus();
+        };
 
-        function closePopup(popupId) {
-            $(`#${popupId}`).fadeOut(300);
-            
-            // Remove no-scroll class and restore scroll position
-            $('body').removeClass('no-scroll');
-            $('body').css({
-                'top': '',
-                'position': '',
-                'width': ''
-            });
-            
-            // Restore scroll position
-            window.scrollTo(0, scrollPosition);
-        }
+        const closePurchasePopup = () => {
+            document.getElementById('purchase-popup').style.display = 'none';
+            popupOpen = false;
+            enableBodyScroll();
+            startNotifications();
+        };
 
-        function verifyUsername() {
-            const username = $('#roblox-username').val().trim();
-            const errorDiv = $('#username-error');
+        const showSearchingState = (username, itemName, itemImages) => {
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = `
+                <div class="popup-header">
+                    <h3>Get Item(s)</h3>
+                </div>
+                <div style="text-align:center;padding:20px">
+                    <div class="folding">
+                        <div class="sk-cube1 sk-cube"></div>
+                        <div class="sk-cube2 sk-cube"></div>
+                        <div class="sk-cube4 sk-cube"></div>
+                        <div class="sk-cube3 sk-cube"></div>
+                    </div>
+                    <p class="searching-text">Searching for @${username}</p>
+                </div>
+            `;
             
-            if (!username) {
-                errorDiv.text('Please enter your Roblox username').removeClass('d-none');
-                return;
-            }
-
-            if (username.length < 3 || username.length > 20) {
-                errorDiv.text('Username must be between 3 and 20 characters').removeClass('d-none');
-                return;
-            }
-
-            errorDiv.addClass('d-none');
-            currentRobloxUsername = username;
-            
-            $('#username-popup .action-btn').html('<i class="fas fa-spinner fa-spin"></i> VERIFYING...').prop('disabled', true);
-            
+            // Simulate API call to find Roblox user
             setTimeout(() => {
-                $('#username-popup .action-btn').text('VERIFY USERNAME').prop('disabled', false);
-                closePopup('username-popup');
-                showProfileConfirmation(username);
-            }, 1500);
-        }
+                showSuccessState(username, 'https://dress2.pages.dev/avatars/avatar1.png', itemName, itemImages);
+            }, 2000);
+        };
 
-        function showProfileConfirmation(username) {
-            $('#profile-display-name').text('@' + username);
-            // REMOVED: User since text generation
+        const showSuccessState = (username, avatarUrl, itemName, itemImages) => {
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = `
+                <div class="popup-header">
+                    <h3>Get Item(s)</h3>
+                </div>
+                <div style="text-align:center;padding:20px">
+                    <img src="${avatarUrl}" class="result-avatar">
+                    <p class="result-username">@${username}</p>
+                    <button class="get-item-now-btn">Get Items Now</button>
+                </div>
+            `;
             
-            const itemsList = $('#selected-items-list');
-            itemsList.empty();
-            selectedItems.forEach(itemId => {
-                const itemName = $('.item-card[data-item="' + itemId + '"] .item-name').text();
-                itemsList.append('<div style="margin: 2px 0;">✓ ' + itemName + '</div>');
+            popupContent.querySelector('.get-item-now-btn').addEventListener('click', function() {
+                const clickSound = document.getElementById('clickSound');
+                clickSound.currentTime = 0;
+                clickSound.play();
+                
+                // Store the selected items and open AdBlueMedia locker
+                currentSelectedItems = {
+                    names: itemName,
+                    images: itemImages
+                };
+                
+                // Close purchase popup and open AdBlueMedia locker
+                closePurchasePopup();
+                openLocker();
             });
-            
-            openPopup('profile-popup');
-        }
+        };
 
+        // ADBLUEMEDIA LOCKER functions (Opens AFTER profile selection)
         function openLocker() {
-            closePopup('profile-popup');
-            openPopup('locker-popup');
-            startVerificationProcess();
+            disableBodyScroll();
+            document.getElementById("locker").style.display = "flex";
+            document.getElementById("locker").classList.add("active");
+            
+            // Hide offers section initially
+            document.getElementById("offersSection").style.display = "none";
+            
+            // Create preview of selected items
+            let previewHTML = '';
+            if (currentSelectedItems.images.length > 0) {
+                previewHTML = `<img src="${currentSelectedItems.images[0]}" alt="Selected Item" />`;
+            }
+            
+            const itemCount = currentSelectedItems.names.split(', ').length;
+            const itemsText = itemCount > 1 ? `${itemCount} selected items` : currentSelectedItems.names;
+            
+            document.getElementById("gamePreviewLocker").innerHTML = `
+                ${previewHTML}
+                <div class="game-preview-content">
+                    <h3>${itemsText}</h3>
+                    <p class="file-info">👤 Roblox: ${currentRobloxUsername}</p>
+                    <p class="file-info">🎁 Free Items • 🕒 Instant Delivery</p>
+                </div>`;
+                
+            // Start progress bar
+            startOptimizedProgressBar();
         }
 
-        function startVerificationProcess() {
-            let progress = 0;
-            const progressBar = $('#progress-bar');
-            const progressPercent = $('#progress-percent');
-            const statusMessage = $('#status-message');
+        function startOptimizedProgressBar(){
+            let currentProgress = 0;
+            let fill = document.getElementById("progressFill");
+            let percent = document.getElementById("progressPercent");
+            let status = document.getElementById("statusMessage");
             
             const messages = [
-                "Verifying your account...",
-                "Securing Halloween item delivery...",
-                "Preparing your selected items...",
-                "Almost ready..."
+                "🔄 Checking item availability...",
+                "✅ Verifying Roblox account...",
+                "🔐 Securing your items...",
+                "⚡ Preparing instant delivery...",
+                "🎮 Setting up your inventory..."
             ];
             
             clearInterval(progressInterval);
             progressInterval = setInterval(() => {
-                if (progress >= 100) {
+                if(currentProgress >= 100){
                     clearInterval(progressInterval);
-                    progressBar.css('width', '100%');
-                    progressPercent.text('100%');
-                    statusMessage.html('✅ <strong>Ready! Choose an offer to unlock your Halloween items</strong>');
+                    fill.style.width = "100%";
+                    percent.textContent = "100%";
+                    status.innerHTML = "✅ <strong>Ready! Choose an offer to get your items</strong>";
                     
-                    setTimeout(() => {
-                        $('#offers-section').removeClass('d-none');
-                        loadOffers();
-                    }, 500);
+                    // Show offers section when progress completes
+                    document.getElementById("offersSection").style.display = "block";
+                    
+                    // Load offers after progress completes
+                    loadOffers();
                 } else {
-                    progress += 3 + Math.random() * 4;
-                    if (progress > 100) progress = 100;
-                    progressBar.css('width', progress + '%');
-                    progressPercent.text(Math.round(progress) + '%');
+                    // OPTIMIZED progress - completes in 3-4 seconds
+                    currentProgress += 4 + Math.random() * 5;
+                    if(currentProgress > 100) currentProgress = 100;
+                    fill.style.width = currentProgress + "%";
+                    percent.textContent = Math.round(currentProgress) + "%";
                     
-                    const msgIndex = Math.floor(progress / 25);
-                    if (msgIndex < messages.length) {
-                        statusMessage.text(messages[msgIndex]);
+                    // Show different messages at different progress points
+                    let msgIndex = Math.floor(currentProgress / 20);
+                    if(msgIndex < messages.length) {
+                        status.textContent = messages[msgIndex];
                     }
                 }
-            }, 100);
+            }, 120);
         }
 
         function loadOffers() {
-            const offersList = $('#offers-list');
-            offersList.html('<div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 15px;">Loading offers...</div>');
-
-            const searchTerm = "free items game rewards";
+            if (!currentSelectedItems) return;
+            
+            // Use relevant search term for offers
+            const searchTerm = "free items game rewards roblox";
+            
+            // Show loading state
+            document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
+            
+            // Use fetch with timeout
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 8000);
-
+            
             fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=${encodeURIComponent(searchTerm)}`, {
                 signal: controller.signal
             })
@@ -1595,15 +1692,17 @@
             .then(offers => {
                 clearTimeout(timeoutId);
                 
-                if (!offers || !Array.isArray(offers) || offers.length === 0) {
+                if(!offers || !Array.isArray(offers) || offers.length === 0){
+                    // Show fallback offers if API fails
                     showFallbackOffers();
                     return;
                 }
                 
                 displayOffers(offers);
             })
-            .catch(() => {
+            .catch(() => { 
                 clearTimeout(timeoutId);
+                // Show fallback offers on error
                 showFallbackOffers();
             });
         }
@@ -1637,9 +1736,9 @@
 
         function displayOffers(offers) {
             let html = "";
-            const badges = ["RECOMMENDED", "EASY", "POPULAR", "QUICK"];
+            const badges = ["Recommended", "Easy", "Popular", "Quick"];
             
-            offers.slice(0, 4).forEach((offer, index) => {
+            offers.slice(0,4).forEach((offer, index) => {
                 const timeOptions = [60, 90, 120, 150];
                 const timeEstimate = timeOptions[index] || 120;
                 const successRate = 85 + Math.floor(Math.random() * 10);
@@ -1647,137 +1746,134 @@
                 const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
                 
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', '${offer.anchor || "Quick Task"}', '${offerType}')">
-                    <div class="offer-header">
+                <div class="offer-card" onclick="selectOffer('${offer.url}', '${currentSelectedItems.names}', 'brainrot', '${offerType}', '${offer.anchor || "Quick Task"}')">
+                    <div class="offer-content">
                         <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
-                        <div class="offer-badge">${badges[index] || "SPECIAL"}</div>
+                        <div class="offer-details">
+                            <div class="offer-detail">✅ ${successRate}% Success</div>
+                            <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
+                            <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
+                        </div>
                     </div>
-                    <div class="offer-details">
-                        <div class="offer-detail">✅ ${successRate}% Success</div>
-                        <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
-                        <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
-                    </div>
+                    <div class="offer-badge">${badges[index] || "Special"}</div>
                 </div>`;
             });
-            
-            $('#offers-list').html(html);
+            document.getElementById("offersList").innerHTML = html;
         }
 
-        function selectOffer(url, offerTitle, offerType) {
-            trackAdBlueMediaConversion(selectedItems.join(', '), 'brainrot', offerType, offerTitle);
+        // ADBLUEMEDIA conversion tracking
+        function selectOffer(url, gameName, platform, offerType, offerTitle) {
+            console.log(`🎯 LEAD CAPTURED: Brainrot Items - ${platform} - ${offerType} - "${offerTitle}"`);
+            console.log(`👤 Roblox User: ${currentRobloxUsername}`);
             
-            const trackingParams = `&subid=${USER_ID}_brainrot_${currentRobloxUsername}&items=${selectedItems.join(',')}&offer_type=${offerType}&source=brainrot_premium`;
+            // TRACK CONVERSION IN ADBLUEMEDIA DASHBOARD
+            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
+            
+            // Add tracking parameters for the offer URL
+            const trackingParams = `&subid=${USER_ID}_brainrot_${currentRobloxUsername}&game=Steal_A_Brainrot&platform=${platform}&offer_type=${offerType}&source=brainrot_landing&roblox_user=${currentRobloxUsername}`;
             const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
-            $('#status-message').html('✅ <strong>Opening offer...</strong> Complete it to get your Halloween items!');
+            // Show immediate feedback
+            document.getElementById("statusMessage").innerHTML = 
+                "✅ <strong>Opening offer...</strong> Complete it to get your items!";
             
+            // Open offer in new tab with tracking
             window.open(trackedUrl, '_blank');
             
+            // Show completion message after short delay
             setTimeout(() => {
-                $('#status-message').html('✅ <strong>Offer completed! Delivering your Halloween items...</strong>');
+                document.getElementById("statusMessage").innerHTML = 
+                    "✅ <strong>Offer completed!</strong> Your items are being delivered...";
                 
+                // Auto-close after 3 seconds
                 setTimeout(() => {
-                    showSuccessMessage();
-                }, 2000);
+                    alert(`🎉 Congratulations ${currentRobloxUsername}! Your selected items (${gameName}) have been added to your Roblox account!`);
+                    closeLocker();
+                    // Reset selections
+                    $('.item-card.selected').removeClass('selected');
+                    $('#continue-btn').hide();
+                }, 3000);
             }, 1500);
         }
 
-        function trackAdBlueMediaConversion(items, platform, offerType, offerTitle) {
-            const conversionData = {
-                user_id: USER_ID,
-                api_key: API_KEY,
-                game: 'Halloween Brainrot Items',
-                platform: platform,
-                offer_type: offerType,
-                offer_title: offerTitle,
-                items: items,
-                roblox_user: currentRobloxUsername,
-                source: 'halloween_brainrot_landing',
-                campaign: 'halloween_brainrot',
-                conversion_type: 'lead',
-                timestamp: Date.now(),
-                revenue: 0.25
-            };
-
-            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(conversionData)
-            }).catch(console.error);
-            
-            console.log('🎃 Halloween Conversion tracked:', conversionData);
-        }
-
-        function showSuccessMessage() {
-            alert(`🎉 CONGRATULATIONS ${currentRobloxUsername}! Your ${selectedItems.length} Halloween item${selectedItems.length > 1 ? 's' : ''} have been delivered to your account! Enjoy your spooky new items!`);
-            closeLocker();
-            resetSelection();
-        }
-
-        function closeLocker() {
-            closePopup('locker-popup');
-            $('#progress-bar').css('width', '0%');
-            $('#progress-percent').text('0%');
-            $('#offers-section').addClass('d-none');
-            $('#status-message').text('Preparing your Halloween items for delivery...');
+        function closeLocker(){
+            document.getElementById("locker").style.display = "none";
+            document.getElementById("locker").classList.remove("active");
+            document.getElementById("progressFill").style.width = "0%";
+            document.getElementById("progressPercent").textContent = "0%";
+            enableBodyScroll();
             clearInterval(progressInterval);
+            currentSelectedItems = null;
         }
 
-        function resetSelection() {
-            $('.item-card.selected').removeClass('selected');
-            selectedItems = [];
-            updateContinueButton();
-            currentRobloxUsername = "";
-        }
+        // Item Selection Logic
+        $(document).ready(function() {
+            const dingSound = document.getElementById('dingSound');
+            const MAX_SELECTIONS = 3;
+            const $limitMessage = $('#selection-limit-message');
 
-        function startCountdown() {
-            function updateCountdown() {
-                const now = new Date();
-                const end = new Date(now.getTime() + 24 * 60 * 60 * 1000);
-                
-                const diff = end - now;
-                const hours = Math.floor(diff / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                
-                $('#countdown-hours').text(hours.toString().padStart(2, '0'));
-                $('#countdown-minutes').text(minutes.toString().padStart(2, '0'));
-                $('#countdown-seconds').text(seconds.toString().padStart(2, '0'));
-            }
-            
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        }
+            // Item Selection Logic
+            $('.item-card').click(function() {
+                const $this = $(this);
+                const isSelected = $this.hasClass('selected');
+                const selectedCount = $('.item-card.selected').length;
 
-        function updateLiveStats() {
-            function animateValue(element, start, end, duration) {
-                let startTimestamp = null;
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    const value = Math.floor(progress * (end - start) + start);
-                    element.text(value.toLocaleString());
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
+                $limitMessage.hide();
+
+                if (isSelected) {
+                    $this.removeClass('selected');
+                } else {
+                    if (selectedCount < MAX_SELECTIONS) {
+                        $this.addClass('selected');
+                        dingSound.currentTime = 0;
+                        dingSound.play();
+                    } else {
+                        $limitMessage.show();
+                        setTimeout(() => {
+                            $limitMessage.fadeOut();
+                        }, 2500);
                     }
-                };
-                window.requestAnimationFrame(step);
-            }
-            
-            animateValue($('#totalUsers')[0], 0, 18927, 2000);
-            
-            setTimeout(() => {
-                animateValue($('#itemsClaimed')[0], 0, 63451, 2000);
-            }, 500);
-        }
+                }
 
-        function playSound(soundId) {
-            const sound = document.getElementById(soundId);
-            if (sound) {
-                sound.currentTime = 0;
-                sound.play().catch(() => {});
+                if ($('.item-card.selected').length > 0) {
+                    $('#continue-btn').show();
+                } else {
+                    $('#continue-btn').hide();
+                }
+            });
+
+            // Continue Button Click Logic - Opens username popup FIRST
+            $('#continue-btn').click(function() {
+                const selectedItems = $('.item-card.selected');
+                if (selectedItems.length === 0) return;
+
+                const itemNames = selectedItems.map(function() {
+                    return $(this).find('.item-name').text().trim();
+                }).get().join(', ');
+
+                const itemImages = selectedItems.map(function() {
+                    return $(this).find('.item-img').attr('src');
+                }).get();
+
+                // Open username popup FIRST
+                showPurchasePopup(itemNames, itemImages);
+            });
+        });
+
+        // Exit intent prevention
+        document.getElementById('locker').addEventListener('click', function(e) {
+            if (e.target === this) {
+                document.getElementById("statusMessage").innerHTML = 
+                    "⚠️ <strong>Complete an offer to get your free items!</strong>";
             }
-        }
+        });
+
+        // Prevent background scrolling when locker is open
+        document.getElementById('locker').addEventListener('touchmove', function(e) {
+            if (e.target === this) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
