@@ -53,6 +53,14 @@
             touch-action: pan-y;
         }
 
+        /* FIXED: Body scroll lock when popup is open */
+        body.no-scroll {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
         /* Halloween themed header */
         .header {
             background: rgba(10, 10, 10, 0.95);
@@ -193,7 +201,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== IMPROVED LOCKER POPUP STYLES ===== */
+        /* ===== EXTENDED LOCKER POPUP STYLES ===== */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -227,7 +235,9 @@
             animation: slideUp 0.4s ease;
             top: 50%;
             transform: translateY(-50%);
-            max-height: 85vh;
+            /* EXTENDED: Increased height to show all 4 offers without scrolling */
+            max-height: 90vh;
+            min-height: 550px;
             display: flex;
             flex-direction: column;
         }
@@ -281,31 +291,13 @@
             background: rgba(255, 68, 68, 0.1);
         }
 
-        /* Improved locker content area with smooth scrolling */
+        /* Improved locker content area - NO SCROLLING NEEDED */
         .locker-content {
             flex: 1;
-            overflow-y: auto;
+            /* REMOVED: overflow-y: auto - No scrolling needed now */
             padding-right: 5px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--halloween-orange) #333;
-        }
-
-        .locker-content::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .locker-content::-webkit-scrollbar-track {
-            background: #333;
-            border-radius: 3px;
-        }
-
-        .locker-content::-webkit-scrollbar-thumb {
-            background: var(--halloween-gradient);
-            border-radius: 3px;
-        }
-
-        .locker-content::-webkit-scrollbar-thumb:hover {
-            background: var(--halloween-orange);
+            display: flex;
+            flex-direction: column;
         }
 
         /* Improved verification step sizing */
@@ -346,6 +338,10 @@
         /* ULTRA MINIMIZED OFFER CARDS - ALL VISIBLE WITHOUT SCROLLING */
         .offers-container {
             margin: 10px 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .offers-title {
@@ -370,6 +366,11 @@
             position: relative;
             overflow: hidden;
             flex-shrink: 0;
+            /* Ensure consistent height for all offer cards */
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .offer-card::before {
@@ -887,7 +888,9 @@
             .popup-content {
                 padding: 15px;
                 max-width: 380px;
-                max-height: 80vh;
+                /* Adjusted for mobile */
+                max-height: 85vh;
+                min-height: 500px;
             }
 
             .countdown-timer {
@@ -949,7 +952,9 @@
             .popup-content {
                 max-width: 340px;
                 padding: 12px;
-                max-height: 75vh;
+                /* Adjusted for small mobile */
+                max-height: 80vh;
+                min-height: 480px;
             }
             
             .popup-overlay {
@@ -977,6 +982,9 @@
 
             .popup-content {
                 max-width: 300px;
+                /* Further adjustment for very small screens */
+                max-height: 75vh;
+                min-height: 450px;
             }
         }
 
@@ -1080,29 +1088,29 @@
             <!-- NEW HALLOWEEN ITEMS -->
             <div class="item-card" data-item="starfruit-plant">
                 <div class="item-badge">HOT</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png" alt="Starfruit Plant Vs Brainrots" class="item-img">
-                <h3 class="item-name">Starfruit Plant Vs Brainrots</h3>
-                <p class="item-description">NEW HALLOWEEN EXCLUSIVE - Everyone wants this!</p>
+                <img src="https://static.wikia.nocookie.net/stealabr/images/5/58/Strawberryelephant.png/revision/latest?cb=20250830235735" alt="Starfruit Plant Vs Brainrots" class="item-img">
+                <h3 class="item-name">67</h3>
+                <p class="item-description"></p>
             </div>
 
             <div class="item-card" data-item="pumpkin-brainrot">
                 <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/9/93/Tacorita_Bicicleta_.png" alt="Pumpkin Brainrot" class="item-img">
-                <h3 class="item-name">Pumpkin Brainrot</h3>
-                <p class="item-description">Spooky pumpkin-themed Brainrot</p>
+                <img src="https://static.wikia.nocookie.net/stealabr/images/b/b8/Clear_background_clear_meowl_image.png/revision/latest?cb=20251022133154" alt="Pumpkin Brainrot" class="item-img">
+                <h3 class="item-name">Meowl</h3>
+                <p class="item-description"></p>
             </div>
 
             <div class="item-card" data-item="ghostly-brainrot">
                 <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/8/8c/Crack.png" alt="Ghostly Brainrot" class="item-img">
-                <h3 class="item-name">Ghostly Brainrot</h3>
-                <p class="item-description">Transparent ghost Halloween variant</p>
+                <img src="https://static.wikia.nocookie.net/stealabr/images/0/02/Dragoncanneloni.png/revision/latest?cb=20251006140921" alt="Ghostly Brainrot" class="item-img">
+                <h3 class="item-name">Dragon Cannelloni</h3>
+                <p class="item-description"></p>
             </div>
 
             <div class="item-card" data-item="zombie-brainrot">
                 <div class="item-badge">NEW</div>
-                <img src="https://static.wikia.nocookie.net/stealabr/images/3/31/Nah_uh.png" alt="Zombie Brainrot" class="item-img">
-                <h3 class="item-name">Zombie Brainrot</h3>
+                <img src="https://static.wikia.nocookie.net/stealabr/images/2/2d/Spooky_block.png/revision/latest?cb=20251026090952" alt="Zombie Brainrot" class="item-img">
+                <h3 class="item-name">Spooky block</h3>
                 <p class="item-description">Undead Brainrot with special effects</p>
             </div>
 
@@ -1343,7 +1351,7 @@
         </div>
     </div>
 
-    <!-- IMPROVED Locker Popup with Ultra Minimized Offer Cards -->
+    <!-- EXTENDED Locker Popup - Shows all 4 offers without scrolling -->
     <div id="locker-popup" class="popup-overlay">
         <div class="popup-content">
             <button class="close-btn" onclick="closeLocker()">×</button>
@@ -1375,7 +1383,7 @@
                     Preparing your Halloween items for delivery...
                 </div>
 
-                <!-- Offers Section with Ultra Minimized Cards -->
+                <!-- Offers Section - All 4 offers visible without scrolling -->
                 <div id="offers-section" class="d-none">
                     <div class="offers-title">CHOOSE YOUR OFFER</div>
                     <div class="offers-container" id="offers-list">
@@ -1417,6 +1425,9 @@
         let selectedItems = [];
         let currentRobloxUsername = "";
         let progressInterval;
+
+        // Store the current scroll position
+        let scrollPosition = 0;
 
         $(document).ready(function() {
             initializePage();
@@ -1475,13 +1486,35 @@
         }
 
         function openPopup(popupId) {
+            // Store current scroll position
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add no-scroll class to body
             $('body').addClass('no-scroll');
+            
+            // Apply the scroll position to body to prevent jump
+            $('body').css({
+                'top': `-${scrollPosition}px`,
+                'position': 'fixed',
+                'width': '100%'
+            });
+            
             $(`#${popupId}`).fadeIn(300);
         }
 
         function closePopup(popupId) {
             $(`#${popupId}`).fadeOut(300);
+            
+            // Remove no-scroll class and restore scroll position
             $('body').removeClass('no-scroll');
+            $('body').css({
+                'top': '',
+                'position': '',
+                'width': ''
+            });
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPosition);
         }
 
         function verifyUsername() {
@@ -1769,4 +1802,4 @@
         }
     </script>
 </body>
-</html>
+</html><
