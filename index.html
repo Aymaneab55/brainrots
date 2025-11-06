@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Claim FREE Halloween Brainrot Items - Limited Time!</title>
+    <title>Claim FREE Brainrot Items - Limited Time!</title>
     <meta name="description" content="Get exclusive NEW Halloween Brainrot items for FREE! Limited time offer. Claim Starfruit Plant Vs Brainrots and more!">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -780,10 +779,7 @@
             font-size: 1rem;
         }
 
-        .profile-info p {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
+        /* REMOVED: .profile-info p (User since text) */
 
         .action-btn {
             width: 100%;
@@ -1027,7 +1023,7 @@
         <div class="header-content">
             <a href="#" class="logo">
                 <i class="fas fa-ghost logo-icon"></i>
-                HALLOWEEN BRAINROT ITEMS
+                 BRAINROT ITEMS
             </a>
             <nav>
                 <ul class="nav-links">
@@ -1042,8 +1038,8 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>CLAIM NEW HALLOWEEN BRAINROT ITEMS!</h1>
-        <p class="hero-subtitle">Get the exclusive NEW Halloween items everyone is searching for! Limited time only - claim Starfruit Plant Vs Brainrots and more!</p>
+        <h1>CLAIM   BRAINROT ITEMS!</h1>
+        <p class="hero-subtitle">Get the exclusive items everyone is searching for! Limited time only - claim Starfruit Plant Vs Brainrots and more!</p>
         
         <div class="stats-container">
             <div class="stat-item">
@@ -1052,38 +1048,19 @@
             </div>
             <div class="stat-item">
                 <span class="stat-number" id="itemsClaimed">63,451</span>
-                <span class="stat-label">Halloween Items Claimed</span>
+                <span class="stat-label"> Items Claimed</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number">24/7</span>
                 <span class="stat-label">Spooky Support</span>
             </div>
         </div>
-
-        <!-- Countdown Timer -->
-        <div class="countdown">
-            <div class="countdown-title">HALLOWEEN OFFER ENDS IN:</div>
-            <div class="countdown-timer">
-                <div class="countdown-unit">
-                    <div class="countdown-number" id="countdown-hours">23</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-unit">
-                    <div class="countdown-number" id="countdown-minutes">59</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-unit">
-                    <div class="countdown-number" id="countdown-seconds">59</div>
-                    <div class="countdown-label">Seconds</div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Items Selection Section -->
     <section class="section" id="items">
-        <h2 class="section-title">CHOOSE YOUR HALLOWEEN ITEMS</h2>
-        <p class="text-center text-muted mb-12">Select up to 3 exclusive NEW Halloween Brainrot items</p>
+        <h2 class="section-title">CHOOSE YOUR  ITEMS</h2>
+        <p class="text-center text-muted mb-12">Select up to 3 exclusive Brainrot items</p>
         
         <div class="items-grid">
             <!-- NEW HALLOWEEN ITEMS -->
@@ -1337,7 +1314,7 @@
                     <img src="https://dress2.pages.dev/avatars/avatar1.png" alt="Profile Avatar" class="profile-avatar" id="profile-avatar">
                     <div class="profile-info">
                         <h4 id="profile-display-name">@Username</h4>
-                        <p id="profile-username">User since 2020</p>
+                        <!-- REMOVED: User since text element -->
                     </div>
                 </div>
 
@@ -1546,7 +1523,7 @@
 
         function showProfileConfirmation(username) {
             $('#profile-display-name').text('@' + username);
-            $('#profile-username').text('User since ' + (2020 + Math.floor(Math.random() * 4)));
+            // REMOVED: User since text generation
             
             const itemsList = $('#selected-items-list');
             itemsList.empty();
