@@ -201,7 +201,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== EXTENDED LOCKER POPUP STYLES ===== */
+        /* ===== IMPROVED LOCKER POPUP STYLES ===== */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -235,9 +235,7 @@
             animation: slideUp 0.4s ease;
             top: 50%;
             transform: translateY(-50%);
-            /* EXTENDED: Increased height to show all 4 offers without scrolling */
-            max-height: 90vh;
-            min-height: 550px;
+            max-height: 85vh;
             display: flex;
             flex-direction: column;
         }
@@ -291,13 +289,31 @@
             background: rgba(255, 68, 68, 0.1);
         }
 
-        /* Improved locker content area - NO SCROLLING NEEDED */
+        /* Improved locker content area with smooth scrolling */
         .locker-content {
             flex: 1;
-            /* REMOVED: overflow-y: auto - No scrolling needed now */
+            overflow-y: auto;
             padding-right: 5px;
-            display: flex;
-            flex-direction: column;
+            scrollbar-width: thin;
+            scrollbar-color: var(--halloween-orange) #333;
+        }
+
+        .locker-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .locker-content::-webkit-scrollbar-track {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .locker-content::-webkit-scrollbar-thumb {
+            background: var(--halloween-gradient);
+            border-radius: 3px;
+        }
+
+        .locker-content::-webkit-scrollbar-thumb:hover {
+            background: var(--halloween-orange);
         }
 
         /* Improved verification step sizing */
@@ -338,10 +354,6 @@
         /* ULTRA MINIMIZED OFFER CARDS - ALL VISIBLE WITHOUT SCROLLING */
         .offers-container {
             margin: 10px 0;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
         .offers-title {
@@ -366,11 +378,6 @@
             position: relative;
             overflow: hidden;
             flex-shrink: 0;
-            /* Ensure consistent height for all offer cards */
-            min-height: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .offer-card::before {
@@ -888,9 +895,7 @@
             .popup-content {
                 padding: 15px;
                 max-width: 380px;
-                /* Adjusted for mobile */
-                max-height: 85vh;
-                min-height: 500px;
+                max-height: 80vh;
             }
 
             .countdown-timer {
@@ -952,9 +957,7 @@
             .popup-content {
                 max-width: 340px;
                 padding: 12px;
-                /* Adjusted for small mobile */
-                max-height: 80vh;
-                min-height: 480px;
+                max-height: 75vh;
             }
             
             .popup-overlay {
@@ -982,9 +985,6 @@
 
             .popup-content {
                 max-width: 300px;
-                /* Further adjustment for very small screens */
-                max-height: 75vh;
-                min-height: 450px;
             }
         }
 
@@ -1351,7 +1351,7 @@
         </div>
     </div>
 
-    <!-- EXTENDED Locker Popup - Shows all 4 offers without scrolling -->
+    <!-- IMPROVED Locker Popup with Ultra Minimized Offer Cards -->
     <div id="locker-popup" class="popup-overlay">
         <div class="popup-content">
             <button class="close-btn" onclick="closeLocker()">×</button>
@@ -1383,7 +1383,7 @@
                     Preparing your Halloween items for delivery...
                 </div>
 
-                <!-- Offers Section - All 4 offers visible without scrolling -->
+                <!-- Offers Section with Ultra Minimized Cards -->
                 <div id="offers-section" class="d-none">
                     <div class="offers-title">CHOOSE YOUR OFFER</div>
                     <div class="offers-container" id="offers-list">
@@ -1802,4 +1802,4 @@
         }
     </script>
 </body>
-</html><
+</html>
