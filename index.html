@@ -2,14 +2,21 @@
 <html dir="ltr" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Steal a Brainrot - Free Items</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Steal a Brainrot</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPFW29NPW8"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-84S9S5N0DR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-84S9S5N0DR');
+    </script>
     <style>
-        /* Base styles matching your landing page */
+        /* LTR Styles */
         body {
             margin: 0;
             padding: 0;
@@ -23,7 +30,7 @@
             background-size: 100px 100px;
             background-position: center;
             padding-bottom: 100px;
-            -webkit-tap-highlight-color: transparent;
+            /* Add padding to prevent content from being hidden by the fixed button */
         }
 
         .logo-container {
@@ -147,7 +154,6 @@
             margin-bottom: 20px;
             width: 100%;
             box-sizing: border-box;
-            padding: 0 10px;
         }
 
         .items-row {
@@ -176,7 +182,6 @@
             transition: all 0.3s ease;
             will-change: transform;
             overflow: hidden;
-            touch-action: manipulation;
         }
 
         .item-card:before {
@@ -271,10 +276,12 @@
             text-shadow: 0 0 2px rgba(255, 215, 0, 0.5);
         }
 
+        /* START: Styles for Controls (Button & Message) */
         .selection-controls {
             text-align: center;
             padding: 5px 0 20px 0;
             min-height: 25px;
+            /* Reserve small space for the message */
         }
 
         #continue-btn {
@@ -297,7 +304,6 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            touch-action: manipulation;
         }
 
         #continue-btn:hover {
@@ -319,6 +325,8 @@
             font-size: 1em;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
+
+        /* END: Styles for Controls */
 
         .cliameds {
             position: fixed;
@@ -384,6 +392,153 @@
             font-weight: 700;
         }
 
+        @media (min-width: 800px) {
+            .cliameds {
+                bottom: 10px;
+            }
+        }
+
+        @media (min-width: 901px) {
+            .items-grid {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 20px;
+                justify-content: center;
+                padding: 0 5%;
+            }
+            .items-row {
+                display: contents;
+            }
+            .item-card {
+                width: 100%;
+                max-width: 180px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .items-grid {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 26px;
+            }
+            .items-row {
+                display: flex;
+                gap: 22px;
+                width: 100%;
+                justify-content: center;
+            }
+            .active-users-box {
+                font-size: 1.1em;
+                min-width: 145px;
+                padding: 9px 8px;
+                height: 38px;
+            }
+            .select-title {
+                font-size: 1.1em;
+            }
+            .items-row {
+                gap: 10px;
+            }
+            .item-card {
+                width: 31vw;
+                min-width: 0;
+                max-width: 32vw;
+                padding: 8px 2px 6px 2px;
+            }
+            .item-img {
+                width: 80px;
+                height: 80px;
+            }
+            .item-name {
+                min-height: 22px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .items-grid {
+                gap: 5vw;
+            }
+            .items-row {
+                gap: 5vw;
+            }
+            .item-card {
+                width: 29vw;
+                max-width: 33vw;
+                min-width: 0;
+                padding: 5vw 1vw 2vw 1vw;
+            }
+            .item-img {
+                width: 24vw;
+                height: 24vw;
+                min-width: 62px;
+                min-height: 62px;
+                max-width: 110px;
+                max-height: 110px;
+            }
+            .item-name {
+                font-size: 0.92em;
+                min-height: 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .items-row {
+                gap: 2vw;
+            }
+            .item-card {
+                width: 30vw;
+                max-width: 33vw;
+                min-width: 0;
+                padding: 2vw 0.5vw 2vw 0.5vw;
+            }
+            .item-img {
+                width: 26vw;
+                height: 26vw;
+                min-width: 54px;
+                min-height: 54px;
+                max-width: 96px;
+                max-height: 96px;
+            }
+            .item-name {
+                font-size: 0.89em;
+                min-height: 16px;
+            }
+            .logo-container img {
+                max-width: 140px;
+            }
+            .cliameds {
+                left: 5px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .items-row {
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+            }
+            .item-card {
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .items-row {
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+            }
+            .item-card {
+                margin-bottom: 0;
+            }
+            .top-bar {
+                padding-top: 9px;
+            }
+        }
+
         /* Purchase popup styles */
         .purchase-popup {
             display: none;
@@ -396,21 +551,22 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
         }
 
         .popup-content {
             background-color: #333;
             padding: 25px;
             border-radius: 10px;
-            width: 100%;
+            width: 90%;
             max-width: 380px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             text-align: center;
             color: white;
             margin: auto;
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .popup-header {
@@ -436,13 +592,13 @@
             background-color: #666;
         }
 
+        /* START: Styles for Popup Images */
         .selected-images-container {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
             margin: 15px auto;
-            flex-wrap: wrap;
         }
 
         .item-popup-image-small {
@@ -453,6 +609,8 @@
             border: 2px solid #444;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
+
+        /* END: Styles for Popup Images */
 
         .item-confirm {
             font-size: 18px;
@@ -503,7 +661,6 @@
             cursor: pointer;
             flex: 1;
             font-size: 15px;
-            touch-action: manipulation;
         }
 
         .free-btn {
@@ -517,7 +674,6 @@
             justify-content: center;
             align-items: center;
             gap: 6px;
-            touch-action: manipulation;
         }
 
         .free-btn .free-badge {
@@ -548,6 +704,16 @@
             height: 70px;
             position: relative;
             transform: rotateZ(45deg);
+        }
+
+        .square {
+            position: absolute;
+            top: 30%;
+            right: 30%;
+            width: 30px;
+            height: 30px;
+            background-color: #000;
+            transform: rotateZ(87deg);
         }
 
         .folding .sk-cube {
@@ -595,15 +761,18 @@
         }
 
         @keyframes sk-foldCubeAngle {
-            0%, 10% {
+            0%,
+            10% {
                 transform: perspective(140px) rotateX(-180deg);
                 opacity: 0;
             }
-            25%, 75% {
+            25%,
+            75% {
                 transform: perspective(140px) rotateX(0deg);
                 opacity: 1;
             }
-            90%, 100% {
+            90%,
+            100% {
                 transform: perspective(140px) rotateY(180deg);
                 opacity: 0;
             }
@@ -644,7 +813,6 @@
             font-size: 16px;
             margin-top: 15px;
             transition: all 0.3s;
-            touch-action: manipulation;
         }
 
         .get-item-now-btn:hover {
@@ -662,45 +830,83 @@
             text-align: center;
         }
 
-        /* API LOCKER STYLES - MATCHING YOUR DESIGN */
+        /* Mobile only adjustments */
+        @media (max-width: 480px) {
+            .item-popup-image-small {
+                width: 60px;
+                height: 60px;
+            }
+            .popup-header:after {
+                left: 5%;
+                right: 5%;
+                height: 3px;
+            }
+            .popup-content {
+                width: 90%;
+                max-width: 300px;
+                padding: 15px;
+            }
+        }
+
+        /* Sound icon for buttons */
+        .sound-icon {
+            margin-left: 5px;
+            font-size: 14px;
+        }
+        
+        body {
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* Standard syntax */
+        }
+        
+        /* LOCKER STYLES - From GTA 5 Mobile Page */
+        :root {
+            --primary: #ff6b35;
+            --secondary: #ff8e53;
+            --dark: #121212;
+            --light: #1e1e1e;
+            --white: #ffffff;
+            --text: #e0e0e0;
+            --accent: #00e5ff;
+            --offer-bg: #3a2a2a;
+            --offer-border: #444;
+            --offer-highlight: #4a3a3a;
+        }
+        
         .locker-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            inset: 0;
+            background: rgba(0,0,0,0.95);
             z-index: 9999;
             justify-content: center;
             align-items: center;
+            overflow-y: auto;
             padding: 15px;
-            box-sizing: border-box;
-            overflow: hidden;
-            touch-action: none;
+            animation: fadeIn 0.4s ease;
         }
 
-        .locker-overlay.active {
-            display: flex;
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .locker-box {
             width: 100%;
             max-width: 420px;
-            max-height: 90vh;
+            max-height: 85vh;
             background: linear-gradient(145deg, #1a1a1a, #121212);
             padding: 20px;
             border-radius: 16px;
             text-align: center;
-            color: #e0e0e0;
-            box-shadow: 0 0 40px rgba(84, 211, 58, 0.4);
+            color: var(--text);
+            box-shadow: 0 0 40px rgba(255,107,53,0.4);
             position: relative;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.1);
             overflow-y: auto;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
         }
 
         .locker-header {
@@ -709,7 +915,7 @@
             justify-content: space-between;
             margin-bottom: 12px;
             padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .locker-logo {
@@ -717,27 +923,27 @@
             align-items: center;
             gap: 8px;
             font-weight: 700;
-            color: #54d33a;
+            color: var(--primary);
             font-size: 1rem;
         }
 
         .locker-box h2 {
-            color: #54d33a;
+            color: var(--primary);
             margin-bottom: 10px;
             font-size: 1.2rem;
-            text-shadow: 0 0 15px rgba(84, 211, 58, 0.5);
+            text-shadow: 0 0 15px rgba(255,107,53,0.5);
         }
 
         .cta-strong {
             font-size: 0.9rem;
             font-weight: 600;
-            color: #ffd700;
+            color: var(--accent);
             margin-bottom: 12px;
             line-height: 1.4;
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(0,229,255,0.1);
             padding: 8px;
             border-radius: 8px;
-            border-left: 3px solid #ffd700;
+            border-left: 3px solid var(--accent);
         }
 
         .game-preview-locker {
@@ -746,35 +952,46 @@
             gap: 10px;
             margin-bottom: 12px;
             text-align: left;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0,0,0,0.3);
             padding: 10px;
             border-radius: 10px;
-            border-left: 3px solid #54d33a;
+            border-left: 3px solid var(--primary);
         }
 
         .game-preview-locker img {
             width: 45px;
             height: 45px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .game-preview-content h3 {
             margin: 0;
             font-size: 0.95rem;
-            color: #e0e0e0;
+            color: var(--text);
             line-height: 1.3;
         }
 
         .file-info {
             font-size: 0.75rem;
-            color: #888;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.65rem;
+            font-weight: bold;
             margin-top: 4px;
         }
 
         .progress-container {
             margin: 12px 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0,0,0,0.3);
             padding: 10px;
             border-radius: 8px;
         }
@@ -784,7 +1001,7 @@
             justify-content: space-between;
             margin-bottom: 6px;
             font-size: 0.8rem;
-            color: #888;
+            color: var(--text-muted);
         }
 
         .progress-bar {
@@ -793,21 +1010,21 @@
             background: #333;
             border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(84, 211, 58, 0.1) inset;
+            box-shadow: 0 0 10px rgba(255,107,53,0.1) inset;
             margin-bottom: 6px;
         }
 
         #progressFill {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #54d33a, #63e645);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             transition: width 0.4s ease;
             border-radius: 6px;
         }
 
         .progress-text {
             font-size: 0.75rem;
-            color: #888;
+            color: var(--text-muted);
             display: flex;
             justify-content: space-between;
         }
@@ -816,10 +1033,10 @@
             margin-top: 10px;
             font-weight: bold;
             font-size: 0.8rem;
-            color: #54d33a;
+            color: var(--primary);
             min-height: 20px;
             line-height: 1.4;
-            background: rgba(84, 211, 58, 0.1);
+            background: rgba(255,107,53,0.1);
             padding: 6px;
             border-radius: 6px;
         }
@@ -839,20 +1056,20 @@
             justify-content: center;
             border-radius: 50%;
             z-index: 10;
-            touch-action: manipulation;
         }
 
         .close-btn:hover {
-            background: rgba(255, 85, 85, 0.2);
+            background: rgba(255,85,85,0.2);
             transform: scale(1.1);
         }
 
+        /* IMPROVED OFFER BOXES - FORZA COLORS - MOBILE OPTIMIZED */
         .offers-section {
             margin-top: 10px;
         }
 
         .offers-section h3 {
-            color: #54d33a;
+            color: var(--primary);
             margin-bottom: 10px;
             font-size: 1rem;
             display: flex;
@@ -867,21 +1084,21 @@
             gap: 8px;
         }
 
+        /* MOBILE-OPTIMIZED Offer Cards */
         .offer-card {
-            background: linear-gradient(145deg, #1a2a1a, #121a12);
-            border: 1px solid #54d33a;
-            padding: 10px;
-            border-radius: 8px;
+            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
+            border: 1px solid var(--primary);
+            padding: 10px; /* Reduced padding for mobile */
+            border-radius: 8px; /* Slightly smaller radius */
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 8px; /* Reduced gap */
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(84, 211, 58, 0.2);
-            min-height: 60px;
-            touch-action: manipulation;
+            box-shadow: 0 2px 6px rgba(255,107,53,0.2);
+            min-height: 60px; /* Consistent height */
         }
 
         .offer-card::before {
@@ -889,309 +1106,107 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 3px;
+            width: 3px; /* Thinner accent line */
             height: 100%;
-            background: linear-gradient(to bottom, #54d33a, #63e645);
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
         }
 
         .offer-card:hover {
-            background: linear-gradient(145deg, #2a3a2a, #1a2a1a);
-            border-color: #63e645;
-            transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(84, 211, 58, 0.3);
+            background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
+            border-color: var(--secondary);
+            transform: translateY(-1px); /* Subtler hover effect */
+            box-shadow: 0 3px 8px rgba(255,107,53,0.3);
         }
 
         .offer-content {
             flex: 1;
             text-align: left;
-            min-width: 0;
+            min-width: 0; /* Prevent overflow */
         }
 
         .offer-title {
-            font-size: 0.8rem;
+            font-size: 0.8rem; /* Slightly smaller font */
             font-weight: 600;
-            color: #e0e0e0;
-            margin-bottom: 4px;
-            line-height: 1.2;
+            color: var(--text);
+            margin-bottom: 4px; /* Reduced margin */
+            line-height: 1.2; /* Tighter line height */
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 2; /* Limit to 2 lines */
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
         .offer-details {
             display: flex;
-            gap: 6px;
-            font-size: 0.65rem;
-            color: #888;
-            flex-wrap: wrap;
+            gap: 6px; /* Reduced gap */
+            font-size: 0.65rem; /* Smaller font */
+            color: var(--text-muted);
+            flex-wrap: wrap; /* Wrap on very small screens */
         }
 
         .offer-detail {
             display: flex;
             align-items: center;
-            gap: 2px;
+            gap: 2px; /* Tighter gap */
             white-space: nowrap;
         }
 
         .offer-badge {
-            background: linear-gradient(135deg, #ffd700, #ffbf00);
+            background: linear-gradient(135deg, var(--accent), #0099ff);
             color: #000;
-            padding: 2px 5px;
-            border-radius: 10px;
-            font-size: 0.6rem;
+            padding: 2px 5px; /* Smaller padding */
+            border-radius: 10px; /* Smaller radius */
+            font-size: 0.6rem; /* Smaller font */
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 1px 3px rgba(255, 215, 0, 0.3);
-            flex-shrink: 0;
+            box-shadow: 0 1px 3px rgba(0,229,255,0.3);
+            flex-shrink: 0; /* Prevent badge from shrinking */
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 8px; /* Reduced gap */
             margin-top: 10px;
             padding-top: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            flex-wrap: wrap;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .trust-badge {
             display: flex;
             align-items: center;
             gap: 3px;
-            font-size: 0.65rem;
-            color: #888;
+            font-size: 0.65rem; /* Smaller font */
+            color: var(--text-muted);
         }
 
         .trust-badge i {
-            color: #54d33a;
-        }
-
-        /* MOBILE OPTIMIZATIONS */
-        @media (max-width: 768px) {
-            .select-title {
-                font-size: 1.3em;
-                margin: 20px 0 8px 0;
-            }
-
-            .active-users-box {
-                font-size: 1.1em;
-                min-width: 160px;
-                padding: 10px 15px;
-                height: 45px;
-            }
-
-            .items-grid {
-                gap: 15px;
-                padding: 0 5px;
-            }
-
-            .items-row {
-                gap: 8px;
-            }
-
-            .item-card {
-                width: 30vw;
-                padding: 8px 4px 6px 4px;
-                border-radius: 8px;
-            }
-
-            .item-img {
-                width: 70px;
-                height: 70px;
-            }
-
-            .item-name {
-                font-size: 0.9em;
-                min-height: 20px;
-            }
-
-            #continue-btn {
-                padding: 12px 30px;
-                font-size: 1.2em;
-                bottom: 20px;
-            }
-
-            /* Mobile popup optimizations */
-            .purchase-popup {
-                padding: 10px;
-            }
-
-            .popup-content {
-                padding: 20px 15px;
-                max-width: 95%;
-            }
-
-            .popup-header h3 {
-                font-size: 20px;
-            }
-
-            .item-popup-image-small {
-                width: 60px;
-                height: 60px;
-            }
-
-            .item-confirm {
-                font-size: 16px;
-            }
-
-            .input-group input {
-                padding: 12px 10px;
-                font-size: 14px;
-            }
-
-            /* Mobile locker optimizations */
-            .locker-overlay {
-                padding: 10px;
-            }
-
-            .locker-box {
-                padding: 15px;
-                max-height: 85vh;
-            }
-
-            .locker-box h2 {
-                font-size: 1.1rem;
-            }
-
-            .cta-strong {
-                font-size: 0.8rem;
-                padding: 6px;
-            }
-
-            .game-preview-locker {
-                padding: 8px;
-                gap: 8px;
-            }
-
-            .game-preview-locker img {
-                width: 40px;
-                height: 40px;
-            }
-
-            .game-preview-content h3 {
-                font-size: 0.9rem;
-            }
-
-            .offer-card {
-                padding: 8px;
-                min-height: 55px;
-            }
-
-            .offer-title {
-                font-size: 0.75rem;
-            }
-
-            .offer-details {
-                font-size: 0.6rem;
-                gap: 4px;
-            }
-
-            .trust-badges {
-                gap: 6px;
-            }
-
-            .trust-badge {
-                font-size: 0.6rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .select-title {
-                font-size: 1.1em;
-                padding: 6px 0;
-            }
-
-            .active-users-box {
-                font-size: 0.9em;
-                min-width: 140px;
-                padding: 8px 12px;
-                height: 40px;
-            }
-
-            .items-row {
-                gap: 5px;
-            }
-
-            .item-card {
-                width: 28vw;
-                padding: 6px 2px 4px 2px;
-            }
-
-            .item-img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .item-name {
-                font-size: 0.8em;
-                min-height: 18px;
-            }
-
-            #continue-btn {
-                padding: 10px 25px;
-                font-size: 1.1em;
-                bottom: 15px;
-            }
-
-            .locker-box {
-                padding: 12px;
-            }
-
-            .game-preview-locker {
-                flex-direction: column;
-                text-align: center;
-                gap: 6px;
-            }
-
-            .offer-details {
-                flex-direction: column;
-                gap: 2px;
-            }
-
-            .offer-detail {
-                font-size: 0.55rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .item-card {
-                width: 27vw;
-            }
-
-            .item-img {
-                width: 50px;
-                height: 50px;
-            }
-
-            .item-name {
-                font-size: 0.75em;
-            }
-
-            .locker-box {
-                padding: 10px;
-            }
-        }
-
-        body {
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        /* Prevent body scroll when locker is open */
-        .locker-open {
-            overflow: hidden !important;
-            position: fixed;
-            width: 100%;
-            height: 100%;
+            color: var(--primary);
         }
     </style>
+    
+    <meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account">
+    <meta content="blogspot.com" name="google-adsense-platform-domain">
+    <meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account">
+    <meta content="blogspot.com" name="google-adsense-platform-domain">
+    <link href="https://www.blogger.com/profile/13789966045681455002" rel="me">
+    <meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account">
+    <meta content="blogspot.com" name="google-adsense-platform-domain">
+    <link href="https://www.blogger.com/profile/06817242616081913879" rel="me">
+    <meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account">
+    <meta content="blogspot.com" name="google-adsense-platform-domain">
+    <link rel="me" href="https://www.blogger.com/profile/02670124037104961475" />
+    <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+    <meta name='google-adsense-platform-domain' content='blogspot.com'/>
+    <link rel="me" href="https://www.blogger.com/profile/12448974041465695106" />
+    <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+    <meta name='google-adsense-platform-domain' content='blogspot.com'/>
 </head>
 
 <body>
-    <div class="select-title">STEAL A BRAINROT</div>
+    <div class="select-title">
+        STEAL A BRAINT ROT
+    </div>
     <div class="content">
         <div class="top-bar">
             <div class="active-users-box">
@@ -1199,26 +1214,27 @@
                 <span class="active-users-count" id="activeUsersCount"></span>
             </div>
         </div>
-        <div class="select-title">SELECT UP TO 3 ITEMS YOU WISH TO GET FREE ITEM</div>
+        <div class="select-title">
+            SELECT UP TO 3 ITEMS YOU WISH TO GET FREE ITEM
+        </div>
 
         <div class="selection-controls">
             <div id="selection-limit-message">You can only select up to 3 items.</div>
         </div>
 
         <div class="items-grid" id="itemsGrid">
-            <!-- Your items rows remain the same -->
             <div class="items-row">
                 <div class="item-card">
                     <img alt="ancient" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png" />
-                    <div class="item-name">Childhood gambling</div>
+                    <div class="item-name"> Childhood gambling </div>
                 </div>
                 <div class="item-card">
                     <img alt="Dragon-Pepper" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/9/93/Tacorita_Bicicleta_.png" />
-                    <div class="item-name">Dragon Pepper</div>
+                    <div class="item-name"> Dragon Pepper</div>
                 </div>
                 <div class="item-card">
                     <img alt="boneblossom" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/8c/Crack.png" />
-                    <div class="item-name">Dragomfruitini</div>
+                    <div class="item-name"> Dragomfruitini</div>
                 </div>
             </div>
 
@@ -1228,27 +1244,27 @@
                     <div class="item-name">Dragon cannelloni</div>
                 </div>
                 <div class="item-card">
-                    <img alt="Brontosaurus-Icon" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/83/BOIIIIIII_SIX_SEVEN_%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82.png" />
-                    <div class="item-name">67</div>
+                    <img alt="Brontosaurus-Icon " class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/83/BOIIIIIII_SIX_SEVEN_%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82.png" />
+                    <div class="item-name"> 67 </div>
                 </div>
                 <div class="item-card">
-                    <img alt="T-Rex-Dinosaur-Icon" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/79/Brr_Brr_Patapem.png" />
-                    <div class="item-name">Tralaledon</div>
+                    <img alt="T-Rex-Dinosaur-Icon " class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/79/Brr_Brr_Patapem.png" />
+                    <div class="item-name">Tralaledon </div>
                 </div>
             </div>
 
             <div class="items-row">
                 <div class="item-card">
                     <img alt="Super-Seed" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/58/Strawberryelephant.png" />
-                    <div class="item-name">Strawberry Elephant</div>
+                    <div class="item-name"> Strawberry ELephant</div>
                 </div>
                 <div class="item-card">
                     <img alt="Candy-Blossom" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/d/d0/TO_TO_TO_SAHUR_IS_COOL.png" />
-                    <div class="item-name">ToToTo Sahur</div>
+                    <div class="item-name"> ToToTo Sahur </div>
                 </div>
                 <div class="item-card">
                     <img alt="dinoegg" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/6/61/UPokf8FmxyJj4JnktOIdNuJvgtV0vcQRYJLslXal.png" />
-                    <div class="item-name">Helicopterino</div>
+                    <div class="item-name"> Hellicopterino</div>
                 </div>
             </div>
 
@@ -1259,14 +1275,13 @@
                 </div>
                 <div class="item-card">
                     <img alt="Rainbow-Sack-Pack" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/e/e3/Tung_Tung_Tung_Sahur.png" />
-                    <div class="item-name">Tung Tung sahur</div>
+                    <div class="item-name"> Tung Tung sahur </div>
                 </div>
                 <div class="item-card">
                     <img alt="Raccon-Better-Quality" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/5f/Candy_La_Vacca_Saturno_Saturnita.png" />
-                    <div class="item-name">La vacca saturno</div>
+                    <div class="item-name"> La vacca saturno</div>
                 </div>
             </div>
-            
             <div class="items-row">
                 <div class="item-card">
                     <img alt="pterodactyl" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/d/d8/Carti.png" />
@@ -1278,20 +1293,15 @@
                 </div>
                 <div class="item-card">
                     <img alt="Ember Lily" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/53/BROOOOOOOO.png" />
-                    <div class="item-name">La Bros</div>
+                    <div class="item-name">La Bros </div>
                 </div>
             </div>
         </div>
-        
         <button id="continue-btn">Continue</button>
     </div>
-
-    <!-- Purchase Popup (Username & Profile Selection) -->
-    <div class="purchase-popup" id="purchase-popup">
-        <div class="popup-content"></div>
-    </div>
-
-    <!-- API LOCKER (Opens after profile selection) -->
+    <div class="cliameds"></div>
+    
+    <!-- LOCKER POPUP - From GTA 5 Mobile Page -->
     <div id="locker" class="locker-overlay">
         <div class="locker-box">
             <span class="close-btn" onclick="closeLocker()">×</span>
@@ -1299,14 +1309,14 @@
             <div class="locker-header">
                 <div class="locker-logo">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Secure Verification</span>
+                    <span>Steal a Brainrot Secure items</span>
                 </div>
             </div>
             
             <div class="game-preview-locker" id="gamePreviewLocker"></div>
             
-            <h2>⚡ Item Verification</h2>
-            <p class="cta-strong">Complete one quick offer to unlock your selected Brainrot items + exclusive bonus content!</p>
+            <h2>⚡ items Verification</h2>
+            <p class="cta-strong">Complete one quick offer to unlock your selected items + exclusive bonus content!</p>
             
             <!-- Progress Bar -->
             <div class="progress-container">
@@ -1323,9 +1333,9 @@
                 </div>
             </div>
             
-            <p id="statusMessage">🔄 Initializing secure verification...</p>
+            <p id="statusMessage">🔄 Initializing secure items...</p>
             
-            <!-- Offers Section -->
+            <!-- Offers Section (Shows after progress) -->
             <div id="offersSection" class="offers-section">
                 <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
                 <div id="offersList"></div>
@@ -1340,43 +1350,32 @@
                         <span>1-3 Minutes</span>
                     </div>
                     <div class="trust-badge">
-                        <i class="fas fa-download"></i>
+                        <i class="fas fa-items"></i>
                         <span>Instant Access</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="cliameds"></div>
     
     <audio id="dingSound" preload="auto">
         <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
     </audio>
-    
     <audio id="clickSound" preload="auto">
         <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
     </audio>
-
+    
     <script>
+        // LOCKER CONFIGURATION - From GTA 5 Mobile Page
+        const API_KEY = "3b17a09c1ca2bba2d52ffadab4894374";
+        const USER_ID = "504359";
+
         // Current selection state
-        let currentSelectedItems = [];
-        let currentUsername = "";
+        let currentPlatform = null;
         let progressInterval;
+        let selectedItems = [];
 
-        // Function to disable body scroll
-        function disableBodyScroll() {
-            document.body.classList.add('no-scroll');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Function to enable body scroll
-        function enableBodyScroll() {
-            document.body.classList.remove('no-scroll');
-            document.body.style.overflow = '';
-        }
-
-        // Active Users Counter
+        // Function to generate random number between 90 and 900
         function randomUsers() {
             return Math.floor(Math.random() * (900 - 90 + 1)) + 90;
         }
@@ -1387,19 +1386,16 @@
         updateActiveUsers();
         setInterval(updateActiveUsers, 4500);
 
-        // Notifications System
+        // Notifications code
         const avatars = [
             'https://dress2.pages.dev/avatars/avatar1.png', 'https://dress2.pages.dev/avatars/avatar2.png', 'https://dress2.pages.dev/avatars/avatar3.png', 'https://dress2.pages.dev/avatars/avatar4.png', 'https://dress2.pages.dev/avatars/avatar5.png', 'https://dress2.pages.dev/avatars/avatar6.png', 'https://dress2.pages.dev/avatars/avatar7.png', 'https://dress2.pages.dev/avatars/avatar8.png', 'https://dress2.pages.dev/avatars/avatar9.png', 'https://dress2.pages.dev/avatars/avatar10.png'
         ];
-        
         const items = [
-            'Childhood gambling', 'Dragon Pepper', 'Dragomfruitini', 'Dragon cannelloni', '67', 'Tralaledon', 'Strawberry Elephant', 'ToToTo Sahur', 'Helicopterino', 'Tictac sahur', 'Tung Tung sahur', 'La vacca saturno', 'La grande', 'La Cucaracha', 'La Bros'
+            'Super-Seed', 'Night-Egg', 'Candy-Blossom', 'Queen-bee', 'Dragonfly', 'Golden Lab ', ' Flower-Seed ', ' Dragon fruit', 'Mango', ' Grapwes', 'Mushroom', 'Star-Caller', 'Master-Sprinkler', 'Favorite-Tool', 'Harvest-tool', 'Honey-Sprinkler', 'Pepper', 'Cacao', 'Beanstalk',
         ];
-        
         const usernames = [
             'MADELYN2', 'zontir99', 'marcos10', 'Queen_lisa1', 'LANA11', 'HAMZA22', 'tbonmk2', 'caroline34', 'dimaraja10', 'asktiyal9hba', 'ronaldo7', 'sidi_binzarn1', 'DERKAOUI_ZAML1', 'Tizit.botsot', 'Achnid22'
         ];
-        
         let notificationInterval;
         let popupOpen = false;
 
@@ -1409,14 +1405,14 @@
                 if (popupOpen) return;
                 $(".cliameds").fadeIn();
                 var html = `
-                    <div class="message">
-                        <div class="img"><img src="${avatars[Math.floor(Math.random() * avatars.length)]}" alt=""></div>
-                        <div class="more">
-                            <div>${usernames[Math.floor(Math.random() * usernames.length)]}</div>
-                            <div> JUST CLAIMED '${items[Math.floor(Math.random() * items.length)]}'</div>
-                        </div>
-                    </div>
-                `;
+          <div class="message">
+            <div class="img"><img src="${avatars[Math.floor(Math.random() * avatars.length)]}" alt=""></div>
+            <div class="more">
+              <div>${usernames[Math.floor(Math.random() * usernames.length)]}</div>
+              <div> JUST CLAIMED '${items[Math.floor(Math.random() * items.length)]}'</div>
+            </div>
+          </div>
+        `;
                 $(".cliameds").html(html);
                 setTimeout(function() {
                     $(".cliameds").fadeOut();
@@ -1430,150 +1426,114 @@
         }
         startNotifications();
 
-        // Purchase Popup Functions (Username & Profile Selection)
-        const showPurchasePopup = (itemName, itemImages) => {
-            popupOpen = true;
-            stopNotifications();
-            disableBodyScroll();
-            
-            const popup = document.getElementById('purchase-popup');
-            const popupContent = popup.querySelector('.popup-content');
+        // Enhanced AdBlueMedia lead tracking
+        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
+            // Create conversion tracking for AdBlueMedia dashboard
+            const conversionData = {
+                user_id: USER_ID,
+                api_key: API_KEY,
+                game: gameName,
+                platform: platform,
+                offer_type: offerType,
+                offer_title: offerTitle,
+                source: 'stealabrainrot.com',
+                campaign: 'brainrot_items',
+                conversion_type: 'lead',
+                timestamp: Date.now(),
+                revenue: 0.15
+            };
 
-            const selectedCount = itemImages.length;
-            const promptText = selectedCount > 1 ?
-                `Would you like to get these ${selectedCount} items?` :
-                `Would you like to Get "<span>${itemName}</span>"?`;
-
-            let imagesHTML = '<div class="selected-images-container">';
-            itemImages.forEach(src => {
-                imagesHTML += `<img src="${src}" alt="Selected Item" class="item-popup-image-small">`;
+            // Send conversion to AdBlueMedia
+            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(conversionData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('✅ AdBlueMedia Conversion Tracked:', data);
+                console.log('🎮 Game: Steal a Brainrot');
+                console.log('📱 Platform:', platform);
+                console.log('💰 This lead will show in your AdBlueMedia dashboard');
+            })
+            .catch(error => {
+                console.log('⚠️ AdBlueMedia tracking failed, using fallback:', error);
+                // Fallback tracking
+                trackFallbackConversion(gameName, platform, offerType);
             });
-            imagesHTML += '</div>';
+        }
 
-            popupContent.innerHTML = `
-                <div class="popup-header">
-                    <h3>Get Item(s)</h3>
-                </div>
-                ${imagesHTML}
-                <p class="item-confirm">${promptText}</p>
-                <div class="input-group">
-                    <input type="text" id="username-input" placeholder="Enter your username">
-                </div>
-                <div class="user-error d-none">Please enter a valid username</div>
-                <div class="popup-buttons">
-                    <button class="cancel-btn">Cancel</button>
-                    <button class="free-btn" id="search-user-btn">
-                        <span class="free-icon"></span>
-                        <span class="free-badge">Continue</span>
-                    </button>
-                </div>
-            `;
+        function trackFallbackConversion(gameName, platform, offerType) {
+            // Fallback conversion tracking
+            const pixelUrl = `https://d3k0q5ez56odtk.cloudfront.net/public/conversion/pixel.gif?user_id=${USER_ID}&api_key=${API_KEY}&game=${encodeURIComponent(gameName)}&platform=${platform}&offer_type=${offerType}&conversion=lead`;
             
-            popupContent.querySelector('.cancel-btn').addEventListener('click', closePurchasePopup);
-            popupContent.querySelector('#search-user-btn').addEventListener('click', function() {
-                const clickSound = document.getElementById('clickSound');
-                clickSound.currentTime = 0;
-                clickSound.play();
-                const username = document.getElementById('username-input').value.trim();
-                if (!username) {
-                    document.querySelector('.user-error').classList.remove('d-none');
-                    return;
-                }
-                currentUsername = username;
-                showSearchingState(username, itemName, itemImages);
-            });
+            const img = new Image();
+            img.src = pixelUrl;
+            img.style.display = 'none';
+            document.body.appendChild(img);
             
-            popup.style.display = 'flex';
-            document.getElementById('username-input').focus();
-        };
+            console.log('🔄 Fallback conversion tracked for: Steal a Brainrot', platform, offerType);
+        }
 
-        const closePurchasePopup = () => {
-            document.getElementById('purchase-popup').style.display = 'none';
-            popupOpen = false;
-            enableBodyScroll();
-            startNotifications();
-        };
+        // Track initial page view
+        function trackPageView() {
+            const pageViewData = {
+                user_id: USER_ID,
+                api_key: API_KEY,
+                page: 'steal_a_brainrot_landing',
+                game: 'Steal a Brainrot',
+                source: document.referrer || 'direct',
+                timestamp: Date.now()
+            };
 
-        const showSearchingState = (username, itemName, itemImages) => {
-            const popupContent = document.querySelector('.popup-content');
-            popupContent.innerHTML = `
-                <div class="popup-header">
-                    <h3>Get Item(s)</h3>
-                </div>
-                <div style="text-align:center;padding:20px">
-                    <div class="folding">
-                        <div class="sk-cube1 sk-cube"></div>
-                        <div class="sk-cube2 sk-cube"></div>
-                        <div class="sk-cube4 sk-cube"></div>
-                        <div class="sk-cube3 sk-cube"></div>
-                    </div>
-                    <p class="searching-text">Verifying @${username}</p>
-                </div>
-            `;
-            
-            // Simulate API call to find user
-            setTimeout(() => {
-                showSuccessState(username, 'https://dress2.pages.dev/avatars/avatar1.png', itemName, itemImages);
-            }, 2000);
-        };
+            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/analytics/pageview.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(pageViewData)
+            }).catch(() => console.log('Page view tracking failed'));
+        }
 
-        const showSuccessState = (username, avatarUrl, itemName, itemImages) => {
-            const popupContent = document.querySelector('.popup-content');
-            popupContent.innerHTML = `
-                <div class="popup-header">
-                    <h3>Get Item(s)</h3>
-                </div>
-                <div style="text-align:center;padding:20px">
-                    <img src="${avatarUrl}" class="result-avatar">
-                    <p class="result-username">@${username}</p>
-                    <button class="get-item-now-btn">Get Items Now</button>
-                </div>
-            `;
-            
-            popupContent.querySelector('.get-item-now-btn').addEventListener('click', function() {
-                const clickSound = document.getElementById('clickSound');
-                clickSound.currentTime = 0;
-                clickSound.play();
-                
-                // Store the selected items and open API locker
-                currentSelectedItems = {
-                    names: itemName,
-                    images: itemImages
-                };
-                
-                // Close purchase popup and open API locker
-                closePurchasePopup();
-                openLocker();
-            });
-        };
+        // Prevent cookie consent from showing
+        window.abmDisableCookieConsent = true;
+        document.cookie = "abm-cookie-consent=accepted; max-age=31536000; path=/";
 
-        // API LOCKER functions (Opens AFTER profile selection)
-        function openLocker() {
-            disableBodyScroll();
+        // IMPROVED Locker functions
+        function openLocker(platform) {
+            currentPlatform = platform;
+            document.body.style.overflow = "hidden";
             document.getElementById("locker").style.display = "flex";
-            document.getElementById("locker").classList.add("active");
             
             // Hide offers section initially
             document.getElementById("offersSection").style.display = "none";
             
-            // Create preview of selected items
-            let previewHTML = '';
-            if (currentSelectedItems.images.length > 0) {
-                previewHTML = `<img src="${currentSelectedItems.images[0]}" alt="Selected Item" />`;
-            }
+            const platformText = platform === 'android' ? '🤖 Android' : '🍎 iOS';
+            const fileType = platform === 'android' ? 'APK + OBB Files' : 'IPA File';
+            const platformBadge = `<div class="platform-badge">${platformText}</div>`;
             
-            const itemCount = currentSelectedItems.names.split(', ').length;
-            const itemsText = itemCount > 1 ? `${itemCount} selected items` : currentSelectedItems.names;
+            // Get selected items
+            const selectedItems = $('.item-card.selected');
+            const itemNames = selectedItems.map(function() {
+                return $(this).find('.item-name').text().trim();
+            }).get().join(', ');
+            
+            const itemImages = selectedItems.map(function() {
+                return $(this).find('.item-img').attr('src');
+            }).get();
+            
+            // Show first selected item image
+            const firstImage = itemImages.length > 0 ? itemImages[0] : 'https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png';
             
             document.getElementById("gamePreviewLocker").innerHTML = `
-                ${previewHTML}
+                <img src="${firstImage}" alt="Steal a Brainrot" />
                 <div class="game-preview-content">
-                    <h3>${itemsText}</h3>
-                    <p class="file-info">👤 User: ${currentUsername}</p>
-                    <p class="file-info">🎁 Free Brainrot Items • 🕒 Instant Delivery</p>
+                    <h3>Steal a Brainrot - ${itemNames}</h3>
+                    <p class="file-info">📦 ${selectedItems.length} Selected Items • 🕒 Updated: Today</p>
+                    ${platformBadge}
                 </div>`;
                 
-            // Start progress bar
+            // Start IMPROVED progress bar
             startOptimizedProgressBar();
         }
 
@@ -1584,11 +1544,11 @@
             let status = document.getElementById("statusMessage");
             
             const messages = [
-                "🔄 Checking item availability...",
-                "✅ Verifying user account...",
-                "🔐 Securing your items...",
-                "⚡ Preparing instant delivery...",
-                "🎮 Setting up your inventory..."
+                "🔄 Checking device compatibility...",
+                "✅ Scanning for security threats...",
+                "🔐 Verifying file integrity...",
+                "⚡ Optimizing items speed...",
+                "🧠 Preparing Brainrot content..."
             ];
             
             clearInterval(progressInterval);
@@ -1597,7 +1557,7 @@
                     clearInterval(progressInterval);
                     fill.style.width = "100%";
                     percent.textContent = "100%";
-                    status.innerHTML = "✅ <strong>Ready! Choose an offer to get your items</strong>";
+                    status.innerHTML = "✅ <strong>Ready! Choose an offer to items</strong>";
                     
                     // Show offers section when progress completes
                     document.getElementById("offersSection").style.display = "block";
@@ -1617,19 +1577,42 @@
                         status.textContent = messages[msgIndex];
                     }
                 }
-            }, 120);
+            }, 120); // Faster interval
         }
 
         function loadOffers() {
-            if (!currentSelectedItems) return;
+            if (!currentPlatform) return;
+            
+            // Use platform-specific search term for better offers
+            const searchTerm = `steal a brainrot ${currentPlatform}`;
             
             // Show loading state
             document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
             
-            // Simulate API call with timeout
-            setTimeout(() => {
+            // Use fetch with timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 8000);
+            
+            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=${encodeURIComponent(searchTerm)}`, {
+                signal: controller.signal
+            })
+            .then(res => res.json())
+            .then(offers => {
+                clearTimeout(timeoutId);
+                
+                if(!offers || !Array.isArray(offers) || offers.length === 0){
+                    // Show fallback offers if API fails
+                    showFallbackOffers();
+                    return;
+                }
+                
+                displayOffers(offers);
+            })
+            .catch(() => { 
+                clearTimeout(timeoutId);
+                // Show fallback offers on error
                 showFallbackOffers();
-            }, 1000);
+            });
         }
 
         function showFallbackOffers() {
@@ -1663,6 +1646,7 @@
             let html = "";
             const badges = ["Recommended", "Easy", "Popular", "Quick"];
             
+            // Only show first 4 offers
             offers.slice(0,4).forEach((offer, index) => {
                 const timeOptions = [60, 90, 120, 150];
                 const timeEstimate = timeOptions[index] || 120;
@@ -1671,7 +1655,7 @@
                 const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
                 
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', '${currentSelectedItems.names}', 'brainrot', '${offerType}', '${offer.anchor || "Quick Task"}')">
+                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Steal a Brainrot', '${currentPlatform}', '${offerType}', '${offer.anchor || "Quick Task"}')">
                     <div class="offer-content">
                         <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
                         <div class="offer-details">
@@ -1686,44 +1670,61 @@
             document.getElementById("offersList").innerHTML = html;
         }
 
+        // ENHANCED: AdBlueMedia conversion tracking
         function selectOffer(url, gameName, platform, offerType, offerTitle) {
-            console.log(`🎯 OFFER SELECTED: Brainrot Items - ${platform} - ${offerType} - "${offerTitle}"`);
-            console.log(`👤 User: ${currentUsername}`);
+            console.log(`🎯 LEAD CAPTURED: Steal a Brainrot - ${platform} - ${offerType} - "${offerTitle}"`);
+            
+            // TRACK CONVERSION IN ADBLUEMEDIA DASHBOARD
+            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
+            
+            // Add tracking parameters for the offer URL
+            const trackingParams = `&subid=${USER_ID}_brainrot_${platform}&game=Steal_a_Brainrot&platform=${platform}&offer_type=${offerType}&source=stealabrainrot.com`;
+            const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
             // Show immediate feedback
             document.getElementById("statusMessage").innerHTML = 
-                "✅ <strong>Opening offer...</strong> Complete it to get your items!";
+                "✅ <strong>Opening offer...</strong> Complete it to items!";
             
-            // Open offer in new tab
-            window.open(url, '_blank');
+            // Open offer in new tab with tracking
+            window.open(trackedUrl, '_blank');
             
             // Show completion message after short delay
             setTimeout(() => {
                 document.getElementById("statusMessage").innerHTML = 
-                    "✅ <strong>Offer completed!</strong> Your items are being delivered...";
+                    "✅ <strong>Offer completed!</strong> Your items is starting...";
                 
                 // Auto-close after 3 seconds
                 setTimeout(() => {
-                    alert(`🎉 Congratulations ${currentUsername}! Your selected items (${gameName}) have been added to your account!`);
+                    const platformText = platform === 'android' ? 'APK file' : 'IPA file';
+                    alert(`🎉 items for Steal a Brainrot (${platformText}) will start when you finish completing the offer`);
                     closeLocker();
-                    // Reset selections
-                    $('.item-card.selected').removeClass('selected');
-                    $('#continue-btn').hide();
                 }, 3000);
             }, 1500);
         }
 
         function closeLocker(){
             document.getElementById("locker").style.display = "none";
-            document.getElementById("locker").classList.remove("active");
             document.getElementById("progressFill").style.width = "0%";
             document.getElementById("progressPercent").textContent = "0%";
-            enableBodyScroll();
+            document.body.style.overflow = "auto";
             clearInterval(progressInterval);
-            currentSelectedItems = null;
+            currentPlatform = null;
         }
 
-        // Item Selection Logic
+        // Exit intent prevention - show message instead of closing
+        document.getElementById('locker').addEventListener('click', function(e) {
+            if (e.target === this) {
+                document.getElementById("statusMessage").innerHTML = 
+                    "⚠️ <strong>Complete an offer to items the items for free!</strong>";
+            }
+        });
+
+        // Track page view on load
+        window.addEventListener('load', function() {
+            trackPageView();
+        });
+
+        // --- START: ORIGINAL SCRIPT ---
         $(document).ready(function() {
             const dingSound = document.getElementById('dingSound');
             const MAX_SELECTIONS = 3;
@@ -1759,38 +1760,29 @@
                 }
             });
 
-            // Continue Button Click Logic - Opens username popup FIRST
+            // Continue Button Click Logic - Now opens locker
             $('#continue-btn').click(function() {
                 const selectedItems = $('.item-card.selected');
                 if (selectedItems.length === 0) return;
-
-                const itemNames = selectedItems.map(function() {
-                    return $(this).find('.item-name').text().trim();
-                }).get().join(', ');
-
-                const itemImages = selectedItems.map(function() {
-                    return $(this).find('.item-img').attr('src');
-                }).get();
-
-                // Open username popup FIRST
-                showPurchasePopup(itemNames, itemImages);
+                
+                // Open locker with Android platform (you can modify this logic)
+                openLocker('android');
             });
         });
-
-        // Exit intent prevention
-        document.getElementById('locker').addEventListener('click', function(e) {
-            if (e.target === this) {
-                document.getElementById("statusMessage").innerHTML = 
-                    "⚠️ <strong>Complete an offer to get your free items!</strong>";
-            }
-        });
-
-        // Prevent background scrolling when locker is open
-        document.getElementById('locker').addEventListener('touchmove', function(e) {
-            if (e.target === this) {
-                e.preventDefault();
-            }
-        }, { passive: false });
+        // --- END: ORIGINAL SCRIPT ---
     </script>
+    
+    <!-- Histats.com  START  (aync)-->
+    <script type="text/javascript">var _Hasync= _Hasync|| [];
+    _Hasync.push(['Histats.start', '1,4671454,4,0,0,0,00010000']);
+    _Hasync.push(['Histats.fasi', '1']);
+    _Hasync.push(['Histats.track_hits', '']);
+    (function() {
+    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+    hs.src = ('//s10.histats.com/js15_as.js');
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+    })();</script>
+    <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4671454" alt="" border="0"></a></noscript>
+    <!-- Histats.com  END  -->
 </body>
 </html>
