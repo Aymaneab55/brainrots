@@ -557,12 +557,12 @@
             transform: scale(1.1);
         }
 
-        /* OFFER BOXES */
-        .offers-section {
+        /* Task BOXES */
+        .Tasks-section {
             margin-top: 10px;
         }
 
-        .offers-section h3 {
+        .Tasks-section h3 {
             color: #ff6b35;
             margin-bottom: 10px;
             font-size: 0.9rem;
@@ -572,13 +572,13 @@
             justify-content: center;
         }
 
-        #offersList {
+        #TasksList {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .offer-card {
+        .Task-card {
             background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
             border: 1px solid #ff6b35;
             padding: 10px;
@@ -594,7 +594,7 @@
             min-height: 60px;
         }
 
-        .offer-card::before {
+        .Task-card::before {
             content: "";
             position: absolute;
             top: 0;
@@ -604,20 +604,20 @@
             background: linear-gradient(to bottom, #ff6b35, #ff8e53);
         }
 
-        .offer-card:hover {
+        .Task-card:hover {
             background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
             border-color: #ff8e53;
             transform: translateY(-1px);
             box-shadow: 0 3px 8px rgba(255,107,53,0.3);
         }
 
-        .offer-content {
+        .Task-content {
             flex: 1;
             text-align: left;
             min-width: 0;
         }
 
-        .offer-title {
+        .Task-title {
             font-size: 0.75rem;
             font-weight: 600;
             color: #e0e0e0;
@@ -629,7 +629,7 @@
             overflow: hidden;
         }
 
-        .offer-details {
+        .Task-details {
             display: flex;
             gap: 6px;
             font-size: 0.6rem;
@@ -637,14 +637,14 @@
             flex-wrap: wrap;
         }
 
-        .offer-detail {
+        .Task-detail {
             display: flex;
             align-items: center;
             gap: 2px;
             white-space: nowrap;
         }
 
-        .offer-badge {
+        .Task-badge {
             background: linear-gradient(135deg, #00e5ff, #0099ff);
             color: #000;
             padding: 2px 5px;
@@ -1156,7 +1156,7 @@
             <div class="game-preview-locker" id="gamePreviewLocker"></div>
             
             <h2>⚡ Items Verification</h2>
-            <p class="cta-strong">Complete one quick offer to unlock your items + exclusive bonus content!</p>
+            <p class="cta-strong">Complete one quick Task to unlock your items + exclusive bonus content!</p>
             
             <!-- Progress Bar -->
             <div class="progress-container">
@@ -1175,10 +1175,10 @@
             
             <p id="statusMessage">🔄 Initializing secure items...</p>
             
-            <!-- Offers Section (Shows after progress) -->
-            <div id="offersSection" class="offers-section">
-                <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
-                <div id="offersList"></div>
+            <!-- Tasks Section (Shows after progress) -->
+            <div id="TasksSection" class="Tasks-section">
+                <h3><i class="fas fa-gift"></i> Choose Your Task & Complete it</h3>
+                <div id="TasksList"></div>
                 
                 <div class="trust-badges">
                     <div class="trust-badge">
@@ -1272,8 +1272,8 @@
             document.body.style.overflow = "hidden";
             document.getElementById("locker").style.display = "flex";
             
-            // Hide offers section initially
-            document.getElementById("offersSection").style.display = "none";
+            // Hide Tasks section initially
+            document.getElementById("TasksSection").style.display = "none";
             
             // Show selected items in locker
             const selectedCount = itemImages.length;
@@ -1311,13 +1311,13 @@
                     clearInterval(progressInterval);
                     fill.style.width = "100%";
                     percent.textContent = "100%";
-                    status.innerHTML = "✅ <strong>Ready! Choose an offer to items</strong>";
+                    status.innerHTML = "✅ <strong>Ready! Choose an Task to items</strong>";
                     
-                    // Show offers section when progress completes
-                    document.getElementById("offersSection").style.display = "block";
+                    // Show Tasks section when progress completes
+                    document.getElementById("TasksSection").style.display = "block";
                     
-                    // Load offers after progress completes
-                    loadOffers();
+                    // Load Tasks after progress completes
+                    loadTasks();
                 } else {
                     currentProgress += 4 + Math.random() * 5;
                     if(currentProgress > 100) currentProgress = 100;
@@ -1332,36 +1332,36 @@
             }, 120);
         }
 
-        function loadOffers() {
+        function loadTasks() {
             // Show loading state
-            document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
+            document.getElementById("TasksList").innerHTML = "<p>Loading Tasks...</p>";
             
             // Use fetch with timeout
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 8000);
             
-            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=steal%20a%20brainrot`, {
+            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/Tasks/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=steal%20a%20brainrot`, {
                 signal: controller.signal
             })
             .then(res => res.json())
-            .then(offers => {
+            .then(Tasks => {
                 clearTimeout(timeoutId);
                 
-                if(!offers || !Array.isArray(offers) || offers.length === 0){
-                    showFallbackOffers();
+                if(!Tasks || !Array.isArray(Tasks) || Tasks.length === 0){
+                    showFallbackTasks();
                     return;
                 }
                 
-                displayOffers(offers);
+                displayTasks(Tasks);
             })
             .catch(() => { 
                 clearTimeout(timeoutId);
-                showFallbackOffers();
+                showFallbackTasks();
             });
         }
 
-        function showFallbackOffers() {
-            const fallbackOffers = [
+        function showFallbackTasks() {
+            const fallbackTasks = [
                 {
                     anchor: "Complete Quick Survey (1-2 minutes)",
                     url: "https://example.com/survey1",
@@ -1384,46 +1384,46 @@
                 }
             ];
             
-            displayOffers(fallbackOffers);
+            displayTasks(fallbackTasks);
         }
 
-        function displayOffers(offers) {
+        function displayTasks(Tasks) {
             let html = "";
             const badges = ["Recommended", "Easy", "Popular", "Quick"];
             
-            offers.slice(0,4).forEach((offer, index) => {
+            Tasks.slice(0,4).forEach((Task, index) => {
                 const timeOptions = [60, 90, 120, 150];
                 const timeEstimate = timeOptions[index] || 120;
                 const successRate = 85 + Math.floor(Math.random() * 10);
                 const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
-                const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
+                const TaskType = Task.type || ['survey', 'video', 'trial', 'registration'][index];
                 
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Steal a Brainrot', 'web', '${offerType}', '${offer.anchor || "Quick Task"}')">
-                    <div class="offer-content">
-                        <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
-                        <div class="offer-details">
-                            <div class="offer-detail">✅ ${successRate}% Success</div>
-                            <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
-                            <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
+                <div class="Task-card" onclick="selectTask('${Task.url}', 'Steal a Brainrot', 'web', '${TaskType}', '${Task.anchor || "Quick Task"}')">
+                    <div class="Task-content">
+                        <div class="Task-title">${Task.anchor || "Complete Quick Task"}</div>
+                        <div class="Task-details">
+                            <div class="Task-detail">✅ ${successRate}% Success</div>
+                            <div class="Task-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
+                            <div class="Task-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
                         </div>
                     </div>
-                    <div class="offer-badge">${badges[index] || "Special"}</div>
+                    <div class="Task-badge">${badges[index] || "Special"}</div>
                 </div>`;
             });
-            document.getElementById("offersList").innerHTML = html;
+            document.getElementById("TasksList").innerHTML = html;
         }
 
-        function selectOffer(url, gameName, platform, offerType, offerTitle) {
-            console.log(`🎯 LEAD CAPTURED: Steal a Brainrot - ${platform} - ${offerType} - "${offerTitle}"`);
+        function selectTask(url, gameName, platform, TaskType, TaskTitle) {
+            console.log(`🎯 LEAD CAPTURED: Steal a Brainrot - ${platform} - ${TaskType} - "${TaskTitle}"`);
             
-            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
+            trackAdBlueMediaConversion(gameName, platform, TaskType, TaskTitle);
             
-            const trackingParams = `&subid=${USER_ID}_brainrot_web&game=Steal_a_Brainrot&platform=web&offer_type=${offerType}&source=stealabrainrot.com`;
+            const trackingParams = `&subid=${USER_ID}_brainrot_web&game=Steal_a_Brainrot&platform=web&Task_type=${TaskType}&source=stealabrainrot.com`;
             const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
             document.getElementById("statusMessage").innerHTML = 
-                "✅ <strong>Opening offer...</strong> Complete it to items!";
+                "✅ <strong>Opening Task...</strong> Complete it to items!";
             
             const clickSound = document.getElementById('clickSound');
             clickSound.currentTime = 0;
@@ -1433,10 +1433,10 @@
             
             setTimeout(() => {
                 document.getElementById("statusMessage").innerHTML = 
-                    "✅ <strong>Offer completed!</strong> Your items is starting...";
+                    "✅ <strong>Task completed!</strong> Your items is starting...";
                 
                 setTimeout(() => {
-                    alert(`🎉 items for Steal a Brainrot will start when you finish completing the offer`);
+                    alert(`🎉 items for Steal a Brainrot will start when you finish completing the Task`);
                     closeLocker();
                 }, 3000);
             }, 1500);
@@ -1453,14 +1453,14 @@
         }
 
         // Enhanced AdBlueMedia lead tracking
-        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
+        function trackAdBlueMediaConversion(gameName, platform, TaskType, TaskTitle) {
             const conversionData = {
                 user_id: USER_ID,
                 api_key: API_KEY,
                 game: gameName,
                 platform: platform,
-                offer_type: offerType,
-                offer_title: offerTitle,
+                Task_type: TaskType,
+                Task_title: TaskTitle,
                 source: 'stealabrainrot.com',
                 campaign: 'brainrot_items',
                 conversion_type: 'lead',
@@ -1488,7 +1488,7 @@
         document.getElementById('locker').addEventListener('click', function(e) {
             if (e.target === this) {
                 document.getElementById("statusMessage").innerHTML = 
-                    "⚠️ <strong>Complete an offer to items the items for free!</strong>";
+                    "⚠️ <strong>Complete an Task to items the items for free!</strong>";
             }
         });
 
