@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
 <head>
-    <meta charset="UTF-8"></meta>
-    <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Steal a Brainrot</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&display=swap" rel="stylesheet"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EPFW29NPW8"></script>
-	
- <!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-84S9S5N0DR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-84S9S5N0DR');
-</script>
- 
-
     <style>
-        /* LTR Styles */
-
+        /* Base Styles - Mobile First */
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            box-sizing: border-box;
             font-family: 'Cairo', Arial, sans-serif;
             position: relative;
             overflow-x: hidden;
@@ -36,51 +24,48 @@
             background-size: 100px 100px;
             background-position: center;
             padding-bottom: 100px;
-            /* Add padding to prevent content from being hidden by the fixed button */
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
 
         .logo-container {
             text-align: center;
-            padding-top: 15px;
+            padding: 15px 0 5px;
         }
 
         .logo-container img {
-            max-width: 180px;
+            max-width: 150px;
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
         }
 
-        .content {
-            position: relative;
-            z-index: 1;
-        }
-
         .top-bar {
-            width: 100vw;
             display: flex;
-            flex-direction: row;
             justify-content: center;
             align-items: center;
-            gap: 14px;
-            box-sizing: border-box;
-            padding: 16px 0 0 0;
-            margin-bottom: 8px;
+            margin-bottom: 15px;
         }
 
         .active-users-box {
             background: #0066cc;
             border: 2.3px solid #fff;
             border-radius: 13px;
-            padding: 13px 18px;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
-            font-size: 1.5em;
-            min-width: 220px;
-            max-width: 70vw;
+            font-size: 1.1em;
+            min-width: 180px;
             margin: 0;
             box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.09);
             font-weight: 900;
             font-family: 'Cairo', Arial, sans-serif;
-            height: 54px;
+            height: 45px;
             justify-content: center;
             cursor: pointer;
             transition: transform 0.17s cubic-bezier(.17, .67, .83, .67);
@@ -116,7 +101,7 @@
             color: #fff;
             margin-right: 8px;
             font-weight: 900;
-            font-size: 1.1em;
+            font-size: 1em;
             letter-spacing: 1px;
         }
 
@@ -124,15 +109,15 @@
             font-weight: 900;
             font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
             margin-left: 8px;
-            font-size: 1.15em;
+            font-size: 1em;
             color: #FFD700;
             text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
         }
 
         .select-title {
-            margin: 30px 0 10px 0;
+            margin: 20px 0 15px;
             text-align: center;
-            font-size: 1.7em;
+            font-size: 1.3em;
             color: #fff;
             font-family: 'Cairo', Arial, sans-serif;
             letter-spacing: .4px;
@@ -146,44 +131,30 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 25%;
-            width: 50%;
+            left: 15%;
+            width: 70%;
             height: 3px;
             background: linear-gradient(to right, transparent, #ffd700, transparent);
         }
 
+        /* Items Grid - Mobile First */
         .items-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 26px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
             margin-bottom: 20px;
             width: 100%;
-            box-sizing: border-box;
-        }
-
-        .items-row {
-            display: flex;
-            gap: 22px;
-            width: 100%;
-            justify-content: center;
-            box-sizing: border-box;
         }
 
         .item-card {
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 2px 10px #0002;
-            padding: 10px 8px 8px 8px;
+            padding: 12px 8px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 170px;
-            min-width: 100px;
-            max-width: 31vw;
             border: 2px solid #eee;
-            margin: 0;
-            position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
             will-change: transform;
@@ -231,12 +202,12 @@
         }
 
         .item-img {
-            width: 110px;
-            height: 110px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
             border-radius: 8px;
             background: #eaeaea;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             border: none;
             image-rendering: pixelated;
             box-shadow: 0 0 13px #0001;
@@ -252,7 +223,7 @@
         }
 
         .item-name {
-            font-size: 1.08em;
+            font-size: 0.9em;
             color: #333;
             font-family: 'Cairo', Arial, sans-serif;
             text-align: center;
@@ -272,7 +243,7 @@
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
-            min-height: 28px;
+            min-height: 20px;
             position: relative;
             z-index: 1;
         }
@@ -282,24 +253,22 @@
             text-shadow: 0 0 2px rgba(255, 215, 0, 0.5);
         }
 
-        /* START: Styles for Controls (Button & Message) */
-
+        /* Selection Controls */
         .selection-controls {
             text-align: center;
-            padding: 5px 0 20px 0;
+            padding: 5px 0 20px;
             min-height: 25px;
-            /* Reserve small space for the message */
         }
 
         #continue-btn {
             display: none;
             position: fixed;
-            bottom: 25px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1001;
-            padding: 15px 40px;
-            font-size: 1.4em;
+            padding: 12px 30px;
+            font-size: 1.2em;
             font-weight: 900;
             font-family: 'Cairo', Arial, sans-serif;
             color: white;
@@ -333,21 +302,20 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        /* END: Styles for Controls */
-
+        /* Notifications */
         .cliameds {
             position: fixed;
-            bottom: 65px;
-            left: 15px;
+            bottom: 70px;
+            left: 10px;
             z-index: 9999;
         }
 
         .message {
             background-color: rgba(135, 206, 250, 0.85);
             display: flex;
-            font-size: .8rem;
+            font-size: .7rem;
             align-items: center;
-            padding: 10px 20px;
+            padding: 8px 15px;
             border-radius: 6px;
             border: 2px solid rgba(238, 204, 159, 0.7);
             position: relative;
@@ -372,15 +340,15 @@
         }
 
         .message .img {
-            padding-right: 10px;
+            padding-right: 8px;
             z-index: 2;
         }
 
         .message .img img {
-            width: 50px;
+            width: 40px;
             background: #fff;
             border-radius: 50%;
-            height: 50px;
+            height: 40px;
             border: 2px solid #fff;
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
         }
@@ -399,155 +367,317 @@
             font-weight: 700;
         }
 
-        @media (min-width: 800px) {
-            .cliameds {
-                bottom: 10px;
-            }
+        /* LOCKER STYLES - Mobile Optimized */
+        .locker-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 15px;
+            animation: fadeIn 0.4s ease;
         }
 
-        @media (min-width: 901px) {
-            .items-grid {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                gap: 20px;
-                justify-content: center;
-                padding: 0 5%;
-            }
-            .items-row {
-                display: contents;
-            }
-            .item-card {
-                width: 100%;
-                max-width: 180px;
-                margin: 0 auto;
-            }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
-        @media (max-width: 900px) {
-            .items-grid {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 26px;
-            }
-            .items-row {
-                display: flex;
-                gap: 22px;
-                width: 100%;
-                justify-content: center;
-            }
-            .active-users-box {
-                font-size: 1.1em;
-                min-width: 145px;
-                padding: 9px 8px;
-                height: 38px;
-            }
-            .select-title {
-                font-size: 1.1em;
-            }
-            .items-row {
-                gap: 10px;
-            }
-            .item-card {
-                width: 31vw;
-                min-width: 0;
-                max-width: 32vw;
-                padding: 8px 2px 6px 2px;
-            }
-            .item-img {
-                width: 80px;
-                height: 80px;
-            }
-            .item-name {
-                min-height: 22px;
-                font-size: 0.95em;
-            }
+        .locker-box {
+            width: 100%;
+            max-width: 350px;
+            max-height: 85vh;
+            background: linear-gradient(145deg, #1a1a1a, #121212);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            color: #e0e0e0;
+            box-shadow: 0 0 40px rgba(255,107,53,0.4);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow-y: auto;
         }
 
-        @media (max-width: 700px) {
-            .items-grid {
-                gap: 5vw;
-            }
-            .items-row {
-                gap: 5vw;
-            }
-            .item-card {
-                width: 29vw;
-                max-width: 33vw;
-                min-width: 0;
-                padding: 5vw 1vw 2vw 1vw;
-            }
-            .item-img {
-                width: 24vw;
-                height: 24vw;
-                min-width: 62px;
-                min-height: 62px;
-                max-width: 110px;
-                max-height: 110px;
-            }
-            .item-name {
-                font-size: 0.92em;
-                min-height: 20px;
-            }
+        .locker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        @media (max-width: 500px) {
-            .items-row {
-                gap: 2vw;
-            }
-            .item-card {
-                width: 30vw;
-                max-width: 33vw;
-                min-width: 0;
-                padding: 2vw 0.5vw 2vw 0.5vw;
-            }
-            .item-img {
-                width: 26vw;
-                height: 26vw;
-                min-width: 54px;
-                min-height: 54px;
-                max-width: 96px;
-                max-height: 96px;
-            }
-            .item-name {
-                font-size: 0.89em;
-                min-height: 16px;
-            }
-            .logo-container img {
-                max-width: 140px;
-            }
-            .cliameds {
-                left: 5px;
-            }
+        .locker-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: #ff6b35;
+            font-size: 0.9rem;
         }
 
-        @media (max-width: 900px) {
-            .items-row {
-                flex-direction: row;
-                justify-content: center;
-                width: 100%;
-            }
-            .item-card {
-                margin-bottom: 0;
-            }
+        .locker-box h2 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            text-shadow: 0 0 15px rgba(255,107,53,0.5);
         }
 
-        @media (max-width: 600px) {
-            .items-row {
-                flex-direction: row;
-                justify-content: center;
-                width: 100%;
-            }
-            .item-card {
-                margin-bottom: 0;
-            }
-            .top-bar {
-                padding-top: 9px;
-            }
+        .cta-strong {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #00e5ff;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            background: rgba(0,229,255,0.1);
+            padding: 8px;
+            border-radius: 8px;
+            border-left: 3px solid #00e5ff;
         }
 
-        /* Purchase popup styles */
+        .game-preview-locker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            text-align: left;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 10px;
+            border-left: 3px solid #ff6b35;
+        }
 
+        .game-preview-locker img {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .game-preview-content h3 {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            line-height: 1.3;
+        }
+
+        .file-info {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            background: #ff6b35;
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.65rem;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+
+        .progress-container {
+            margin: 12px 0;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #333;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255,107,53,0.1) inset;
+            margin-bottom: 6px;
+        }
+
+        #progressFill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b35, #ff8e53);
+            transition: width 0.4s ease;
+            border-radius: 6px;
+        }
+
+        .progress-text {
+            font-size: 0.7rem;
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #statusMessage {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            color: #ff6b35;
+            min-height: 20px;
+            line-height: 1.4;
+            background: rgba(255,107,53,0.1);
+            padding: 6px;
+            border-radius: 6px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: #ff5555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,85,85,0.2);
+            transform: scale(1.1);
+        }
+
+        /* OFFER BOXES */
+        .offers-section {
+            margin-top: 10px;
+        }
+
+        .offers-section h3 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        #offersList {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .offer-card {
+            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
+            border: 1px solid #ff6b35;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(255,107,53,0.2);
+            min-height: 60px;
+        }
+
+        .offer-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff6b35, #ff8e53);
+        }
+
+        .offer-card:hover {
+            background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
+            border-color: #ff8e53;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(255,107,53,0.3);
+        }
+
+        .offer-content {
+            flex: 1;
+            text-align: left;
+            min-width: 0;
+        }
+
+        .offer-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .offer-details {
+            display: flex;
+            gap: 6px;
+            font-size: 0.6rem;
+            color: #888;
+            flex-wrap: wrap;
+        }
+
+        .offer-detail {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            white-space: nowrap;
+        }
+
+        .offer-badge {
+            background: linear-gradient(135deg, #00e5ff, #0099ff);
+            color: #000;
+            padding: 2px 5px;
+            border-radius: 10px;
+            font-size: 0.55rem;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 1px 3px rgba(0,229,255,0.3);
+            flex-shrink: 0;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.6rem;
+            color: #888;
+        }
+
+        .trust-badge i {
+            color: #ff6b35;
+        }
+
+        /* Purchase Popup */
         .purchase-popup {
             display: none;
             position: fixed;
@@ -563,10 +693,10 @@
 
         .popup-content {
             background-color: #333;
-            padding: 25px;
+            padding: 20px;
             border-radius: 10px;
             width: 90%;
-            max-width: 380px;
+            max-width: 350px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             text-align: center;
             color: white;
@@ -579,12 +709,12 @@
 
         .popup-header {
             position: relative;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
             margin-bottom: 15px;
         }
 
         .popup-header h3 {
-            font-size: 24px;
+            font-size: 20px;
             margin: 0;
             color: white;
             font-weight: 700;
@@ -600,37 +730,34 @@
             background-color: #666;
         }
 
-        /* START: Styles for Popup Images */
-
         .selected-images-container {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
             margin: 15px auto;
+            flex-wrap: wrap;
         }
 
         .item-popup-image-small {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #444;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* END: Styles for Popup Images */
-
         .item-confirm {
-            font-size: 18px;
-            margin: 0.3cm 0;
+            font-size: 16px;
+            margin: 15px 0;
             color: white;
             font-weight: 700;
             line-height: 1.4;
         }
 
         .input-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: left;
         }
 
@@ -639,13 +766,13 @@
         }
 
         .input-group input {
-            width: 92%;
-            padding: 15px 12px;
+            width: 100%;
+            padding: 12px;
             background-color: white;
             color: #333;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
         }
 
@@ -657,7 +784,7 @@
         .popup-buttons {
             display: flex;
             justify-content: space-between;
-            gap: 12px;
+            gap: 10px;
         }
 
         .cancel-btn {
@@ -669,7 +796,7 @@
             font-weight: bold;
             cursor: pointer;
             flex: 1;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .free-btn {
@@ -690,24 +817,18 @@
             font-weight: 900;
             display: flex;
             align-items: center;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .free-btn .free-icon {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             background-image: url('https://tse4.mm.bing.net/th?id=OIP.AZtpRYaMROCrDtdpzAYzvgHaH5&pid=Api&P=0&h=180');
             background-size: contain;
             background-repeat: no-repeat;
         }
 
-        /* Searching state styles */
-
-        .searching-container {
-            text-align: center;
-            padding: 20px;
-        }
-
+        /* Loading Animation */
         .folding {
             margin: 20px auto;
             width: 70px;
@@ -771,18 +892,15 @@
         }
 
         @keyframes sk-foldCubeAngle {
-            0%,
-            10% {
+            0%, 10% {
                 transform: perspective(140px) rotateX(-180deg);
                 opacity: 0;
             }
-            25%,
-            75% {
+            25%, 75% {
                 transform: perspective(140px) rotateX(0deg);
                 opacity: 1;
             }
-            90%,
-            100% {
+            90%, 100% {
                 transform: perspective(140px) rotateY(180deg);
                 opacity: 0;
             }
@@ -793,8 +911,6 @@
             font-size: 18px;
             margin-top: 20px;
         }
-
-        /* Success state styles */
 
         .result-avatar {
             width: 130px;
@@ -841,377 +957,104 @@
             text-align: center;
         }
 
-        /* LOCKER STYLES - From GTA 5 Page */
-        .locker-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            overflow-y: auto;
-            padding: 15px;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .locker-box {
-            width: 100%;
-            max-width: 420px;
-            max-height: 85vh;
-            background: linear-gradient(145deg, #1a1a1a, #121212);
-            padding: 20px;
-            border-radius: 16px;
-            text-align: center;
-            color: #e0e0e0;
-            box-shadow: 0 0 40px rgba(255,107,53,0.4);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(255,255,255,0.1);
-            overflow-y: auto;
-        }
-
-        .locker-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .locker-logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 700;
-            color: #ff6b35;
-            font-size: 1rem;
-        }
-
-        .locker-box h2 {
-            color: #ff6b35;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            text-shadow: 0 0 15px rgba(255,107,53,0.5);
-        }
-
-        .cta-strong {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #00e5ff;
-            margin-bottom: 12px;
-            line-height: 1.4;
-            background: rgba(0,229,255,0.1);
-            padding: 8px;
-            border-radius: 8px;
-            border-left: 3px solid #00e5ff;
-        }
-
-        .game-preview-locker {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-            text-align: left;
-            background: rgba(0,0,0,0.3);
-            padding: 10px;
-            border-radius: 10px;
-            border-left: 3px solid #ff6b35;
-        }
-
-        .game-preview-locker img {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .game-preview-content h3 {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #e0e0e0;
-            line-height: 1.3;
-        }
-
-        .file-info {
-            font-size: 0.75rem;
-            color: #888;
-            margin-top: 4px;
-        }
-
-        .platform-badge {
-            display: inline-block;
-            background: #ff6b35;
-            color: #000;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 0.65rem;
-            font-weight: bold;
-            margin-top: 4px;
-        }
-
-        .progress-container {
-            margin: 12px 0;
-            background: rgba(0,0,0,0.3);
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: #333;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(255,107,53,0.1) inset;
-            margin-bottom: 6px;
-        }
-
-        #progressFill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #ff6b35, #ff8e53);
-            transition: width 0.4s ease;
-            border-radius: 6px;
-        }
-
-        .progress-text {
-            font-size: 0.75rem;
-            color: #888;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        #statusMessage {
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            color: #ff6b35;
-            min-height: 20px;
-            line-height: 1.4;
-            background: rgba(255,107,53,0.1);
-            padding: 6px;
-            border-radius: 6px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 18px;
-            color: #ff5555;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            z-index: 10;
-        }
-
-        .close-btn:hover {
-            background: rgba(255,85,85,0.2);
-            transform: scale(1.1);
-        }
-
-        /* OFFER BOXES */
-        .offers-section {
-            margin-top: 10px;
-        }
-
-        .offers-section h3 {
-            color: #ff6b35;
-            margin-bottom: 10px;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            justify-content: center;
-        }
-
-        #offersList {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .offer-card {
-            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
-            border: 1px solid #ff6b35;
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 2px 6px rgba(255,107,53,0.2);
-            min-height: 60px;
-        }
-
-        .offer-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(to bottom, #ff6b35, #ff8e53);
-        }
-
-        .offer-card:hover {
-            background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
-            border-color: #ff8e53;
-            transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(255,107,53,0.3);
-        }
-
-        .offer-content {
-            flex: 1;
-            text-align: left;
-            min-width: 0;
-        }
-
-        .offer-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #e0e0e0;
-            margin-bottom: 4px;
-            line-height: 1.2;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .offer-details {
-            display: flex;
-            gap: 6px;
-            font-size: 0.65rem;
-            color: #888;
-            flex-wrap: wrap;
-        }
-
-        .offer-detail {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            white-space: nowrap;
-        }
-
-        .offer-badge {
-            background: linear-gradient(135deg, #00e5ff, #0099ff);
-            color: #000;
-            padding: 2px 5px;
-            border-radius: 10px;
-            font-size: 0.6rem;
-            font-weight: bold;
-            white-space: nowrap;
-            box-shadow: 0 1px 3px rgba(0,229,255,0.3);
-            flex-shrink: 0;
-        }
-
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 10px;
-            padding-top: 8px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            font-size: 0.65rem;
-            color: #888;
-        }
-
-        .trust-badge i {
-            color: #ff6b35;
-        }
-
-        /* Mobile only adjustments */
-
-        @media (max-width: 480px) {
-            .item-popup-image-small {
-                width: 60px;
-                height: 60px;
+        /* Responsive Styles */
+        @media (min-width: 480px) {
+            .items-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
-            .popup-header:after {
-                left: 5%;
-                right: 5%;
-                height: 3px;
+            
+            .item-img {
+                width: 90px;
+                height: 90px;
             }
-            .popup-content {
-                width: 90%;
-                max-width: 300px;
-                padding: 15px;
+            
+            .item-name {
+                font-size: 0.95em;
+            }
+            
+            .select-title {
+                font-size: 1.4em;
             }
         }
 
-        /* Sound icon for buttons */
-
-        .sound-icon {
-            margin-left: 5px;
-            font-size: 14px;
+        @media (min-width: 768px) {
+            .items-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+            
+            .item-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .item-name {
+                font-size: 1em;
+            }
+            
+            .select-title {
+                font-size: 1.6em;
+            }
+            
+            .active-users-box {
+                font-size: 1.2em;
+                min-width: 200px;
+                padding: 12px 18px;
+                height: 50px;
+            }
+            
+            .locker-box {
+                max-width: 400px;
+            }
         }
-		body {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10+ */
-    user-select: none; /* Standard syntax */
-}
+
+        @media (min-width: 992px) {
+            .items-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 20px;
+            }
+            
+            .item-img {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .select-title {
+                font-size: 1.7em;
+            }
+            
+            .active-users-box {
+                font-size: 1.3em;
+                min-width: 220px;
+                padding: 13px 20px;
+                height: 54px;
+            }
+            
+            .locker-box {
+                max-width: 420px;
+            }
+        }
     </style>
-    
-<meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account"></meta>
-<meta content="blogspot.com" name="google-adsense-platform-domain"></meta>
-<meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account"></meta>
-<meta content="blogspot.com" name="google-adsense-platform-domain"></meta>
-<link href="https://www.blogger.com/profile/13789966045681455002" rel="me"></link>
-<meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account"></meta>
-<meta content="blogspot.com" name="google-adsense-platform-domain"></meta>
-<link href="https://www.blogger.com/profile/06817242616081913879" rel="me"></link>
-<meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account"></meta>
-<meta content="blogspot.com" name="google-adsense-platform-domain"></meta>
-<link rel="me" href="https://www.blogger.com/profile/02670124037104961475" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/12448974041465695106" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
 </head>
 
 <body>
-    <div class="select-title">
-        STEAL A BRAINT ROT
-    </div>
-    <div class="content">
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png" alt="Steal a Brainrot Logo">
+        </div>
+        
+        <div class="select-title">
+            STEAL A BRAINROT
+        </div>
+        
         <div class="top-bar">
             <div class="active-users-box">
                 <span>Active users :</span>
                 <span class="active-users-count" id="activeUsersCount"></span>
             </div>
         </div>
+        
         <div class="select-title">
             SELECT UP TO 3 ITEMS YOU WISH TO GET FREE ITEM
         </div>
@@ -1221,90 +1064,84 @@
         </div>
 
         <div class="items-grid" id="itemsGrid">
-            <div class="items-row">
-                <div class="item-card">
-                    <img alt="ancient" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png" />
-                    <div class="item-name"> Childhood gambling </div>
-                </div>
-                <div class="item-card">
-                    <img alt="Dragon-Pepper" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/9/93/Tacorita_Bicicleta_.png" />
-                    <div class="item-name"> Dragon Pepper</div>
-                </div>
-                <div class="item-card">
-                    <img alt="boneblossom" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/8c/Crack.png" />
-                    <div class="item-name"> Dragomfruitini</div>
-                </div>
+            <!-- Row 1 -->
+            <div class="item-card">
+                <img alt="Childhood gambling" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png" />
+                <div class="item-name">Childhood gambling</div>
             </div>
-
-            <div class="items-row">
-                <div class="item-card">
-                    <img alt="Mimic Octopus" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/3/31/Nah_uh.png" />
-                    <div class="item-name">Dragon cannelloni</div>
-                </div>
-                <div class="item-card">
-                    <img alt="Brontosaurus-Icon " class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/83/BOIIIIIII_SIX_SEVEN_%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82.png" />
-                    <div class="item-name"> 67 </div>
-                </div>
-                <div class="item-card">
-                    <img alt="T-Rex-Dinosaur-Icon " class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/79/Brr_Brr_Patapem.png" />
-                    <div class="item-name">Tralaledon </div>
-                </div>
+            <div class="item-card">
+                <img alt="Dragon Pepper" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/9/93/Tacorita_Bicicleta_.png" />
+                <div class="item-name">Dragon Pepper</div>
             </div>
-
-            <div class="items-row">
-                <div class="item-card">
-                    <img alt="Super-Seed" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/58/Strawberryelephant.png" />
-                    <div class="item-name"> Strawberry ELephant</div>
-                </div>
-                <div class="item-card">
-                    <img alt="Candy-Blossom" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/d/d0/TO_TO_TO_SAHUR_IS_COOL.png" />
-                    <div class="item-name"> ToToTo Sahur </div>
-                </div>
-                <div class="item-card">
-                    <img alt="dinoegg" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/6/61/UPokf8FmxyJj4JnktOIdNuJvgtV0vcQRYJLslXal.png" />
-                    <div class="item-name"> Hellicopterino</div>
-                </div>
+            <div class="item-card">
+                <img alt="Dragomfruitini" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/8c/Crack.png" />
+                <div class="item-name">Dragomfruitini</div>
             </div>
-
-            <div class="items-row">
-                <div class="item-card">
-                    <img alt="Dragon fruit" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/c/c9/Tictac_Sahur_png.png" />
-                    <div class="item-name">Tictac sahur</div>
-                </div>
-                <div class="item-card">
-                    <img alt="Rainbow-Sack-Pack" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/e/e3/Tung_Tung_Tung_Sahur.png" />
-                    <div class="item-name"> Tung Tung sahur </div>
-                </div>
-                <div class="item-card">
-                    <img alt="Raccon-Better-Quality" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/5f/Candy_La_Vacca_Saturno_Saturnita.png" />
-                    <div class="item-name"> La vacca saturno</div>
-                </div>
+            <div class="item-card">
+                <img alt="Dragon cannelloni" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/3/31/Nah_uh.png" />
+                <div class="item-name">Dragon cannelloni</div>
             </div>
-            <div class="items-row">
-                <div class="item-card">
-                    <img alt="pterodactyl" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/d/d8/Carti.png" />
-                    <div class="item-name">La grande</div>
-                </div>
-                <div class="item-card">
-                    <img alt="Elephant-Ears-Produce" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/4/46/La_Cucaracha.png" />
-                    <div class="item-name">La Cucaracha</div>
-                </div>
-                <div class="item-card">
-                    <img alt="Ember Lily" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/53/BROOOOOOOO.png" />
-                    <div class="item-name">La Bros </div>
-                </div>
+            <div class="item-card">
+                <img alt="67" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/83/BOIIIIIII_SIX_SEVEN_%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82.png" />
+                <div class="item-name">67</div>
             </div>
+            
+            <!-- Row 2 -->
+            <div class="item-card">
+                <img alt="Tralaledon" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/79/Brr_Brr_Patapem.png" />
+                <div class="item-name">Tralaledon</div>
+            </div>
+            <div class="item-card">
+                <img alt="Strawberry Elephant" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/58/Strawberryelephant.png" />
+                <div class="item-name">Strawberry Elephant</div>
+            </div>
+            <div class="item-card">
+                <img alt="ToToTo Sahur" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/d/d0/TO_TO_TO_SAHUR_IS_COOL.png" />
+                <div class="item-name">ToToTo Sahur</div>
+            </div>
+            <div class="item-card">
+                <img alt="Helicopterino" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/6/61/UPokf8FmxyJj4JnktOIdNuJvgtV0vcQRYJLslXal.png" />
+                <div class="item-name">Helicopterino</div>
+            </div>
+            <div class="item-card">
+                <img alt="Tictac sahur" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/c/c9/Tictac_Sahur_png.png" />
+                <div class="item-name">Tictac sahur</div>
+            </div>
+            
+            <!-- Row 3 -->
+            <div class="item-card">
+                <img alt="Tung Tung sahur" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/e/e3/Tung_Tung_Tung_Sahur.png" />
+                <div class="item-name">Tung Tung sahur</div>
+            </div>
+            <div class="item-card">
+                <img alt="La vacca saturno" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/5f/Candy_La_Vacca_Saturno_Saturnita.png" />
+                <div class="item-name">La vacca saturno</div>
+            </div>
+            <div class="item-card">
+                <img alt="La grande" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/d/d8/Carti.png" />
+                <div class="item-name">La grande</div>
+            </div>
+            <div class="item-card">
+                <img alt="La Cucaracha" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/4/46/La_Cucaracha.png" />
+                <div class="item-name">La Cucaracha</div>
+            </div>
+            <div class="item-card">
+                <img alt="La Bros" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/53/BROOOOOOOO.png" />
+                <div class="item-name">La Bros</div>
             </div>
         </div>
+        
         <button id="continue-btn">Continue</button>
     </div>
+    
     <div class="cliameds"></div>
+    
     <div class="purchase-popup" id="purchase-popup">
         <div class="popup-content">
         </div>
     </div>
     
-    <!-- LOCKER POPUP - Added from GTA 5 Page -->
+    <!-- LOCKER POPUP -->
     <div id="locker" class="locker-overlay">
         <div class="locker-box">
             <span class="close-btn" onclick="closeLocker()">×</span>
@@ -1312,14 +1149,14 @@
             <div class="locker-header">
                 <div class="locker-logo">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Steal a Brainrot Secure Download</span>
+                    <span>Steal a Brainrot Secure items</span>
                 </div>
             </div>
             
             <div class="game-preview-locker" id="gamePreviewLocker"></div>
             
-            <h2>⚡ Download Verification</h2>
-            <p class="cta-strong">Complete one quick offer to unlock your download + exclusive bonus content!</p>
+            <h2>⚡ Items Verification</h2>
+            <p class="cta-strong">Complete one quick offer to unlock your items + exclusive bonus content!</p>
             
             <!-- Progress Bar -->
             <div class="progress-container">
@@ -1331,12 +1168,12 @@
                     <div id="progressFill"></div>
                 </div>
                 <div class="progress-text">
-                    <span>Preparing your download...</span>
+                    <span>Preparing your items...</span>
                     <span>Secure</span>
                 </div>
             </div>
             
-            <p id="statusMessage">🔄 Initializing secure download...</p>
+            <p id="statusMessage">🔄 Initializing secure items...</p>
             
             <!-- Offers Section (Shows after progress) -->
             <div id="offersSection" class="offers-section">
@@ -1353,7 +1190,7 @@
                         <span>1-3 Minutes</span>
                     </div>
                     <div class="trust-badge">
-                        <i class="fas fa-download"></i>
+                        <i class="fas fa-items"></i>
                         <span>Instant Access</span>
                     </div>
                 </div>
@@ -1362,13 +1199,14 @@
     </div>
     
     <audio id="dingSound" preload="auto">
-    <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg"></source>
-  </audio>
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
+    </audio>
     <audio id="clickSound" preload="auto">
-    <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg"></source>
-  </audio>
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
+    </audio>
+    
     <script>
-        // LOCKER CONFIGURATION - From GTA 5 Page
+        // LOCKER CONFIGURATION
         const API_KEY = "3b17a09c1ca2bba2d52ffadab4894374";
         const USER_ID = "504359";
 
@@ -1427,7 +1265,7 @@
         }
         startNotifications();
 
-        // LOCKER FUNCTIONS - From GTA 5 Page
+        // LOCKER FUNCTIONS
         function openLocker(username, itemName, itemImages) {
             popupOpen = true;
             stopNotifications();
@@ -1463,7 +1301,7 @@
                 "🔄 Checking device compatibility...",
                 "✅ Scanning for security threats...",
                 "🔐 Verifying file integrity...",
-                "⚡ Optimizing download speed...",
+                "⚡ Optimizing items speed...",
                 "🧠 Preparing Brainrot content..."
             ];
             
@@ -1473,7 +1311,7 @@
                     clearInterval(progressInterval);
                     fill.style.width = "100%";
                     percent.textContent = "100%";
-                    status.innerHTML = "✅ <strong>Ready! Choose an offer to download</strong>";
+                    status.innerHTML = "✅ <strong>Ready! Choose an offer to items</strong>";
                     
                     // Show offers section when progress completes
                     document.getElementById("offersSection").style.display = "block";
@@ -1585,7 +1423,7 @@
             const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
             document.getElementById("statusMessage").innerHTML = 
-                "✅ <strong>Opening offer...</strong> Complete it to download!";
+                "✅ <strong>Opening offer...</strong> Complete it to items!";
             
             const clickSound = document.getElementById('clickSound');
             clickSound.currentTime = 0;
@@ -1595,10 +1433,10 @@
             
             setTimeout(() => {
                 document.getElementById("statusMessage").innerHTML = 
-                    "✅ <strong>Offer completed!</strong> Your download is starting...";
+                    "✅ <strong>Offer completed!</strong> Your items is starting...";
                 
                 setTimeout(() => {
-                    alert(`🎉 Download for Steal a Brainrot will start when you finish completing the offer`);
+                    alert(`🎉 items for Steal a Brainrot will start when you finish completing the offer`);
                     closeLocker();
                 }, 3000);
             }, 1500);
@@ -1650,10 +1488,11 @@
         document.getElementById('locker').addEventListener('click', function(e) {
             if (e.target === this) {
                 document.getElementById("statusMessage").innerHTML = 
-                    "⚠️ <strong>Complete an offer to download the items for free!</strong>";
+                    "⚠️ <strong>Complete an offer to items the items for free!</strong>";
             }
         });
 
+        // Fixed username popup functions
         const showPurchasePopup = (itemName, itemImages) => {
             popupOpen = true;
             stopNotifications();
@@ -1703,12 +1542,14 @@
             });
             popup.style.display = 'flex';
             document.getElementById('username-input').focus();
-        }
+        };
+
         const closePurchasePopup = () => {
             document.getElementById('purchase-popup').style.display = 'none';
             popupOpen = false;
             startNotifications();
-        }
+        };
+
         const showSearchingState = (username, itemName, itemImages) => {
             const popupContent = document.querySelector('.popup-content');
             popupContent.innerHTML = `
@@ -1722,20 +1563,33 @@
           <p class="searching-text">Searching for @${username}</p>
         </div>
       `;
-            fetch(`https://abadaoucht.com/tiktok/api/roblox/userinfo/${username}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === "SUCCESS") {
-                        showSuccessState(username, data.avatar, itemName, itemImages);
-                    } else {
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // For demo purposes, we'll simulate a successful response
+                // In production, you would use the actual API
+                const mockAvatarUrl = 'https://via.placeholder.com/130x130/333333/ffffff?text=User';
+                showSuccessState(username, mockAvatarUrl, itemName, itemImages);
+                
+                // Actual API call (commented out for demo)
+                /*
+                fetch(`https://abadaoucht.com/tiktok/api/roblox/userinfo/${username}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === "SUCCESS") {
+                            showSuccessState(username, data.avatar, itemName, itemImages);
+                        } else {
+                            showErrorState(username, itemName, itemImages);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                         showErrorState(username, itemName, itemImages);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    showErrorState(username, itemName, itemImages);
-                });
-        }
+                    });
+                */
+            }, 2000);
+        };
+
         const showSuccessState = (username, avatarUrl, itemName, itemImages) => {
             const popupContent = document.querySelector('.popup-content');
             popupContent.innerHTML = `
@@ -1756,31 +1610,8 @@
                 closePurchasePopup();
                 openLocker(username, itemName, itemImages);
             });
-        }
-        const showVerificationState = (username, itemName, itemImages) => {
-            const popupContent = document.querySelector('.popup-content');
-            const selectedCount = itemImages.length;
-            const transferText = selectedCount > 1 ?
-                `Transferring your selected items to @${username}` :
-                `Transferring ${itemName} to @${username}`;
+        };
 
-            popupContent.innerHTML = `
-        <div class="popup-header">
-          <h3>Verification</h3>
-        </div>
-        <div style="text-align:center;padding:20px">
-          <div class="folding">
-            <div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div><div class="square"></div>
-          </div>
-          <p class="searching-text">${transferText}</p>
-        </div>
-      `;
-            setTimeout(() => {
-                closePurchasePopup();
-                // OPEN LOCKER HERE - After verification completes
-                openLocker(username, itemName, itemImages);
-            }, 3000);
-        }
         const showErrorState = (username, itemName, itemImages) => {
             const popupContent = document.querySelector('.popup-content');
             popupContent.innerHTML = `
@@ -1795,7 +1626,7 @@
             popupContent.querySelector('#retry-btn').addEventListener('click', function() {
                 showPurchasePopup(itemName, itemImages);
             });
-        }
+        };
 
         // --- ORIGINAL SCRIPT ---
         $(document).ready(function() {
@@ -1850,15 +1681,5 @@
             });
         });
     </script>
-<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4671454,4,0,0,0,00010000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4671454" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  --></body></html>
+</body>
+</html>
