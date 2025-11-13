@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta charset="UTF-8"></meta>
+    <meta content="width=device-width, initial-scale=1" name="viewport"></meta>
     <title>Steal a Brainrot</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&display=swap" rel="stylesheet"></link>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPFW29NPW8"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-84S9S5N0DR"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-84S9S5N0DR');
-    </script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EPFW29NPW8"></script>
+	
+ <!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-84S9S5N0DR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-84S9S5N0DR');
+</script>
+ 
+
     <style>
         /* LTR Styles */
+
         body {
             margin: 0;
             padding: 0;
@@ -277,6 +283,7 @@
         }
 
         /* START: Styles for Controls (Button & Message) */
+
         .selection-controls {
             text-align: center;
             padding: 5px 0 20px 0;
@@ -540,6 +547,7 @@
         }
 
         /* Purchase popup styles */
+
         .purchase-popup {
             display: none;
             position: fixed;
@@ -593,6 +601,7 @@
         }
 
         /* START: Styles for Popup Images */
+
         .selected-images-container {
             display: flex;
             justify-content: center;
@@ -693,6 +702,7 @@
         }
 
         /* Searching state styles */
+
         .searching-container {
             text-align: center;
             padding: 20px;
@@ -785,6 +795,7 @@
         }
 
         /* Success state styles */
+
         .result-avatar {
             width: 130px;
             height: 130px;
@@ -830,50 +841,7 @@
             text-align: center;
         }
 
-        /* Mobile only adjustments */
-        @media (max-width: 480px) {
-            .item-popup-image-small {
-                width: 60px;
-                height: 60px;
-            }
-            .popup-header:after {
-                left: 5%;
-                right: 5%;
-                height: 3px;
-            }
-            .popup-content {
-                width: 90%;
-                max-width: 300px;
-                padding: 15px;
-            }
-        }
-
-        /* Sound icon for buttons */
-        .sound-icon {
-            margin-left: 5px;
-            font-size: 14px;
-        }
-        
-        body {
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none; /* IE 10+ */
-            user-select: none; /* Standard syntax */
-        }
-        
-        /* LOCKER STYLES - From GTA 5 Mobile Page */
-        :root {
-            --primary: #ff6b35;
-            --secondary: #ff8e53;
-            --dark: #121212;
-            --light: #1e1e1e;
-            --white: #ffffff;
-            --text: #e0e0e0;
-            --accent: #00e5ff;
-            --offer-bg: #3a2a2a;
-            --offer-border: #444;
-            --offer-highlight: #4a3a3a;
-        }
-        
+        /* LOCKER STYLES - From GTA 5 Page */
         .locker-overlay {
             display: none;
             position: fixed;
@@ -900,7 +868,7 @@
             padding: 20px;
             border-radius: 16px;
             text-align: center;
-            color: var(--text);
+            color: #e0e0e0;
             box-shadow: 0 0 40px rgba(255,107,53,0.4);
             position: relative;
             display: flex;
@@ -923,12 +891,12 @@
             align-items: center;
             gap: 8px;
             font-weight: 700;
-            color: var(--primary);
+            color: #ff6b35;
             font-size: 1rem;
         }
 
         .locker-box h2 {
-            color: var(--primary);
+            color: #ff6b35;
             margin-bottom: 10px;
             font-size: 1.2rem;
             text-shadow: 0 0 15px rgba(255,107,53,0.5);
@@ -937,13 +905,13 @@
         .cta-strong {
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--accent);
+            color: #00e5ff;
             margin-bottom: 12px;
             line-height: 1.4;
             background: rgba(0,229,255,0.1);
             padding: 8px;
             border-radius: 8px;
-            border-left: 3px solid var(--accent);
+            border-left: 3px solid #00e5ff;
         }
 
         .game-preview-locker {
@@ -955,7 +923,7 @@
             background: rgba(0,0,0,0.3);
             padding: 10px;
             border-radius: 10px;
-            border-left: 3px solid var(--primary);
+            border-left: 3px solid #ff6b35;
         }
 
         .game-preview-locker img {
@@ -968,19 +936,19 @@
         .game-preview-content h3 {
             margin: 0;
             font-size: 0.95rem;
-            color: var(--text);
+            color: #e0e0e0;
             line-height: 1.3;
         }
 
         .file-info {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: #888;
             margin-top: 4px;
         }
 
         .platform-badge {
             display: inline-block;
-            background: var(--primary);
+            background: #ff6b35;
             color: #000;
             padding: 3px 8px;
             border-radius: 15px;
@@ -1001,7 +969,7 @@
             justify-content: space-between;
             margin-bottom: 6px;
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: #888;
         }
 
         .progress-bar {
@@ -1017,14 +985,14 @@
         #progressFill {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, #ff6b35, #ff8e53);
             transition: width 0.4s ease;
             border-radius: 6px;
         }
 
         .progress-text {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: #888;
             display: flex;
             justify-content: space-between;
         }
@@ -1033,7 +1001,7 @@
             margin-top: 10px;
             font-weight: bold;
             font-size: 0.8rem;
-            color: var(--primary);
+            color: #ff6b35;
             min-height: 20px;
             line-height: 1.4;
             background: rgba(255,107,53,0.1);
@@ -1063,13 +1031,13 @@
             transform: scale(1.1);
         }
 
-        /* IMPROVED OFFER BOXES - FORZA COLORS - MOBILE OPTIMIZED */
+        /* OFFER BOXES */
         .offers-section {
             margin-top: 10px;
         }
 
         .offers-section h3 {
-            color: var(--primary);
+            color: #ff6b35;
             margin-bottom: 10px;
             font-size: 1rem;
             display: flex;
@@ -1084,21 +1052,20 @@
             gap: 8px;
         }
 
-        /* MOBILE-OPTIMIZED Offer Cards */
         .offer-card {
             background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
-            border: 1px solid var(--primary);
-            padding: 10px; /* Reduced padding for mobile */
-            border-radius: 8px; /* Slightly smaller radius */
+            border: 1px solid #ff6b35;
+            padding: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px; /* Reduced gap */
+            gap: 8px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 2px 6px rgba(255,107,53,0.2);
-            min-height: 60px; /* Consistent height */
+            min-height: 60px;
         }
 
         .offer-card::before {
@@ -1106,67 +1073,67 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 3px; /* Thinner accent line */
+            width: 3px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            background: linear-gradient(to bottom, #ff6b35, #ff8e53);
         }
 
         .offer-card:hover {
             background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
-            border-color: var(--secondary);
-            transform: translateY(-1px); /* Subtler hover effect */
+            border-color: #ff8e53;
+            transform: translateY(-1px);
             box-shadow: 0 3px 8px rgba(255,107,53,0.3);
         }
 
         .offer-content {
             flex: 1;
             text-align: left;
-            min-width: 0; /* Prevent overflow */
+            min-width: 0;
         }
 
         .offer-title {
-            font-size: 0.8rem; /* Slightly smaller font */
+            font-size: 0.8rem;
             font-weight: 600;
-            color: var(--text);
-            margin-bottom: 4px; /* Reduced margin */
-            line-height: 1.2; /* Tighter line height */
+            color: #e0e0e0;
+            margin-bottom: 4px;
+            line-height: 1.2;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
         .offer-details {
             display: flex;
-            gap: 6px; /* Reduced gap */
-            font-size: 0.65rem; /* Smaller font */
-            color: var(--text-muted);
-            flex-wrap: wrap; /* Wrap on very small screens */
+            gap: 6px;
+            font-size: 0.65rem;
+            color: #888;
+            flex-wrap: wrap;
         }
 
         .offer-detail {
             display: flex;
             align-items: center;
-            gap: 2px; /* Tighter gap */
+            gap: 2px;
             white-space: nowrap;
         }
 
         .offer-badge {
-            background: linear-gradient(135deg, var(--accent), #0099ff);
+            background: linear-gradient(135deg, #00e5ff, #0099ff);
             color: #000;
-            padding: 2px 5px; /* Smaller padding */
-            border-radius: 10px; /* Smaller radius */
-            font-size: 0.6rem; /* Smaller font */
+            padding: 2px 5px;
+            border-radius: 10px;
+            font-size: 0.6rem;
             font-weight: bold;
             white-space: nowrap;
             box-shadow: 0 1px 3px rgba(0,229,255,0.3);
-            flex-shrink: 0; /* Prevent badge from shrinking */
+            flex-shrink: 0;
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 8px; /* Reduced gap */
+            gap: 8px;
             margin-top: 10px;
             padding-top: 8px;
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -1176,31 +1143,62 @@
             display: flex;
             align-items: center;
             gap: 3px;
-            font-size: 0.65rem; /* Smaller font */
-            color: var(--text-muted);
+            font-size: 0.65rem;
+            color: #888;
         }
 
         .trust-badge i {
-            color: var(--primary);
+            color: #ff6b35;
         }
+
+        /* Mobile only adjustments */
+
+        @media (max-width: 480px) {
+            .item-popup-image-small {
+                width: 60px;
+                height: 60px;
+            }
+            .popup-header:after {
+                left: 5%;
+                right: 5%;
+                height: 3px;
+            }
+            .popup-content {
+                width: 90%;
+                max-width: 300px;
+                padding: 15px;
+            }
+        }
+
+        /* Sound icon for buttons */
+
+        .sound-icon {
+            margin-left: 5px;
+            font-size: 14px;
+        }
+		body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+}
     </style>
     
-    <meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account">
-    <meta content="blogspot.com" name="google-adsense-platform-domain">
-    <meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account">
-    <meta content="blogspot.com" name="google-adsense-platform-domain">
-    <link href="https://www.blogger.com/profile/13789966045681455002" rel="me">
-    <meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account">
-    <meta content="blogspot.com" name="google-adsense-platform-domain">
-    <link href="https://www.blogger.com/profile/06817242616081913879" rel="me">
-    <meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account">
-    <meta content="blogspot.com" name="google-adsense-platform-domain">
-    <link rel="me" href="https://www.blogger.com/profile/02670124037104961475" />
-    <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-    <meta name='google-adsense-platform-domain' content='blogspot.com'/>
-    <link rel="me" href="https://www.blogger.com/profile/12448974041465695106" />
-    <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-    <meta name='google-adsense-platform-domain' content='blogspot.com'/>
+<meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account"></meta>
+<meta content="blogspot.com" name="google-adsense-platform-domain"></meta>
+<meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account"></meta>
+<meta content="blogspot.com" name="google-adsense-platform-domain"></meta>
+<link href="https://www.blogger.com/profile/13789966045681455002" rel="me"></link>
+<meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account"></meta>
+<meta content="blogspot.com" name="google-adsense-platform-domain"></meta>
+<link href="https://www.blogger.com/profile/06817242616081913879" rel="me"></link>
+<meta content="ca-host-pub-1556223355139109" name="google-adsense-platform-account"></meta>
+<meta content="blogspot.com" name="google-adsense-platform-domain"></meta>
+<link rel="me" href="https://www.blogger.com/profile/02670124037104961475" />
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+<link rel="me" href="https://www.blogger.com/profile/12448974041465695106" />
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
 </head>
 
 <body>
@@ -1296,12 +1294,17 @@
                     <div class="item-name">La Bros </div>
                 </div>
             </div>
+            </div>
         </div>
         <button id="continue-btn">Continue</button>
     </div>
     <div class="cliameds"></div>
+    <div class="purchase-popup" id="purchase-popup">
+        <div class="popup-content">
+        </div>
+    </div>
     
-    <!-- LOCKER POPUP - From GTA 5 Mobile Page -->
+    <!-- LOCKER POPUP - Added from GTA 5 Page -->
     <div id="locker" class="locker-overlay">
         <div class="locker-box">
             <span class="close-btn" onclick="closeLocker()">×</span>
@@ -1309,14 +1312,14 @@
             <div class="locker-header">
                 <div class="locker-logo">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Steal a Brainrot Secure items</span>
+                    <span>Steal a Brainrot Secure Download</span>
                 </div>
             </div>
             
             <div class="game-preview-locker" id="gamePreviewLocker"></div>
             
-            <h2>⚡ items Verification</h2>
-            <p class="cta-strong">Complete one quick offer to unlock your selected items + exclusive bonus content!</p>
+            <h2>⚡ Download Verification</h2>
+            <p class="cta-strong">Complete one quick offer to unlock your download + exclusive bonus content!</p>
             
             <!-- Progress Bar -->
             <div class="progress-container">
@@ -1328,16 +1331,16 @@
                     <div id="progressFill"></div>
                 </div>
                 <div class="progress-text">
-                    <span>Preparing your items...</span>
+                    <span>Preparing your download...</span>
                     <span>Secure</span>
                 </div>
             </div>
             
-            <p id="statusMessage">🔄 Initializing secure items...</p>
+            <p id="statusMessage">🔄 Initializing secure download...</p>
             
             <!-- Offers Section (Shows after progress) -->
             <div id="offersSection" class="offers-section">
-                <h3><i class="fas fa-gift"></i> Choose Your Task (tiktok task only work for new user)</h3>
+                <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
                 <div id="offersList"></div>
                 
                 <div class="trust-badges">
@@ -1350,7 +1353,7 @@
                         <span>1-3 Minutes</span>
                     </div>
                     <div class="trust-badge">
-                        <i class="fas fa-items"></i>
+                        <i class="fas fa-download"></i>
                         <span>Instant Access</span>
                     </div>
                 </div>
@@ -1359,21 +1362,19 @@
     </div>
     
     <audio id="dingSound" preload="auto">
-        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
-    </audio>
+    <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg"></source>
+  </audio>
     <audio id="clickSound" preload="auto">
-        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
-    </audio>
-    
+    <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg"></source>
+  </audio>
     <script>
-        // LOCKER CONFIGURATION - From GTA 5 Mobile Page
+        // LOCKER CONFIGURATION - From GTA 5 Page
         const API_KEY = "3b17a09c1ca2bba2d52ffadab4894374";
         const USER_ID = "504359";
 
         // Current selection state
         let currentPlatform = null;
         let progressInterval;
-        let selectedItems = [];
 
         // Function to generate random number between 90 and 900
         function randomUsers() {
@@ -1426,114 +1427,29 @@
         }
         startNotifications();
 
-        // Enhanced AdBlueMedia lead tracking
-        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
-            // Create conversion tracking for AdBlueMedia dashboard
-            const conversionData = {
-                user_id: USER_ID,
-                api_key: API_KEY,
-                game: gameName,
-                platform: platform,
-                offer_type: offerType,
-                offer_title: offerTitle,
-                source: 'stealabrainrot.com',
-                campaign: 'brainrot_items',
-                conversion_type: 'lead',
-                timestamp: Date.now(),
-                revenue: 0.15
-            };
-
-            // Send conversion to AdBlueMedia
-            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(conversionData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('✅ AdBlueMedia Conversion Tracked:', data);
-                console.log('🎮 Game: Steal a Brainrot');
-                console.log('📱 Platform:', platform);
-                console.log('💰 This lead will show in your AdBlueMedia dashboard');
-            })
-            .catch(error => {
-                console.log('⚠️ AdBlueMedia tracking failed, using fallback:', error);
-                // Fallback tracking
-                trackFallbackConversion(gameName, platform, offerType);
-            });
-        }
-
-        function trackFallbackConversion(gameName, platform, offerType) {
-            // Fallback conversion tracking
-            const pixelUrl = `https://d3k0q5ez56odtk.cloudfront.net/public/conversion/pixel.gif?user_id=${USER_ID}&api_key=${API_KEY}&game=${encodeURIComponent(gameName)}&platform=${platform}&offer_type=${offerType}&conversion=lead`;
-            
-            const img = new Image();
-            img.src = pixelUrl;
-            img.style.display = 'none';
-            document.body.appendChild(img);
-            
-            console.log('🔄 Fallback conversion tracked for: Steal a Brainrot', platform, offerType);
-        }
-
-        // Track initial page view
-        function trackPageView() {
-            const pageViewData = {
-                user_id: USER_ID,
-                api_key: API_KEY,
-                page: 'steal_a_brainrot_landing',
-                game: 'Steal a Brainrot',
-                source: document.referrer || 'direct',
-                timestamp: Date.now()
-            };
-
-            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/analytics/pageview.php', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(pageViewData)
-            }).catch(() => console.log('Page view tracking failed'));
-        }
-
-        // Prevent cookie consent from showing
-        window.abmDisableCookieConsent = true;
-        document.cookie = "abm-cookie-consent=accepted; max-age=31536000; path=/";
-
-        // IMPROVED Locker functions
-        function openLocker(platform) {
-            currentPlatform = platform;
+        // LOCKER FUNCTIONS - From GTA 5 Page
+        function openLocker(username, itemName, itemImages) {
+            popupOpen = true;
+            stopNotifications();
             document.body.style.overflow = "hidden";
             document.getElementById("locker").style.display = "flex";
             
             // Hide offers section initially
             document.getElementById("offersSection").style.display = "none";
             
-            const platformText = platform === 'android' ? '🤖 Android' : '🍎 iOS';
-            const fileType = platform === 'android' ? 'APK + OBB Files' : 'IPA File';
-            const platformBadge = `<div class="platform-badge">${platformText}</div>`;
-            
-            // Get selected items
-            const selectedItems = $('.item-card.selected');
-            const itemNames = selectedItems.map(function() {
-                return $(this).find('.item-name').text().trim();
-            }).get().join(', ');
-            
-            const itemImages = selectedItems.map(function() {
-                return $(this).find('.item-img').attr('src');
-            }).get();
-            
-            // Show first selected item image
+            // Show selected items in locker
+            const selectedCount = itemImages.length;
             const firstImage = itemImages.length > 0 ? itemImages[0] : 'https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png';
             
             document.getElementById("gamePreviewLocker").innerHTML = `
                 <img src="${firstImage}" alt="Steal a Brainrot" />
                 <div class="game-preview-content">
-                    <h3>Steal a Brainrot - ${itemNames}</h3>
-                    <p class="file-info">📦 ${selectedItems.length} Selected Items • 🕒 Updated: Today</p>
-                    ${platformBadge}
+                    <h3>Steal a Brainrot - ${itemName}</h3>
+                    <p class="file-info">📦 ${selectedCount} Selected Items • 🕒 Updated: Today</p>
+                    <div class="platform-badge">👤 ${username}</div>
                 </div>`;
                 
-            // Start IMPROVED progress bar
+            // Start progress bar
             startOptimizedProgressBar();
         }
 
@@ -1547,7 +1463,7 @@
                 "🔄 Checking device compatibility...",
                 "✅ Scanning for security threats...",
                 "🔐 Verifying file integrity...",
-                "⚡ Optimizing items speed...",
+                "⚡ Optimizing download speed...",
                 "🧠 Preparing Brainrot content..."
             ];
             
@@ -1557,7 +1473,7 @@
                     clearInterval(progressInterval);
                     fill.style.width = "100%";
                     percent.textContent = "100%";
-                    status.innerHTML = "✅ <strong>Ready! Choose an offer to items</strong>";
+                    status.innerHTML = "✅ <strong>Ready! Choose an offer to download</strong>";
                     
                     // Show offers section when progress completes
                     document.getElementById("offersSection").style.display = "block";
@@ -1565,27 +1481,20 @@
                     // Load offers after progress completes
                     loadOffers();
                 } else {
-                    // OPTIMIZED progress - completes in 3-4 seconds
                     currentProgress += 4 + Math.random() * 5;
                     if(currentProgress > 100) currentProgress = 100;
                     fill.style.width = currentProgress + "%";
                     percent.textContent = Math.round(currentProgress) + "%";
                     
-                    // Show different messages at different progress points
                     let msgIndex = Math.floor(currentProgress / 20);
                     if(msgIndex < messages.length) {
                         status.textContent = messages[msgIndex];
                     }
                 }
-            }, 120); // Faster interval
+            }, 120);
         }
 
         function loadOffers() {
-            if (!currentPlatform) return;
-            
-            // Use platform-specific search term for better offers
-            const searchTerm = `steal a brainrot ${currentPlatform}`;
-            
             // Show loading state
             document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
             
@@ -1593,7 +1502,7 @@
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 8000);
             
-            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=${encodeURIComponent(searchTerm)}`, {
+            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=steal%20a%20brainrot`, {
                 signal: controller.signal
             })
             .then(res => res.json())
@@ -1601,7 +1510,6 @@
                 clearTimeout(timeoutId);
                 
                 if(!offers || !Array.isArray(offers) || offers.length === 0){
-                    // Show fallback offers if API fails
                     showFallbackOffers();
                     return;
                 }
@@ -1610,7 +1518,6 @@
             })
             .catch(() => { 
                 clearTimeout(timeoutId);
-                // Show fallback offers on error
                 showFallbackOffers();
             });
         }
@@ -1646,7 +1553,6 @@
             let html = "";
             const badges = ["Recommended", "Easy", "Popular", "Quick"];
             
-            // Only show first 4 offers
             offers.slice(0,4).forEach((offer, index) => {
                 const timeOptions = [60, 90, 120, 150];
                 const timeEstimate = timeOptions[index] || 120;
@@ -1655,7 +1561,7 @@
                 const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
                 
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Steal a Brainrot', '${currentPlatform}', '${offerType}', '${offer.anchor || "Quick Task"}')">
+                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Steal a Brainrot', 'web', '${offerType}', '${offer.anchor || "Quick Task"}')">
                     <div class="offer-content">
                         <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
                         <div class="offer-details">
@@ -1670,33 +1576,29 @@
             document.getElementById("offersList").innerHTML = html;
         }
 
-        // ENHANCED: AdBlueMedia conversion tracking
         function selectOffer(url, gameName, platform, offerType, offerTitle) {
             console.log(`🎯 LEAD CAPTURED: Steal a Brainrot - ${platform} - ${offerType} - "${offerTitle}"`);
             
-            // TRACK CONVERSION IN ADBLUEMEDIA DASHBOARD
             trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
             
-            // Add tracking parameters for the offer URL
-            const trackingParams = `&subid=${USER_ID}_brainrot_${platform}&game=Steal_a_Brainrot&platform=${platform}&offer_type=${offerType}&source=stealabrainrot.com`;
+            const trackingParams = `&subid=${USER_ID}_brainrot_web&game=Steal_a_Brainrot&platform=web&offer_type=${offerType}&source=stealabrainrot.com`;
             const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
-            // Show immediate feedback
             document.getElementById("statusMessage").innerHTML = 
-                "✅ <strong>Opening offer...</strong> Complete it to items!";
+                "✅ <strong>Opening offer...</strong> Complete it to download!";
             
-            // Open offer in new tab with tracking
+            const clickSound = document.getElementById('clickSound');
+            clickSound.currentTime = 0;
+            clickSound.play();
+            
             window.open(trackedUrl, '_blank');
             
-            // Show completion message after short delay
             setTimeout(() => {
                 document.getElementById("statusMessage").innerHTML = 
-                    "✅ <strong>Offer completed!</strong> Your items is starting...";
+                    "✅ <strong>Offer completed!</strong> Your download is starting...";
                 
-                // Auto-close after 3 seconds
                 setTimeout(() => {
-                    const platformText = platform === 'android' ? 'APK file' : 'IPA file';
-                    alert(`🎉 items for Steal a Brainrot (${platformText}) will start when you finish completing the offer`);
+                    alert(`🎉 Download for Steal a Brainrot will start when you finish completing the offer`);
                     closeLocker();
                 }, 3000);
             }, 1500);
@@ -1708,23 +1610,194 @@
             document.getElementById("progressPercent").textContent = "0%";
             document.body.style.overflow = "auto";
             clearInterval(progressInterval);
-            currentPlatform = null;
+            popupOpen = false;
+            startNotifications();
         }
 
-        // Exit intent prevention - show message instead of closing
+        // Enhanced AdBlueMedia lead tracking
+        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
+            const conversionData = {
+                user_id: USER_ID,
+                api_key: API_KEY,
+                game: gameName,
+                platform: platform,
+                offer_type: offerType,
+                offer_title: offerTitle,
+                source: 'stealabrainrot.com',
+                campaign: 'brainrot_items',
+                conversion_type: 'lead',
+                timestamp: Date.now(),
+                revenue: 0.15
+            };
+
+            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(conversionData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('✅ AdBlueMedia Conversion Tracked:', data);
+            })
+            .catch(error => {
+                console.log('⚠️ AdBlueMedia tracking failed:', error);
+            });
+        }
+
+        // Exit intent prevention
         document.getElementById('locker').addEventListener('click', function(e) {
             if (e.target === this) {
                 document.getElementById("statusMessage").innerHTML = 
-                    "⚠️ <strong>Complete an offer to items the items for free!</strong>";
+                    "⚠️ <strong>Complete an offer to download the items for free!</strong>";
             }
         });
 
-        // Track page view on load
-        window.addEventListener('load', function() {
-            trackPageView();
-        });
+        const showPurchasePopup = (itemName, itemImages) => {
+            popupOpen = true;
+            stopNotifications();
+            const popup = document.getElementById('purchase-popup');
+            const popupContent = popup.querySelector('.popup-content');
 
-        // --- START: ORIGINAL SCRIPT ---
+            const selectedCount = itemImages.length;
+            const promptText = selectedCount > 1 ?
+                `Would you like to get these ${selectedCount} items?` :
+                `Would you like to Get "<span>${itemName}</span>"?`;
+
+            let imagesHTML = '<div class="selected-images-container">';
+            itemImages.forEach(src => {
+                imagesHTML += `<img src="${src}" alt="Selected Item" class="item-popup-image-small">`;
+            });
+            imagesHTML += '</div>';
+
+            popupContent.innerHTML = `
+        <div class="popup-header">
+          <h3>Get Item(s)</h3>
+        </div>
+        ${imagesHTML}
+        <p class="item-confirm">${promptText}</p>
+        <div class="input-group">
+          <input type="text" id="username-input" placeholder="Enter your Roblox username">
+        </div>
+        <div class="user-error d-none">Please enter a valid username</div>
+        <div class="popup-buttons">
+          <button class="cancel-btn">Cancel</button>
+          <button class="free-btn" id="search-user-btn">
+            <span class="free-icon"></span>
+            <span class="free-badge">Free</span>
+          </button>
+        </div>
+      `;
+            popupContent.querySelector('.cancel-btn').addEventListener('click', closePurchasePopup);
+            popupContent.querySelector('#search-user-btn').addEventListener('click', function() {
+                const clickSound = document.getElementById('clickSound');
+                clickSound.currentTime = 0;
+                clickSound.play();
+                const username = document.getElementById('username-input').value.trim();
+                if (!username) {
+                    document.querySelector('.user-error').classList.remove('d-none');
+                    return;
+                }
+                showSearchingState(username, itemName, itemImages);
+            });
+            popup.style.display = 'flex';
+            document.getElementById('username-input').focus();
+        }
+        const closePurchasePopup = () => {
+            document.getElementById('purchase-popup').style.display = 'none';
+            popupOpen = false;
+            startNotifications();
+        }
+        const showSearchingState = (username, itemName, itemImages) => {
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = `
+        <div class="popup-header">
+          <h3>Get Item(s)</h3>
+        </div>
+        <div style="text-align:center;padding:20px">
+          <div class="folding">
+            <div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div><div class="square"></div>
+          </div>
+          <p class="searching-text">Searching for @${username}</p>
+        </div>
+      `;
+            fetch(`https://abadaoucht.com/tiktok/api/roblox/userinfo/${username}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "SUCCESS") {
+                        showSuccessState(username, data.avatar, itemName, itemImages);
+                    } else {
+                        showErrorState(username, itemName, itemImages);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showErrorState(username, itemName, itemImages);
+                });
+        }
+        const showSuccessState = (username, avatarUrl, itemName, itemImages) => {
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = `
+        <div class="popup-header">
+          <h3>Get Item(s)</h3>
+        </div>
+        <div style="text-align:center;padding:20px">
+          <img src="${avatarUrl}" class="result-avatar">
+          <p class="result-username">@${username}</p>
+          <button class="get-item-now-btn">Continue</button>
+        </div>
+      `;
+            popupContent.querySelector('.get-item-now-btn').addEventListener('click', function() {
+                const clickSound = document.getElementById('clickSound');
+                clickSound.currentTime = 0;
+                clickSound.play();
+                // OPEN LOCKER HERE - After user verification is complete
+                closePurchasePopup();
+                openLocker(username, itemName, itemImages);
+            });
+        }
+        const showVerificationState = (username, itemName, itemImages) => {
+            const popupContent = document.querySelector('.popup-content');
+            const selectedCount = itemImages.length;
+            const transferText = selectedCount > 1 ?
+                `Transferring your selected items to @${username}` :
+                `Transferring ${itemName} to @${username}`;
+
+            popupContent.innerHTML = `
+        <div class="popup-header">
+          <h3>Verification</h3>
+        </div>
+        <div style="text-align:center;padding:20px">
+          <div class="folding">
+            <div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div><div class="square"></div>
+          </div>
+          <p class="searching-text">${transferText}</p>
+        </div>
+      `;
+            setTimeout(() => {
+                closePurchasePopup();
+                // OPEN LOCKER HERE - After verification completes
+                openLocker(username, itemName, itemImages);
+            }, 3000);
+        }
+        const showErrorState = (username, itemName, itemImages) => {
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = `
+        <div class="popup-header">
+          <h3>Error</h3>
+        </div>
+        <div style="text-align:center;padding:20px">
+          <p class="searching-text" style="color: #ff6b6b;">User @${username} not found</p>
+          <button class="get-item-now-btn" id="retry-btn">Try Again</button>
+        </div>
+      `;
+            popupContent.querySelector('#retry-btn').addEventListener('click', function() {
+                showPurchasePopup(itemName, itemImages);
+            });
+        }
+
+        // --- ORIGINAL SCRIPT ---
         $(document).ready(function() {
             const dingSound = document.getElementById('dingSound');
             const MAX_SELECTIONS = 3;
@@ -1760,29 +1833,32 @@
                 }
             });
 
-            // Continue Button Click Logic - Now opens locker
+            // Continue Button Click Logic
             $('#continue-btn').click(function() {
                 const selectedItems = $('.item-card.selected');
                 if (selectedItems.length === 0) return;
-                
-                // Open locker with Android platform (you can modify this logic)
-                openLocker('android');
+
+                const itemNames = selectedItems.map(function() {
+                    return $(this).find('.item-name').text().trim();
+                }).get().join(', ');
+
+                const itemImages = selectedItems.map(function() {
+                    return $(this).find('.item-img').attr('src');
+                }).get();
+
+                showPurchasePopup(itemNames, itemImages);
             });
         });
-        // --- END: ORIGINAL SCRIPT ---
     </script>
-    
-    <!-- Histats.com  START  (aync)-->
-    <script type="text/javascript">var _Hasync= _Hasync|| [];
-    _Hasync.push(['Histats.start', '1,4671454,4,0,0,0,00010000']);
-    _Hasync.push(['Histats.fasi', '1']);
-    _Hasync.push(['Histats.track_hits', '']);
-    (function() {
-    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-    hs.src = ('//s10.histats.com/js15_as.js');
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-    })();</script>
-    <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4671454" alt="" border="0"></a></noscript>
-    <!-- Histats.com  END  -->
-</body>
-</html>
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4671454,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4671454" alt="" border="0"></a></noscript>
+<!-- Histats.com  END  --></body></html>
