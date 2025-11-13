@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Steal a Brainrot</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -10,9 +10,10 @@
         /* Base Styles - Mobile First */
         * {
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         
-        body {
+        html, body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -23,25 +24,32 @@
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%2354d33a" width="100" height="100"/><rect fill="%2363e645" width="50" height="50" x="25" y="25" opacity="0.8"/><rect fill="%234f8a2f" width="30" height="30" x="35" y="35" opacity="0.6"/></svg>') repeat;
             background-size: 100px 100px;
             background-position: center;
-            padding-bottom: 100px;
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            touch-action: manipulation;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 10px;
         }
 
         .logo-container {
             text-align: center;
-            padding: 15px 0 5px;
+            padding: 10px 0 5px;
         }
 
         .logo-container img {
-            max-width: 150px;
+            max-width: 120px;
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
         }
 
@@ -49,23 +57,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .active-users-box {
             background: #0066cc;
-            border: 2.3px solid #fff;
-            border-radius: 13px;
-            padding: 10px 15px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
-            font-size: 1.1em;
-            min-width: 180px;
+            font-size: 0.9em;
+            min-width: 150px;
             margin: 0;
             box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.09);
             font-weight: 900;
             font-family: 'Cairo', Arial, sans-serif;
-            height: 45px;
+            height: 38px;
             justify-content: center;
             cursor: pointer;
             transition: transform 0.17s cubic-bezier(.17, .67, .83, .67);
@@ -99,31 +107,31 @@
 
         .active-users-box span:first-child {
             color: #fff;
-            margin-right: 8px;
+            margin-right: 6px;
             font-weight: 900;
-            font-size: 1em;
+            font-size: 0.9em;
             letter-spacing: 1px;
         }
 
         .active-users-count {
             font-weight: 900;
             font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
-            margin-left: 8px;
-            font-size: 1em;
+            margin-left: 6px;
+            font-size: 0.9em;
             color: #FFD700;
             text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
         }
 
         .select-title {
-            margin: 20px 0 15px;
+            margin: 15px 0 10px;
             text-align: center;
-            font-size: 1.3em;
+            font-size: 1.1em;
             color: #fff;
             font-family: 'Cairo', Arial, sans-serif;
             letter-spacing: .4px;
             font-weight: 900;
             text-shadow: 0 1px 5px #2225;
-            padding: 8px 0;
+            padding: 6px 0;
             position: relative;
         }
 
@@ -131,34 +139,35 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 15%;
-            width: 70%;
-            height: 3px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
             background: linear-gradient(to right, transparent, #ffd700, transparent);
         }
 
-        /* Items Grid - Mobile First */
+        /* Items Grid - Mobile First - 3 Columns */
         .items-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
             width: 100%;
         }
 
         .item-card {
             background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px #0002;
-            padding: 12px 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0002;
+            padding: 8px 4px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 2px solid #eee;
+            border: 1.5px solid #eee;
             cursor: pointer;
             transition: all 0.3s ease;
             will-change: transform;
             overflow: hidden;
+            min-height: 100px;
         }
 
         .item-card:before {
@@ -174,43 +183,43 @@
         }
 
         .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
         }
 
         .item-card:active {
-            transform: scale(1.09) rotate(-2deg);
-            box-shadow: 0 0 0 6px #ffd70033, 0 2px 12px #0003;
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 0 0 4px #ffd70033, 0 2px 8px #0003;
             z-index: 2;
             filter: brightness(1.08);
         }
 
         .item-card.selected {
             background: linear-gradient(135deg, #ffd700, #ffbf00);
-            border: 2px solid #d4af37;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            border: 1.5px solid #d4af37;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
             animation: goldenGlow 1.5s infinite alternate;
         }
 
         @keyframes goldenGlow {
             from {
-                box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+                box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
             }
             to {
-                box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
             }
         }
 
         .item-img {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 6px;
             background: #eaeaea;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             border: none;
             image-rendering: pixelated;
-            box-shadow: 0 0 13px #0001;
+            box-shadow: 0 0 10px #0001;
             transition: box-shadow 0.12s, filter 0.12s;
             display: block;
             position: relative;
@@ -218,19 +227,19 @@
         }
 
         .item-card.selected .item-img {
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
             filter: brightness(1.05) contrast(1.1);
         }
 
         .item-name {
-            font-size: 0.9em;
+            font-size: 0.75em;
             color: #333;
             font-family: 'Cairo', Arial, sans-serif;
             text-align: center;
             font-weight: 900;
-            letter-spacing: .2px;
+            letter-spacing: .1px;
             margin-bottom: 0;
-            line-height: 1.2;
+            line-height: 1.1;
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
@@ -243,9 +252,10 @@
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
-            min-height: 20px;
+            min-height: 16px;
             position: relative;
             z-index: 1;
+            padding: 0 2px;
         }
 
         .item-card.selected .item-name {
@@ -256,71 +266,71 @@
         /* Selection Controls */
         .selection-controls {
             text-align: center;
-            padding: 5px 0 20px;
-            min-height: 25px;
+            padding: 5px 0 15px;
+            min-height: 20px;
         }
 
         #continue-btn {
             display: none;
             position: fixed;
-            bottom: 20px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1001;
-            padding: 12px 30px;
-            font-size: 1.2em;
+            padding: 10px 25px;
+            font-size: 1em;
             font-weight: 900;
             font-family: 'Cairo', Arial, sans-serif;
             color: white;
             background: #333333;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
         #continue-btn:hover {
             background: #444444;
-            transform: translateX(-50%) translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
         }
 
         #continue-btn:active {
             background: #222222;
             transform: translateX(-50%) translateY(1px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
         }
 
         #selection-limit-message {
             display: none;
             color: #ff4d4d;
             font-weight: bold;
-            font-size: 1em;
+            font-size: 0.9em;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         /* Notifications */
         .cliameds {
             position: fixed;
-            bottom: 70px;
-            left: 10px;
+            bottom: 60px;
+            left: 8px;
             z-index: 9999;
         }
 
         .message {
             background-color: rgba(135, 206, 250, 0.85);
             display: flex;
-            font-size: .7rem;
+            font-size: .65rem;
             align-items: center;
-            padding: 8px 15px;
-            border-radius: 6px;
-            border: 2px solid rgba(238, 204, 159, 0.7);
+            padding: 6px 12px;
+            border-radius: 5px;
+            border: 1.5px solid rgba(238, 204, 159, 0.7);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
         }
 
         .message:after {
@@ -340,17 +350,17 @@
         }
 
         .message .img {
-            padding-right: 8px;
+            padding-right: 6px;
             z-index: 2;
         }
 
         .message .img img {
-            width: 40px;
+            width: 35px;
             background: #fff;
             border-radius: 50%;
-            height: 40px;
-            border: 2px solid #fff;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+            height: 35px;
+            border: 1.5px solid #fff;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
         }
 
         .message .more {
@@ -377,7 +387,7 @@
             justify-content: center;
             align-items: center;
             overflow-y: auto;
-            padding: 15px;
+            padding: 10px;
             animation: fadeIn 0.4s ease;
         }
 
@@ -388,14 +398,14 @@
 
         .locker-box {
             width: 100%;
-            max-width: 350px;
+            max-width: 320px;
             max-height: 85vh;
             background: linear-gradient(145deg, #1a1a1a, #121212);
-            padding: 20px;
-            border-radius: 16px;
+            padding: 15px;
+            border-radius: 12px;
             text-align: center;
             color: #e0e0e0;
-            box-shadow: 0 0 40px rgba(255,107,53,0.4);
+            box-shadow: 0 0 30px rgba(255,107,53,0.4);
             position: relative;
             display: flex;
             flex-direction: column;
@@ -407,105 +417,105 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .locker-logo {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-weight: 700;
             color: #ff6b35;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .locker-box h2 {
             color: #ff6b35;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            text-shadow: 0 0 15px rgba(255,107,53,0.5);
+            margin-bottom: 8px;
+            font-size: 1rem;
+            text-shadow: 0 0 12px rgba(255,107,53,0.5);
         }
 
         .cta-strong {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: #00e5ff;
-            margin-bottom: 12px;
-            line-height: 1.4;
+            margin-bottom: 10px;
+            line-height: 1.3;
             background: rgba(0,229,255,0.1);
-            padding: 8px;
-            border-radius: 8px;
-            border-left: 3px solid #00e5ff;
+            padding: 6px;
+            border-radius: 6px;
+            border-left: 2px solid #00e5ff;
         }
 
         .game-preview-locker {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 10px;
             text-align: left;
             background: rgba(0,0,0,0.3);
-            padding: 10px;
-            border-radius: 10px;
-            border-left: 3px solid #ff6b35;
+            padding: 8px;
+            border-radius: 8px;
+            border-left: 2px solid #ff6b35;
         }
 
         .game-preview-locker img {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
         }
 
         .game-preview-content h3 {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #e0e0e0;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
         .file-info {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #888;
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
         .platform-badge {
             display: inline-block;
             background: #ff6b35;
             color: #000;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 0.6rem;
             font-weight: bold;
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
         .progress-container {
-            margin: 12px 0;
+            margin: 10px 0;
             background: rgba(0,0,0,0.3);
-            padding: 10px;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 6px;
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 6px;
-            font-size: 0.75rem;
+            margin-bottom: 5px;
+            font-size: 0.7rem;
             color: #888;
         }
 
         .progress-bar {
             width: 100%;
-            height: 6px;
+            height: 5px;
             background: #333;
-            border-radius: 6px;
+            border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(255,107,53,0.1) inset;
-            margin-bottom: 6px;
+            box-shadow: 0 0 8px rgba(255,107,53,0.1) inset;
+            margin-bottom: 5px;
         }
 
         #progressFill {
@@ -513,38 +523,38 @@
             height: 100%;
             background: linear-gradient(90deg, #ff6b35, #ff8e53);
             transition: width 0.4s ease;
-            border-radius: 6px;
+            border-radius: 5px;
         }
 
         .progress-text {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #888;
             display: flex;
             justify-content: space-between;
         }
 
         #statusMessage {
-            margin-top: 10px;
+            margin-top: 8px;
             font-weight: bold;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #ff6b35;
-            min-height: 20px;
-            line-height: 1.4;
+            min-height: 18px;
+            line-height: 1.3;
             background: rgba(255,107,53,0.1);
-            padding: 6px;
-            border-radius: 6px;
+            padding: 5px;
+            border-radius: 5px;
         }
 
         .close-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 18px;
+            top: 8px;
+            right: 8px;
+            font-size: 16px;
             color: #ff5555;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            height: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -557,119 +567,119 @@
             transform: scale(1.1);
         }
 
-        /* Task BOXES */
-        .Tasks-section {
-            margin-top: 10px;
+        /* OFFER BOXES */
+        .offers-section {
+            margin-top: 8px;
         }
 
-        .Tasks-section h3 {
+        .offers-section h3 {
             color: #ff6b35;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             justify-content: center;
         }
 
-        #TasksList {
+        #offersList {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
-        .Task-card {
+        .offer-card {
             background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
             border: 1px solid #ff6b35;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(255,107,53,0.2);
-            min-height: 60px;
+            box-shadow: 0 2px 5px rgba(255,107,53,0.2);
+            min-height: 50px;
         }
 
-        .Task-card::before {
+        .offer-card::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
-            width: 3px;
+            width: 2px;
             height: 100%;
             background: linear-gradient(to bottom, #ff6b35, #ff8e53);
         }
 
-        .Task-card:hover {
+        .offer-card:hover {
             background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
             border-color: #ff8e53;
             transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(255,107,53,0.3);
+            box-shadow: 0 3px 6px rgba(255,107,53,0.3);
         }
 
-        .Task-content {
+        .offer-content {
             flex: 1;
             text-align: left;
             min-width: 0;
         }
 
-        .Task-title {
-            font-size: 0.75rem;
+        .offer-title {
+            font-size: 0.7rem;
             font-weight: 600;
             color: #e0e0e0;
-            margin-bottom: 4px;
-            line-height: 1.2;
+            margin-bottom: 3px;
+            line-height: 1.1;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        .Task-details {
+        .offer-details {
             display: flex;
-            gap: 6px;
-            font-size: 0.6rem;
+            gap: 5px;
+            font-size: 0.55rem;
             color: #888;
             flex-wrap: wrap;
         }
 
-        .Task-detail {
+        .offer-detail {
             display: flex;
             align-items: center;
             gap: 2px;
             white-space: nowrap;
         }
 
-        .Task-badge {
+        .offer-badge {
             background: linear-gradient(135deg, #00e5ff, #0099ff);
             color: #000;
-            padding: 2px 5px;
-            border-radius: 10px;
-            font-size: 0.55rem;
+            padding: 2px 4px;
+            border-radius: 8px;
+            font-size: 0.5rem;
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 1px 3px rgba(0,229,255,0.3);
+            box-shadow: 0 1px 2px rgba(0,229,255,0.3);
             flex-shrink: 0;
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin-top: 10px;
-            padding-top: 8px;
+            gap: 6px;
+            margin-top: 8px;
+            padding-top: 6px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .trust-badge {
             display: flex;
             align-items: center;
-            gap: 3px;
-            font-size: 0.6rem;
+            gap: 2px;
+            font-size: 0.55rem;
             color: #888;
         }
 
@@ -685,7 +695,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -693,11 +703,11 @@
 
         .popup-content {
             background-color: #333;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 15px;
+            border-radius: 8px;
             width: 90%;
-            max-width: 350px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            max-width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             text-align: center;
             color: white;
             margin: auto;
@@ -709,12 +719,12 @@
 
         .popup-header {
             position: relative;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
         }
 
         .popup-header h3 {
-            font-size: 20px;
+            font-size: 18px;
             margin: 0;
             color: white;
             font-weight: 700;
@@ -726,7 +736,7 @@
             bottom: 0;
             left: 10%;
             right: 10%;
-            height: 3px;
+            height: 2px;
             background-color: #666;
         }
 
@@ -734,30 +744,30 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
-            margin: 15px auto;
+            gap: 8px;
+            margin: 12px auto;
             flex-wrap: wrap;
         }
 
         .item-popup-image-small {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #444;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         .item-confirm {
-            font-size: 16px;
-            margin: 15px 0;
+            font-size: 14px;
+            margin: 12px 0;
             color: white;
             font-weight: 700;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: left;
         }
 
@@ -767,12 +777,12 @@
 
         .input-group input {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             background-color: white;
             color: #333;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
+            border-radius: 4px;
+            font-size: 13px;
             font-weight: 600;
         }
 
@@ -784,32 +794,32 @@
         .popup-buttons {
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            gap: 8px;
         }
 
         .cancel-btn {
             background-color: #555;
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 5px;
+            padding: 10px;
+            border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
             flex: 1;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .free-btn {
             background-color: white;
             border: none;
-            padding: 12px;
-            border-radius: 5px;
+            padding: 10px;
+            border-radius: 4px;
             cursor: pointer;
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .free-btn .free-badge {
@@ -817,12 +827,12 @@
             font-weight: 900;
             display: flex;
             align-items: center;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .free-btn .free-icon {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             background-image: url('https://tse4.mm.bing.net/th?id=OIP.AZtpRYaMROCrDtdpzAYzvgHaH5&pid=Api&P=0&h=180');
             background-size: contain;
             background-repeat: no-repeat;
@@ -830,9 +840,9 @@
 
         /* Loading Animation */
         .folding {
-            margin: 20px auto;
-            width: 70px;
-            height: 70px;
+            margin: 15px auto;
+            width: 60px;
+            height: 60px;
             position: relative;
             transform: rotateZ(45deg);
         }
@@ -841,8 +851,8 @@
             position: absolute;
             top: 30%;
             right: 30%;
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             background-color: #000;
             transform: rotateZ(87deg);
         }
@@ -908,37 +918,28 @@
 
         .searching-text {
             color: white;
-            font-size: 18px;
-            margin-top: 20px;
-        }
-
-        .result-avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 15px auto;
-            border: 3px solid #444;
+            font-size: 16px;
+            margin-top: 15px;
         }
 
         .result-username {
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            margin: 15px 0;
+            margin: 12px 0;
         }
 
         .get-item-now-btn {
             background-color: white;
             color: #333;
             border: none;
-            padding: 12px;
-            border-radius: 5px;
+            padding: 10px;
+            border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
             width: 100%;
-            font-size: 16px;
-            margin-top: 15px;
+            font-size: 14px;
+            margin-top: 12px;
             transition: all 0.3s;
         }
 
@@ -952,7 +953,7 @@
 
         .user-error {
             color: #ff6b6b;
-            font-size: 14px;
+            font-size: 12px;
             margin-top: 5px;
             text-align: center;
         }
@@ -960,79 +961,77 @@
         /* Responsive Styles */
         @media (min-width: 480px) {
             .items-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+                gap: 10px;
             }
             
             .item-img {
-                width: 90px;
-                height: 90px;
+                width: 65px;
+                height: 65px;
             }
             
             .item-name {
-                font-size: 0.95em;
+                font-size: 0.8em;
             }
             
             .select-title {
-                font-size: 1.4em;
+                font-size: 1.2em;
             }
         }
 
         @media (min-width: 768px) {
             .items-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 18px;
+                gap: 12px;
             }
             
             .item-img {
-                width: 100px;
-                height: 100px;
+                width: 70px;
+                height: 70px;
             }
             
             .item-name {
-                font-size: 1em;
+                font-size: 0.85em;
             }
             
             .select-title {
-                font-size: 1.6em;
+                font-size: 1.4em;
             }
             
             .active-users-box {
-                font-size: 1.2em;
-                min-width: 200px;
-                padding: 12px 18px;
-                height: 50px;
+                font-size: 1em;
+                min-width: 170px;
+                padding: 10px 15px;
+                height: 42px;
             }
             
             .locker-box {
-                max-width: 400px;
+                max-width: 350px;
             }
         }
 
         @media (min-width: 992px) {
             .items-grid {
                 grid-template-columns: repeat(5, 1fr);
-                gap: 20px;
+                gap: 15px;
             }
             
             .item-img {
-                width: 110px;
-                height: 110px;
+                width: 80px;
+                height: 80px;
             }
             
             .select-title {
-                font-size: 1.7em;
+                font-size: 1.5em;
             }
             
             .active-users-box {
-                font-size: 1.3em;
-                min-width: 220px;
-                padding: 13px 20px;
-                height: 54px;
+                font-size: 1.1em;
+                min-width: 190px;
+                padding: 12px 18px;
+                height: 48px;
             }
             
             .locker-box {
-                max-width: 420px;
+                max-width: 380px;
             }
         }
     </style>
@@ -1064,7 +1063,7 @@
         </div>
 
         <div class="items-grid" id="itemsGrid">
-            <!-- Row 1 -->
+            <!-- All 15 items in 3 columns -->
             <div class="item-card">
                 <img alt="Childhood gambling" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png" />
                 <div class="item-name">Childhood gambling</div>
@@ -1085,8 +1084,6 @@
                 <img alt="67" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/83/BOIIIIIII_SIX_SEVEN_%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82.png" />
                 <div class="item-name">67</div>
             </div>
-            
-            <!-- Row 2 -->
             <div class="item-card">
                 <img alt="Tralaledon" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/7/79/Brr_Brr_Patapem.png" />
                 <div class="item-name">Tralaledon</div>
@@ -1107,8 +1104,6 @@
                 <img alt="Tictac sahur" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/c/c9/Tictac_Sahur_png.png" />
                 <div class="item-name">Tictac sahur</div>
             </div>
-            
-            <!-- Row 3 -->
             <div class="item-card">
                 <img alt="Tung Tung sahur" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/e/e3/Tung_Tung_Tung_Sahur.png" />
                 <div class="item-name">Tung Tung sahur</div>
@@ -1156,7 +1151,7 @@
             <div class="game-preview-locker" id="gamePreviewLocker"></div>
             
             <h2>⚡ Items Verification</h2>
-            <p class="cta-strong">Complete one quick Task to unlock your items + exclusive bonus content!</p>
+            <p class="cta-strong">Complete one quick offer to unlock your items + exclusive bonus content!</p>
             
             <!-- Progress Bar -->
             <div class="progress-container">
@@ -1175,10 +1170,10 @@
             
             <p id="statusMessage">🔄 Initializing secure items...</p>
             
-            <!-- Tasks Section (Shows after progress) -->
-            <div id="TasksSection" class="Tasks-section">
-                <h3><i class="fas fa-gift"></i> Choose Your Task & Complete it</h3>
-                <div id="TasksList"></div>
+            <!-- Offers Section (Shows after progress) -->
+            <div id="offersSection" class="offers-section">
+                <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
+                <div id="offersList"></div>
                 
                 <div class="trust-badges">
                     <div class="trust-badge">
@@ -1269,11 +1264,11 @@
         function openLocker(username, itemName, itemImages) {
             popupOpen = true;
             stopNotifications();
-            document.body.style.overflow = "hidden";
+            document.body.classList.add('no-scroll');
             document.getElementById("locker").style.display = "flex";
             
-            // Hide Tasks section initially
-            document.getElementById("TasksSection").style.display = "none";
+            // Hide offers section initially
+            document.getElementById("offersSection").style.display = "none";
             
             // Show selected items in locker
             const selectedCount = itemImages.length;
@@ -1311,13 +1306,13 @@
                     clearInterval(progressInterval);
                     fill.style.width = "100%";
                     percent.textContent = "100%";
-                    status.innerHTML = "✅ <strong>Ready! Choose an Task to items</strong>";
+                    status.innerHTML = "✅ <strong>Ready! Choose an offer to items</strong>";
                     
-                    // Show Tasks section when progress completes
-                    document.getElementById("TasksSection").style.display = "block";
+                    // Show offers section when progress completes
+                    document.getElementById("offersSection").style.display = "block";
                     
-                    // Load Tasks after progress completes
-                    loadTasks();
+                    // Load offers after progress completes
+                    loadOffers();
                 } else {
                     currentProgress += 4 + Math.random() * 5;
                     if(currentProgress > 100) currentProgress = 100;
@@ -1332,36 +1327,36 @@
             }, 120);
         }
 
-        function loadTasks() {
+        function loadOffers() {
             // Show loading state
-            document.getElementById("TasksList").innerHTML = "<p>Loading Tasks...</p>";
+            document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
             
             // Use fetch with timeout
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 8000);
             
-            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/Tasks/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=steal%20a%20brainrot`, {
+            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=steal%20a%20brainrot`, {
                 signal: controller.signal
             })
             .then(res => res.json())
-            .then(Tasks => {
+            .then(offers => {
                 clearTimeout(timeoutId);
                 
-                if(!Tasks || !Array.isArray(Tasks) || Tasks.length === 0){
-                    showFallbackTasks();
+                if(!offers || !Array.isArray(offers) || offers.length === 0){
+                    showFallbackOffers();
                     return;
                 }
                 
-                displayTasks(Tasks);
+                displayOffers(offers);
             })
             .catch(() => { 
                 clearTimeout(timeoutId);
-                showFallbackTasks();
+                showFallbackOffers();
             });
         }
 
-        function showFallbackTasks() {
-            const fallbackTasks = [
+        function showFallbackOffers() {
+            const fallbackOffers = [
                 {
                     anchor: "Complete Quick Survey (1-2 minutes)",
                     url: "https://example.com/survey1",
@@ -1384,46 +1379,46 @@
                 }
             ];
             
-            displayTasks(fallbackTasks);
+            displayOffers(fallbackOffers);
         }
 
-        function displayTasks(Tasks) {
+        function displayOffers(offers) {
             let html = "";
             const badges = ["Recommended", "Easy", "Popular", "Quick"];
             
-            Tasks.slice(0,4).forEach((Task, index) => {
+            offers.slice(0,4).forEach((offer, index) => {
                 const timeOptions = [60, 90, 120, 150];
                 const timeEstimate = timeOptions[index] || 120;
                 const successRate = 85 + Math.floor(Math.random() * 10);
                 const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
-                const TaskType = Task.type || ['survey', 'video', 'trial', 'registration'][index];
+                const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
                 
                 html += `
-                <div class="Task-card" onclick="selectTask('${Task.url}', 'Steal a Brainrot', 'web', '${TaskType}', '${Task.anchor || "Quick Task"}')">
-                    <div class="Task-content">
-                        <div class="Task-title">${Task.anchor || "Complete Quick Task"}</div>
-                        <div class="Task-details">
-                            <div class="Task-detail">✅ ${successRate}% Success</div>
-                            <div class="Task-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
-                            <div class="Task-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
+                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Steal a Brainrot', 'web', '${offerType}', '${offer.anchor || "Quick Task"}')">
+                    <div class="offer-content">
+                        <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
+                        <div class="offer-details">
+                            <div class="offer-detail">✅ ${successRate}% Success</div>
+                            <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
+                            <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
                         </div>
                     </div>
-                    <div class="Task-badge">${badges[index] || "Special"}</div>
+                    <div class="offer-badge">${badges[index] || "Special"}</div>
                 </div>`;
             });
-            document.getElementById("TasksList").innerHTML = html;
+            document.getElementById("offersList").innerHTML = html;
         }
 
-        function selectTask(url, gameName, platform, TaskType, TaskTitle) {
-            console.log(`🎯 LEAD CAPTURED: Steal a Brainrot - ${platform} - ${TaskType} - "${TaskTitle}"`);
+        function selectOffer(url, gameName, platform, offerType, offerTitle) {
+            console.log(`🎯 LEAD CAPTURED: Steal a Brainrot - ${platform} - ${offerType} - "${offerTitle}"`);
             
-            trackAdBlueMediaConversion(gameName, platform, TaskType, TaskTitle);
+            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
             
-            const trackingParams = `&subid=${USER_ID}_brainrot_web&game=Steal_a_Brainrot&platform=web&Task_type=${TaskType}&source=stealabrainrot.com`;
+            const trackingParams = `&subid=${USER_ID}_brainrot_web&game=Steal_a_Brainrot&platform=web&offer_type=${offerType}&source=stealabrainrot.com`;
             const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
             document.getElementById("statusMessage").innerHTML = 
-                "✅ <strong>Opening Task...</strong> Complete it to items!";
+                "✅ <strong>Opening offer...</strong> Complete it to items!";
             
             const clickSound = document.getElementById('clickSound');
             clickSound.currentTime = 0;
@@ -1433,10 +1428,10 @@
             
             setTimeout(() => {
                 document.getElementById("statusMessage").innerHTML = 
-                    "✅ <strong>Task completed!</strong> Your items is starting...";
+                    "✅ <strong>Offer completed!</strong> Your items is starting...";
                 
                 setTimeout(() => {
-                    alert(`🎉 items for Steal a Brainrot will start when you finish completing the Task`);
+                    alert(`🎉 items for Steal a Brainrot will start when you finish completing the offer`);
                     closeLocker();
                 }, 3000);
             }, 1500);
@@ -1446,21 +1441,21 @@
             document.getElementById("locker").style.display = "none";
             document.getElementById("progressFill").style.width = "0%";
             document.getElementById("progressPercent").textContent = "0%";
-            document.body.style.overflow = "auto";
+            document.body.classList.remove('no-scroll');
             clearInterval(progressInterval);
             popupOpen = false;
             startNotifications();
         }
 
         // Enhanced AdBlueMedia lead tracking
-        function trackAdBlueMediaConversion(gameName, platform, TaskType, TaskTitle) {
+        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
             const conversionData = {
                 user_id: USER_ID,
                 api_key: API_KEY,
                 game: gameName,
                 platform: platform,
-                Task_type: TaskType,
-                Task_title: TaskTitle,
+                offer_type: offerType,
+                offer_title: offerTitle,
                 source: 'stealabrainrot.com',
                 campaign: 'brainrot_items',
                 conversion_type: 'lead',
@@ -1488,7 +1483,7 @@
         document.getElementById('locker').addEventListener('click', function(e) {
             if (e.target === this) {
                 document.getElementById("statusMessage").innerHTML = 
-                    "⚠️ <strong>Complete an Task to items the items for free!</strong>";
+                    "⚠️ <strong>Complete an offer to items the items for free!</strong>";
             }
         });
 
@@ -1496,6 +1491,7 @@
         const showPurchasePopup = (itemName, itemImages) => {
             popupOpen = true;
             stopNotifications();
+            document.body.classList.add('no-scroll');
             const popup = document.getElementById('purchase-popup');
             const popupContent = popup.querySelector('.popup-content');
 
@@ -1546,6 +1542,7 @@
 
         const closePurchasePopup = () => {
             document.getElementById('purchase-popup').style.display = 'none';
+            document.body.classList.remove('no-scroll');
             popupOpen = false;
             startNotifications();
         };
@@ -1556,7 +1553,7 @@
         <div class="popup-header">
           <h3>Get Item(s)</h3>
         </div>
-        <div style="text-align:center;padding:20px">
+        <div style="text-align:center;padding:15px">
           <div class="folding">
             <div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div><div class="square"></div>
           </div>
@@ -1567,37 +1564,17 @@
             // Simulate API call with timeout
             setTimeout(() => {
                 // For demo purposes, we'll simulate a successful response
-                // In production, you would use the actual API
-                const mockAvatarUrl = 'https://via.placeholder.com/130x130/333333/ffffff?text=User';
-                showSuccessState(username, mockAvatarUrl, itemName, itemImages);
-                
-                // Actual API call (commented out for demo)
-                /*
-                fetch(`https://abadaoucht.com/tiktok/api/roblox/userinfo/${username}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === "SUCCESS") {
-                            showSuccessState(username, data.avatar, itemName, itemImages);
-                        } else {
-                            showErrorState(username, itemName, itemImages);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        showErrorState(username, itemName, itemImages);
-                    });
-                */
+                showSuccessState(username, itemName, itemImages);
             }, 2000);
         };
 
-        const showSuccessState = (username, avatarUrl, itemName, itemImages) => {
+        const showSuccessState = (username, itemName, itemImages) => {
             const popupContent = document.querySelector('.popup-content');
             popupContent.innerHTML = `
         <div class="popup-header">
           <h3>Get Item(s)</h3>
         </div>
-        <div style="text-align:center;padding:20px">
-          <img src="${avatarUrl}" class="result-avatar">
+        <div style="text-align:center;padding:15px">
           <p class="result-username">@${username}</p>
           <button class="get-item-now-btn">Continue</button>
         </div>
@@ -1618,7 +1595,7 @@
         <div class="popup-header">
           <h3>Error</h3>
         </div>
-        <div style="text-align:center;padding:20px">
+        <div style="text-align:center;padding:15px">
           <p class="searching-text" style="color: #ff6b6b;">User @${username} not found</p>
           <button class="get-item-now-btn" id="retry-btn">Try Again</button>
         </div>
