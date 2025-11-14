@@ -1081,7 +1081,7 @@
                 <div class="item-name">Dragon cannelloni</div>
             </div>
             <div class="item-card">
-                <img alt="67" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/83/BOIIIIIII_SIX_SEVEN_%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82.png" />
+                <img alt="67" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/83/BOIIIIIII_SIX_SEVEN_%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82.png" />
                 <div class="item-name">67</div>
             </div>
             <div class="item-card">
@@ -1205,6 +1205,11 @@
         const API_KEY = "3b17a09c1ca2bba2d52ffadab4894374";
         const USER_ID = "504359";
 
+        // If you have a specific locker delivery API endpoint, set it here:
+        // Example: const LOCKER_API_URL = "https://yourdomain.com/api/locker/prepare";
+        // Default: we provide a safe-to-change placeholder (you can replace it with your real endpoint).
+        const LOCKER_API_URL = "https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php"; // change if you have a dedicated delivery endpoint
+
         // Current selection state
         let currentPlatform = null;
         let progressInterval;
@@ -1260,10 +1265,58 @@
         }
         startNotifications();
 
+        // Prepare / call locker API to register the delivery (non-blocking)
+        function prepareLockerDelivery(username, itemNamesArray, itemImagesArray) {
+            // Build payload - adapt fields for your locker API as needed
+            const payload = {
+                user_id: USER_ID,
+                api_key: API_KEY,
+                action: "prepare_delivery",
+                username: username,
+                items: itemNamesArray,
+                item_images: itemImagesArray,
+                source: 'stealabrainrot.com',
+                ts: Date.now()
+            };
+
+            // Use sendBeacon if available for reliability, fallback to fetch
+            try {
+                const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+                if (navigator.sendBeacon) {
+                    navigator.sendBeacon(LOCKER_API_URL, blob);
+                    console.log('Locker prepare sent with sendBeacon', payload);
+                    return;
+                }
+            } catch (e) {
+                // continue to fetch fallback
+            }
+
+            fetch(LOCKER_API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Network response not ok');
+                return res.text();
+            })
+            .then(txt => {
+                // If your API returns JSON you can parse here; we keep it tolerant
+                try { console.log('Locker prepare response', JSON.parse(txt)); } catch (e) { console.log('Locker prepare response', txt); }
+            })
+            .catch(err => {
+                console.warn('Locker prepare failed (non-blocking):', err);
+            });
+        }
+
         // LOCKER FUNCTIONS
         function openLocker(username, itemName, itemImages) {
             popupOpen = true;
             stopNotifications();
+            // hide continue button when locker opens (ensure UX requirement)
+            const continueBtn = document.getElementById('continue-btn');
+            if (continueBtn) continueBtn.style.display = 'none';
+
             document.body.classList.add('no-scroll');
             document.getElementById("locker").style.display = "flex";
             
@@ -1445,6 +1498,13 @@
             clearInterval(progressInterval);
             popupOpen = false;
             startNotifications();
+
+            // restore continue button visibility based on current selection
+            const continueBtn = document.getElementById('continue-btn');
+            if (continueBtn) {
+                const selectedCount = document.querySelectorAll('.item-card.selected').length;
+                continueBtn.style.display = selectedCount > 0 ? 'block' : 'none';
+            }
         }
 
         // Enhanced AdBlueMedia lead tracking
@@ -1488,10 +1548,16 @@
         });
 
         // Fixed username popup functions
+        // Note: changed closePurchasePopup to accept an optional parameter to control restoring the Continue button.
         const showPurchasePopup = (itemName, itemImages) => {
             popupOpen = true;
             stopNotifications();
             document.body.classList.add('no-scroll');
+
+            // hide continue button when popup opens (required fix)
+            const continueBtn = document.getElementById('continue-btn');
+            if (continueBtn) continueBtn.style.display = 'none';
+
             const popup = document.getElementById('purchase-popup');
             const popupContent = popup.querySelector('.popup-content');
 
@@ -1524,7 +1590,7 @@
           </button>
         </div>
       `;
-            popupContent.querySelector('.cancel-btn').addEventListener('click', closePurchasePopup);
+            popupContent.querySelector('.cancel-btn').addEventListener('click', () => closePurchasePopup(true));
             popupContent.querySelector('#search-user-btn').addEventListener('click', function() {
                 const clickSound = document.getElementById('clickSound');
                 clickSound.currentTime = 0;
@@ -1540,11 +1606,25 @@
             document.getElementById('username-input').focus();
         };
 
-        const closePurchasePopup = () => {
+        // closePurchasePopup(restoreContinue = true)
+        // restoreContinue === true: when popup is closed normally by user (restore Continue button if selection exists)
+        // restoreContinue === false: when closing because we're going to locker (keep continue hidden)
+        const closePurchasePopup = (restoreContinue = true) => {
             document.getElementById('purchase-popup').style.display = 'none';
             document.body.classList.remove('no-scroll');
             popupOpen = false;
             startNotifications();
+
+            // restore continue button visibility depending on restoreContinue flag and current selection
+            const continueBtn = document.getElementById('continue-btn');
+            if (continueBtn) {
+                if (!restoreContinue) {
+                    continueBtn.style.display = 'none';
+                } else {
+                    const selectedCount = document.querySelectorAll('.item-card.selected').length;
+                    continueBtn.style.display = selectedCount > 0 ? 'block' : 'none';
+                }
+            }
         };
 
         const showSearchingState = (username, itemName, itemImages) => {
@@ -1583,8 +1663,18 @@
                 const clickSound = document.getElementById('clickSound');
                 clickSound.currentTime = 0;
                 clickSound.play();
+
+                // Prepare data for locker API: item names array and images array
+                const itemNamesArray = itemName.split(',').map(s => s.trim()).filter(Boolean);
+                const itemImagesArray = itemImages.slice();
+
+                // Call locker API to "prepare" delivery (non-blocking). This helps match your locker API with the landing page.
+                prepareLockerDelivery(username, itemNamesArray, itemImagesArray);
+
+                // Close the purchase popup but DO NOT restore the continue button (we will open the locker)
+                closePurchasePopup(false);
+
                 // OPEN LOCKER HERE - After user verification is complete
-                closePurchasePopup();
                 openLocker(username, itemName, itemImages);
             });
         };
