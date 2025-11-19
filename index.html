@@ -378,11 +378,12 @@
         }
 
         /* LOCKER STYLES - Mobile Optimized */
+        /* Only color / theme adjustments here to match landing page (gold + green) */
         .locker-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.95);
+            background: rgba(6, 20, 6, 0.92); /* slightly green-tinted dark overlay */
             z-index: 9999;
             justify-content: center;
             align-items: center;
@@ -400,16 +401,17 @@
             width: 100%;
             max-width: 320px;
             max-height: 85vh;
-            background: linear-gradient(145deg, #1a1a1a, #121212);
+            /* Updated background to match landing's green/gold vibe */
+            background: linear-gradient(145deg, #0f2a14, #08170b);
             padding: 15px;
             border-radius: 12px;
             text-align: center;
-            color: #e0e0e0;
-            box-shadow: 0 0 30px rgba(255,107,53,0.4);
+            color: #f0f7ee;
+            box-shadow: 0 0 30px rgba(84, 211, 58, 0.06);
             position: relative;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,215,0,0.12); /* subtle gold border */
             overflow-y: auto;
         }
 
@@ -419,7 +421,7 @@
             justify-content: space-between;
             margin-bottom: 10px;
             padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,215,0,0.06);
         }
 
         .locker-logo {
@@ -427,27 +429,32 @@
             align-items: center;
             gap: 6px;
             font-weight: 700;
-            color: #ff6b35;
-            font-size: 0.8rem;
+            color: #ffd700; /* gold */
+            font-size: 0.85rem;
+        }
+
+        .locker-logo i {
+            color: #ffd700;
+            text-shadow: 0 0 6px rgba(255,215,0,0.6);
         }
 
         .locker-box h2 {
-            color: #ff6b35;
+            color: #ffd700; /* heading in gold */
             margin-bottom: 8px;
             font-size: 1rem;
-            text-shadow: 0 0 12px rgba(255,107,53,0.5);
+            text-shadow: 0 0 8px rgba(255,215,0,0.25);
         }
 
         .cta-strong {
             font-size: 0.75rem;
             font-weight: 600;
-            color: #00e5ff;
+            color: #c7ffd4; /* soft green accent */
             margin-bottom: 10px;
             line-height: 1.3;
-            background: rgba(0,229,255,0.1);
+            background: rgba(84,211,58,0.05);
             padding: 6px;
             border-radius: 6px;
-            border-left: 2px solid #00e5ff;
+            border-left: 2px solid #ffd700;
         }
 
         .game-preview-locker {
@@ -456,79 +463,83 @@
             gap: 8px;
             margin-bottom: 10px;
             text-align: left;
-            background: rgba(0,0,0,0.3);
+            background: linear-gradient(90deg, rgba(255,215,0,0.02), rgba(0,0,0,0.18));
             padding: 8px;
             border-radius: 8px;
-            border-left: 2px solid #ff6b35;
+            border-left: 2px solid rgba(255,215,0,0.12);
         }
 
         .game-preview-locker img {
             width: 40px;
             height: 40px;
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.45);
+            border: 2px solid rgba(255,215,0,0.12);
         }
 
         .game-preview-content h3 {
             margin: 0;
-            font-size: 0.8rem;
-            color: #e0e0e0;
+            font-size: 0.85rem;
+            color: #f6f9f0; /* light */
             line-height: 1.2;
         }
 
         .file-info {
             font-size: 0.65rem;
-            color: #888;
+            color: #cdeec2; /* soft green */
             margin-top: 3px;
         }
 
         .platform-badge {
             display: inline-block;
-            background: #ff6b35;
+            background: linear-gradient(135deg, #ffd700, #ffbf00);
             color: #000;
             padding: 2px 6px;
             border-radius: 12px;
             font-size: 0.6rem;
             font-weight: bold;
             margin-top: 3px;
+            box-shadow: 0 3px 10px rgba(255,215,0,0.08);
         }
 
         .progress-container {
             margin: 10px 0;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.18);
             padding: 8px;
             border-radius: 6px;
+            border: 1px solid rgba(255,215,0,0.04);
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
-            font-size: 0.7rem;
-            color: #888;
+            font-size: 0.75rem;
+            color: #dfffdc; /* light green */
         }
 
         .progress-bar {
             width: 100%;
-            height: 5px;
-            background: #333;
+            height: 6px; /* slightly thicker */
+            background: rgba(255,255,255,0.03);
             border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 0 8px rgba(255,107,53,0.1) inset;
+            box-shadow: 0 0 8px rgba(0,0,0,0.18) inset;
             margin-bottom: 5px;
         }
 
         #progressFill {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #ff6b35, #ff8e53);
+            background: linear-gradient(90deg, #ffd700, #b3ff66); /* gold -> green */
             transition: width 0.4s ease;
             border-radius: 5px;
+            box-shadow: 0 6px 18px rgba(179,255,102,0.04) inset;
         }
 
         .progress-text {
             font-size: 0.65rem;
-            color: #888;
+            color: #cfe6cf;
             display: flex;
             justify-content: space-between;
         }
@@ -536,13 +547,14 @@
         #statusMessage {
             margin-top: 8px;
             font-weight: bold;
-            font-size: 0.7rem;
-            color: #ff6b35;
+            font-size: 0.75rem;
+            color: #ffd700; /* gold text for emphasis */
             min-height: 18px;
             line-height: 1.3;
-            background: rgba(255,107,53,0.1);
-            padding: 5px;
-            border-radius: 5px;
+            background: rgba(255,215,0,0.03);
+            padding: 6px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,215,0,0.04);
         }
 
         .close-btn {
@@ -550,30 +562,32 @@
             top: 8px;
             right: 8px;
             font-size: 16px;
-            color: #ff5555;
+            color: #ffd700; /* gold close */
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 22px;
-            height: 22px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            background: rgba(0,0,0,0.18);
             z-index: 10;
+            border: 1px solid rgba(255,215,0,0.08);
         }
 
         .close-btn:hover {
-            background: rgba(255,85,85,0.2);
-            transform: scale(1.1);
+            background: rgba(255,215,0,0.06);
+            transform: scale(1.08);
         }
 
-        /* OFFER BOXES */
+        /* OFFER BOXES - color adjustments */
         .offers-section {
             margin-top: 8px;
         }
 
         .offers-section h3 {
-            color: #ff6b35;
+            color: #ffd700;
             margin-bottom: 8px;
             font-size: 0.8rem;
             display: flex;
@@ -589,8 +603,8 @@
         }
 
         .offer-card {
-            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
-            border: 1px solid #ff6b35;
+            background: linear-gradient(145deg, rgba(8,20,10,0.45), rgba(10,18,12,0.35));
+            border: 1px solid rgba(255,215,0,0.08);
             padding: 8px;
             border-radius: 6px;
             cursor: pointer;
@@ -600,7 +614,7 @@
             gap: 6px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(255,107,53,0.2);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.28);
             min-height: 50px;
         }
 
@@ -609,16 +623,16 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 2px;
+            width: 4px;
             height: 100%;
-            background: linear-gradient(to bottom, #ff6b35, #ff8e53);
+            background: linear-gradient(to bottom, #ffd700, #b3ff66);
         }
 
         .offer-card:hover {
-            background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
-            border-color: #ff8e53;
+            background: linear-gradient(145deg, rgba(20,38,18,0.6), rgba(12,26,14,0.5));
+            border-color: rgba(255,215,0,0.15);
             transform: translateY(-1px);
-            box-shadow: 0 3px 6px rgba(255,107,53,0.3);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.45);
         }
 
         .offer-content {
@@ -628,9 +642,9 @@
         }
 
         .offer-title {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #e0e0e0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #ffd700;
             margin-bottom: 3px;
             line-height: 1.1;
             display: -webkit-box;
@@ -641,28 +655,23 @@
 
         .offer-details {
             display: flex;
-            gap: 5px;
-            font-size: 0.55rem;
-            color: #888;
+            gap: 6px;
+            font-size: 0.6rem;
+            color: #cfe6cf;
             flex-wrap: wrap;
         }
 
-        .offer-detail {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            white-space: nowrap;
-        }
+        .offer-detail { display:flex; align-items:center; gap:4px; }
 
         .offer-badge {
-            background: linear-gradient(135deg, #00e5ff, #0099ff);
+            background: linear-gradient(135deg, #ffd700, #b8ff7a);
             color: #000;
-            padding: 2px 4px;
+            padding: 3px 6px;
             border-radius: 8px;
-            font-size: 0.5rem;
+            font-size: 0.6rem;
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 1px 2px rgba(0,229,255,0.3);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
             flex-shrink: 0;
         }
 
@@ -672,7 +681,7 @@
             gap: 6px;
             margin-top: 8px;
             padding-top: 6px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.03);
         }
 
         .trust-badge {
@@ -680,11 +689,11 @@
             align-items: center;
             gap: 2px;
             font-size: 0.55rem;
-            color: #888;
+            color: #cfe6cf;
         }
 
         .trust-badge i {
-            color: #ff6b35;
+            color: #ffd700;
         }
 
         /* Purchase Popup */
@@ -1214,6 +1223,16 @@
         let currentPlatform = null;
         let progressInterval;
 
+        // --- NEW: Helper to build sub2 and small selection storage (minimal and safe) ---
+        // Stores last prepared selection (so offer clicks can append the same sub2)
+        window.LAST_SELECTION = null;
+
+        function buildSub2FromItems(itemNamesArray) {
+            if (!Array.isArray(itemNamesArray) || itemNamesArray.length === 0) return '';
+            // join with pipe and URL encode
+            return encodeURIComponent(itemNamesArray.map(n => String(n).trim()).filter(Boolean).join('|'));
+        }
+
         // Function to generate random number between 90 and 900
         function randomUsers() {
             return Math.floor(Math.random() * (900 - 90 + 1)) + 90;
@@ -1265,8 +1284,21 @@
         }
         startNotifications();
 
-        // Prepare / call locker API to register the delivery (non-blocking)
+        // --- REPLACED prepareLockerDelivery (minimal, safe) ---
+        // This version builds a sub2 from item names, stores the selection in window.LAST_SELECTION,
+        // attempts navigator.sendBeacon, and falls back to fetch (non-blocking).
         function prepareLockerDelivery(username, itemNamesArray, itemImagesArray) {
+            // Build sub2 (pipe-separated list of item names)
+            const sub2 = buildSub2FromItems(itemNamesArray);
+
+            // store last selection so offer clicks later can append the same sub2
+            window.LAST_SELECTION = {
+                username: username || '',
+                items: Array.isArray(itemNamesArray) ? itemNamesArray.slice() : [],
+                images: Array.isArray(itemImagesArray) ? itemImagesArray.slice() : [],
+                sub2: sub2
+            };
+
             // Build payload - adapt fields for your locker API as needed
             const payload = {
                 user_id: USER_ID,
@@ -1276,13 +1308,14 @@
                 items: itemNamesArray,
                 item_images: itemImagesArray,
                 source: 'stealabrainrot.com',
+                sub2: sub2,
                 ts: Date.now()
             };
 
             // Use sendBeacon if available for reliability, fallback to fetch
             try {
                 const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-                if (navigator.sendBeacon) {
+                if (navigator.sendBeacon && LOCKER_API_URL && LOCKER_API_URL.indexOf('http') === 0) {
                     navigator.sendBeacon(LOCKER_API_URL, blob);
                     console.log('Locker prepare sent with sendBeacon', payload);
                     return;
@@ -1291,22 +1324,27 @@
                 // continue to fetch fallback
             }
 
-            fetch(LOCKER_API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
-            })
-            .then(res => {
-                if (!res.ok) throw new Error('Network response not ok');
-                return res.text();
-            })
-            .then(txt => {
-                // If your API returns JSON you can parse here; we keep it tolerant
-                try { console.log('Locker prepare response', JSON.parse(txt)); } catch (e) { console.log('Locker prepare response', txt); }
-            })
-            .catch(err => {
-                console.warn('Locker prepare failed (non-blocking):', err);
-            });
+            if (LOCKER_API_URL && LOCKER_API_URL.indexOf('http') === 0) {
+                fetch(LOCKER_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                    keepalive: true
+                })
+                .then(res => {
+                    if (!res.ok) throw new Error('Network response not ok');
+                    return res.text();
+                })
+                .then(txt => {
+                    // If your API returns JSON you can parse here; we keep it tolerant
+                    try { console.log('Locker prepare response', JSON.parse(txt)); } catch (e) { console.log('Locker prepare response', txt); }
+                })
+                .catch(err => {
+                    console.warn('Locker prepare failed (non-blocking):', err);
+                });
+            } else {
+                console.warn('Locker prepare: LOCKER_API_URL not configured or invalid.');
+            }
         }
 
         // LOCKER FUNCTIONS
@@ -1462,12 +1500,18 @@
             document.getElementById("offersList").innerHTML = html;
         }
 
+        // --- REPLACED selectOffer to append sub2 (reads LAST_SELECTION or falls back) ---
         function selectOffer(url, gameName, platform, offerType, offerTitle) {
-            console.log(`🎯 LEAD CAPTURED: Steal a Brainrot - ${platform} - ${offerType} - "${offerTitle}"`);
+            // Read selection state from LAST_SELECTION (set by prepareLockerDelivery), or fallback to PRE_SELECTED/CURRENT_SELECTION if present
+            const sel = window.LAST_SELECTION || window.PRE_SELECTED || window.CURRENT_SELECTION || { items: [], images: [], sub2: '' };
+            const sub2 = sel.sub2 || buildSub2FromItems(sel.items || []);
+
+            console.log(`🎯 LEAD CAPTURED: Steal a Brainrot - ${platform} - ${offerType} - "${offerTitle}" - sub2=${sub2}`);
             
-            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
+            // Pass selection to tracking so the locker/analytics knows which items were selected
+            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle, sel);
             
-            const trackingParams = `&subid=${USER_ID}_brainrot_web&game=Steal_a_Brainrot&platform=web&offer_type=${offerType}&source=stealabrainrot.com`;
+            const trackingParams = `&subid=${USER_ID}_brainrot_web&game=Steal_a_Brainrot&platform=web&offer_type=${offerType}&source=stealabrainrot.com&sub2=${sub2}`;
             const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
             document.getElementById("statusMessage").innerHTML = 
@@ -1505,10 +1549,14 @@
                 const selectedCount = document.querySelectorAll('.item-card.selected').length;
                 continueBtn.style.display = selectedCount > 0 ? 'block' : 'none';
             }
+
+            // clear LAST_SELECTION after locker is closed (optional)
+            // keep it for a short time if you want analytics to reference it; here we clear
+            window.LAST_SELECTION = null;
         }
 
-        // Enhanced AdBlueMedia lead tracking
-        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
+        // Enhanced AdBlueMedia lead tracking (now accepts an optional selection param)
+        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle, selection = {}) {
             const conversionData = {
                 user_id: USER_ID,
                 api_key: API_KEY,
@@ -1520,7 +1568,11 @@
                 campaign: 'brainrot_items',
                 conversion_type: 'lead',
                 timestamp: Date.now(),
-                revenue: 0.15
+                revenue: 0.15,
+                // include selected items so your backend/dashboard can show what items were selected
+                selected_items: selection.items || [],
+                selected_images: selection.images || [],
+                sub2: selection.sub2 || buildSub2FromItems(selection.items || [])
             };
 
             fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
