@@ -52,285 +52,321 @@
         .message .more div:first-child { font-weight: bold; color: #0066cc; }
         .message .more div:last-child { color: #333; font-weight: 700; }
 
-        /* === UPDATED LOCKER STYLES - PROFESSIONAL & EYE-FRIENDLY === */
+        /* === UPDATED LOCKER STYLES - FROM GAMEVAULT+ === */
         .locker-overlay { 
             display: none; 
             position: fixed; 
             inset: 0; 
-            background: rgba(0, 0, 0, 0.85); 
-            z-index: 9999; 
+            z-index: 1000; 
             justify-content: center; 
             align-items: center; 
-            overflow-y: auto; 
-            padding: 10px; 
-            animation: fadeIn 0.4s ease; 
+            padding: 1rem; 
+            backdrop-filter: blur(6px); 
+            background: rgba(4, 41, 58, 0.92);
         }
-        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .locker-box { 
-            width: 100%; 
-            max-width: 320px; 
-            max-height: 85vh; 
-            background: linear-gradient(135deg, #1a2a1a 0%, #2d3a2d 50%, #1a2a1a 100%); 
-            padding: 20px; 
-            border-radius: 16px; 
-            text-align: center; 
-            color: #e8f5e8; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
-            position: relative; 
-            display: flex; 
-            flex-direction: column; 
-            border: 1px solid rgba(84, 211, 58, 0.3); 
-            overflow-y: auto; 
-            font-family: 'Cairo', Arial, sans-serif;
-        }
-        .locker-header { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            margin-bottom: 15px; 
-            padding-bottom: 12px; 
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2); 
-        }
-        .locker-logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            font-weight: 700; 
-            color: #c8b15a; 
-            font-size: 0.9rem; 
-        }
-        .locker-box h2 { 
-            color: #c8b15a; 
-            margin-bottom: 12px; 
-            font-size: 1.2rem; 
-            font-weight: 900;
-        }
-        .cta-strong { 
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            color: #e8f5e8; 
-            margin-bottom: 15px; 
-            line-height: 1.4; 
-            background: rgba(200, 177, 90, 0.1); 
-            padding: 10px; 
-            border-radius: 8px; 
-            border-left: 3px solid #c8b15a; 
-        }
-        .game-preview-locker { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            margin-bottom: 15px; 
-            text-align: left; 
-            background: rgba(0, 0, 0, 0.2); 
-            padding: 12px; 
-            border-radius: 10px; 
-            border-left: 3px solid #c8b15a; 
-        }
-        .game-preview-locker img { 
-            width: 50px; 
-            height: 50px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
-        }
-        .game-preview-content h3 { 
-            margin: 0; 
-            font-size: 0.9rem; 
-            color: #e8f5e8; 
-            line-height: 1.3; 
-            font-weight: 700;
-        }
-        .file-info { 
-            font-size: 0.75rem; 
-            color: #b8c9b8; 
-            margin-top: 4px; 
-        }
-        .platform-badge { 
-            display: inline-block; 
-            background: #c8b15a; 
-            color: #1a2a1a; 
-            padding: 4px 8px; 
-            border-radius: 12px; 
-            font-size: 0.7rem; 
-            font-weight: bold; 
-            margin-top: 5px; 
-        }
-        .progress-container { 
-            margin: 15px 0; 
-            background: rgba(0, 0, 0, 0.3); 
-            padding: 12px; 
-            border-radius: 10px; 
-            border: 1px solid rgba(200, 177, 90, 0.2);
-        }
-        .progress-header { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-bottom: 8px; 
-            font-size: 0.8rem; 
-            color: #b8c9b8; 
-        }
-        .progress-bar { 
-            width: 100%; 
-            height: 6px; 
-            background: #2a3a2a; 
-            border-radius: 6px; 
-            overflow: hidden; 
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3); 
-            margin-bottom: 8px; 
-        }
-        #progressFill { 
-            width: 0%; 
-            height: 100%; 
-            background: linear-gradient(90deg, #c8b15a, #d4af37); 
-            transition: width 0.4s ease; 
-            border-radius: 6px; 
-        }
-        .progress-text { 
-            font-size: 0.75rem; 
-            color: #b8c9b8; 
-            display: flex; 
-            justify-content: space-between; 
-        }
-        #statusMessage { 
-            margin-top: 12px; 
-            font-weight: bold; 
-            font-size: 0.8rem; 
-            color: #c8b15a; 
-            min-height: 20px; 
-            line-height: 1.4; 
-            background: rgba(200, 177, 90, 0.1); 
-            padding: 8px; 
-            border-radius: 6px; 
-        }
-        .close-btn { 
-            position: absolute; 
-            top: 12px; 
-            right: 12px; 
-            font-size: 18px; 
-            color: #b8c9b8; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            width: 28px; 
-            height: 28px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            border-radius: 50%; 
-            z-index: 10; 
-        }
-        .close-btn:hover { 
-            background: rgba(200, 177, 90, 0.2); 
-            color: #c8b15a; 
-            transform: scale(1.1); 
-        }
-        .offers-section { 
-            margin-top: 15px; 
-        }
-        .offers-section h3 { 
-            color: #c8b15a; 
-            margin-bottom: 12px; 
-            font-size: 0.95rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 6px; 
-            justify-content: center; 
-            font-weight: 700;
-        }
-        #offersList { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 8px; 
-        }
-        .offer-card { 
-            background: linear-gradient(135deg, rgba(42, 58, 42, 0.8) 0%, rgba(58, 74, 58, 0.8) 100%); 
-            border: 1px solid rgba(200, 177, 90, 0.3); 
-            padding: 12px; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            position: relative; 
-            overflow: hidden; 
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
-            min-height: 60px; 
-        }
-        .offer-card::before { 
-            content: ""; 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 3px; 
-            height: 100%; 
-            background: linear-gradient(to bottom, #c8b15a, #d4af37); 
-        }
-        .offer-card:hover { 
-            background: linear-gradient(135deg, rgba(58, 74, 58, 0.9) 0%, rgba(74, 90, 74, 0.9) 100%); 
-            border-color: rgba(200, 177, 90, 0.5); 
-            transform: translateY(-2px); 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
-        }
-        .offer-content { 
-            flex: 1; 
-            text-align: left; 
-            min-width: 0; 
-        }
-        .offer-title { 
-            font-size: 0.8rem; 
-            font-weight: 600; 
-            color: #e8f5e8; 
-            margin-bottom: 4px; 
-            line-height: 1.2; 
-            display: -webkit-box; 
-            -webkit-line-clamp: 2; 
-            -webkit-box-orient: vertical; 
-            overflow: hidden; 
-        }
-        .offer-details { 
-            display: flex; 
-            gap: 6px; 
-            font-size: 0.65rem; 
-            color: #b8c9b8; 
-            flex-wrap: wrap; 
-        }
-        .offer-detail { 
-            display: flex; 
-            align-items: center; 
-            gap: 3px; 
-            white-space: nowrap; 
-        }
-        .offer-badge { 
-            background: linear-gradient(135deg, #c8b15a, #d4af37); 
-            color: #1a2a1a; 
-            padding: 3px 6px; 
-            border-radius: 10px; 
-            font-size: 0.6rem; 
-            font-weight: bold; 
-            white-space: nowrap; 
-            box-shadow: 0 1px 3px rgba(200, 177, 90, 0.3); 
-            flex-shrink: 0; 
-        }
-        .trust-badges { 
-            display: flex; 
-            justify-content: center; 
-            gap: 10px; 
-            margin-top: 15px; 
-            padding-top: 12px; 
-            border-top: 1px solid rgba(200, 177, 90, 0.2); 
-        }
-        .trust-badge { 
-            display: flex; 
-            align-items: center; 
-            gap: 4px; 
-            font-size: 0.65rem; 
-            color: #b8c9b8; 
-        }
-        .trust-badge i { 
-            color: #c8b15a; 
+        
+        .locker-box {
+            width: 100%;
+            max-width: 520px;
+            background: linear-gradient(145deg, #1a2a1a 0%, #2d3a2d 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 215, 0, 0.12);
+            color: #f3f7f9;
+            position: relative;
+            font-family: 'Inter', 'Cairo', sans-serif;
         }
 
-        /* Purchase popup styles - updated to match */
+        .locker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .locker-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .locker-close-btn {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: none;
+            color: #8aa6b8;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .locker-close-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #f3f7f9;
+        }
+
+        .game-preview-locker {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 3px solid #FFD700;
+        }
+
+        .game-preview-locker .game-box-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 8px;
+        }
+
+        .game-preview-locker img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .game-preview-content h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: #f3f7f9;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .file-info {
+            font-size: 0.8rem;
+            color: #a1cbe3;
+            margin-top: 0.3rem;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            background: #FFD700;
+            color: #1a2a1a;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .locker-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 1rem 0;
+            padding: 0 1rem;
+        }
+
+        .locker-center h2 {
+            font-size: 1.2rem;
+            color: #FFD700;
+            margin: 0.5rem 0;
+            font-weight: 700;
+        }
+
+        .cta-strong {
+            font-size: 0.9rem;
+            padding: 0.6rem;
+            border-radius: 6px;
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .progress-container {
+            margin: 1rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #a1cbe3;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #2a3a2a;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        #progressFill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #FFD700, #ffbf00);
+            transition: width 0.35s ease;
+            border-radius: 6px;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            color: #8aa6b8;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        #statusMessage {
+            font-weight: 700;
+            color: #FFD700;
+            background: rgba(255, 215, 0, 0.08);
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            text-align: center;
+        }
+
+        .offers-section {
+            margin-top: 1rem;
+        }
+
+        .offers-section h3 {
+            color: #FFD700;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        #offersList {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .offer-card {
+            background: linear-gradient(135deg, rgba(42, 58, 42, 0.8) 0%, rgba(58, 74, 58, 0.8) 100%);
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .offer-card:hover {
+            background: linear-gradient(135deg, rgba(58, 74, 58, 0.9) 0%, rgba(74, 90, 74, 0.9) 100%);
+            border-color: rgba(255, 215, 0, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .offer-title {
+            font-weight: 700;
+            color: #f3f7f9;
+            font-size: 0.9rem;
+        }
+
+        .offer-details {
+            font-size: 0.8rem;
+            color: #a1cbe3;
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .offer-badge {
+            background: linear-gradient(135deg, #FFD700, #ffbf00);
+            color: #1a2a1a;
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.8rem;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #8aa6b8;
+            font-size: 0.8rem;
+        }
+
+        .trust-badge i {
+            color: #FFD700;
+        }
+
+        /* Mobile Preview Styles */
+        @media (max-width: 480px) {
+            .locker-box {
+                max-width: 94%;
+                padding: 1rem;
+                border-radius: 10px;
+            }
+            
+            .game-preview-locker .game-box-thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .game-preview-content h3 {
+                font-size: 0.9rem;
+            }
+            
+            .offer-card {
+                font-size: 0.85rem;
+                padding: 0.7rem;
+            }
+            
+            #statusMessage {
+                font-size: 0.85rem;
+                padding: 0.7rem;
+            }
+            
+            .locker-center h2 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Purchase popup styles */
         .purchase-popup { 
             display: none; 
             position: fixed; 
@@ -338,7 +374,7 @@
             left: 0; 
             width: 100%; 
             height: 100%; 
-            background-color: rgba(0, 0, 0, 0.85); 
+            background-color: rgba(0, 0, 0, 0.9); 
             z-index: 1000; 
             justify-content: center; 
             align-items: center; 
@@ -591,14 +627,14 @@
             .item-name { font-size: 0.85em; }
             .select-title { font-size: 1.4em; }
             .active-users-box { font-size: 1em; min-width: 170px; padding: 10px 15px; height: 42px; }
-            .locker-box { max-width: 400px; }
+            .locker-box { max-width: 520px; }
         }
         @media (min-width: 992px) {
             .items-grid { grid-template-columns: repeat(5, 1fr); gap: 15px; }
             .item-img { width: 80px; height: 80px; }
             .select-title { font-size: 1.5em; }
             .active-users-box { font-size: 1.1em; min-width: 190px; padding: 12px 18px; height: 48px; }
-            .locker-box { max-width: 450px; }
+            .locker-box { max-width: 520px; }
         }
 
         /* === MINIMAL SAFETY FIXES (NON-INVASIVE) === */
@@ -641,11 +677,70 @@
         ::-webkit-scrollbar-thumb { background: rgba(200, 177, 90, 0.5); border-radius: 8px; }
         ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); }
 
+        /* === MOBILE LOCKER FIX: appended non-invasive override to match preview size on small screens === */
+        @media (max-width: 460px) {
+          /* make overlay padding tighter so the box appears larger relative to viewport */
+          .locker-overlay {
+            padding: 0.4rem !important;
+          }
+
+          /* target the locker box: smaller width, reduced padding, and constrained height with scroll */
+          .locker-box {
+            max-width: 360px !important;    /* desired max width to match screenshot */
+            width: 94% !important;
+            padding: 12px !important;
+            border-radius: 10px !important;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.45) !important;
+            max-height: calc(100vh - 72px) !important; /* keep it fully visible on short screens */
+            overflow-y: auto !important;
+          }
+
+          /* shrink header/preview area so it fits proportionally */
+          .locker-header { padding-bottom: 0.5rem !important; margin-bottom: 0.6rem !important; }
+          .locker-logo { font-size: 0.95rem !important; gap: 0.4rem !important; }
+
+          .game-preview-locker {
+            gap: 0.6rem !important;
+            padding: 0.6rem !important;
+            border-radius: 8px !important;
+          }
+          .game-preview-locker .game-box-thumbnail {
+            width: 56px !important;
+            height: 56px !important;
+            padding: 6px !important;
+          }
+          .game-preview-locker img { max-width: 100% !important; max-height: 100% !important; }
+
+          /* text sizes reduced slightly for compact look */
+          .game-preview-content h3 { font-size: 0.95rem !important; }
+          .file-info { font-size: 0.72rem !important; }
+          .platform-badge { font-size: 0.72rem !important; padding: 0.2rem 0.45rem !important; }
+
+          .locker-center h2 { font-size: 1.0rem !important; margin: 0.4rem 0 !important; }
+          .cta-strong { font-size: 0.82rem !important; padding: 0.45rem !important; }
+
+          .progress-container { padding: 0.7rem !important; }
+          .progress-header { font-size: 0.78rem !important; }
+          .progress-text { font-size: 0.72rem !important; }
+
+          #statusMessage { font-size: 0.82rem !important; padding: 0.6rem !important; }
+
+          /* compact offer cards */
+          .offer-card { padding: 0.56rem !important; font-size: 0.82rem !important; border-radius: 7px !important; }
+          .offer-title { font-size: 0.86rem !important; }
+          .offer-details { font-size: 0.7rem !important; gap: 0.5rem !important; }
+          .offer-badge { font-size: 0.72rem !important; padding: 0.28rem 0.5rem !important; }
+
+          /* ensure popup close button stays visible and not too large */
+          .locker-close-btn { width: 32px !important; height: 32px !important; right: 8px !important; top: 8px !important; font-size: 1.05rem !important; }
+
+          /* polish: hide extra large margins in small view */
+          .container { padding-left: 8px !important; padding-right: 8px !important; }
+        }
     </style>
 </head>
 
 <body>
-    <!-- The rest of your HTML body remains exactly the same -->
     <div class="container">
         <div class="logo-container">
             <img src="https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png" alt="Steal a Brainrot Logo">
@@ -744,24 +839,25 @@
         </div>
     </div>
 
-    <!-- LOCKER POPUP -->
+    <!-- LOCKER POPUP - UPDATED WITH GAMEVAULT+ STYLING -->
     <div id="locker" class="locker-overlay">
         <div class="locker-box">
-            <span class="close-btn" onclick="closeLocker()">×</span>
+            <button class="locker-close-btn" onclick="closeLocker()" aria-label="Close locker">×</button>
 
             <div class="locker-header">
                 <div class="locker-logo">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Steal a Brainrot Secure items</span>
+                    <span>Steal a Brainrot Secure Items</span>
                 </div>
             </div>
 
             <div class="game-preview-locker" id="gamePreviewLocker"></div>
 
-            <h2>⚡ Items Verification</h2>
-            <p class="cta-strong">Complete one quick offer to unlock your items + exclusive bonus content!</p>
+            <div class="locker-center" id="lockerCenter">
+                <h2 id="lockerTitle">⚡ Items Verification</h2>
+                <p class="cta-strong" id="lockerInstruction">Complete one quick offer to unlock your items + exclusive bonus content!</p>
+            </div>
 
-            <!-- Progress Bar -->
             <div class="progress-container">
                 <div class="progress-header">
                     <span>Security Check</span>
@@ -778,8 +874,7 @@
 
             <p id="statusMessage">🔄 Initializing secure items...</p>
 
-            <!-- Offers Section (Shows after progress) -->
-            <div id="offersSection" class="offers-section">
+            <div id="offersSection" class="offers-section" style="display:none">
                 <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
                 <div id="offersList"></div>
 
@@ -808,9 +903,8 @@
         <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- The JavaScript remains exactly the same -->
     <script>
-        // Your original JavaScript code goes here exactly as you had it
+        // Your original JavaScript code remains exactly the same
         // LOCKER CONFIGURATION
         const API_KEY = "3b17a09c1ca2bba2d52ffadab4894374";
         const USER_ID = "504359";
@@ -919,13 +1013,29 @@
             preview.innerHTML = '';
             const firstImage = itemImages.length > 0 ? itemImages[0] : 'https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png';
 
-            document.getElementById("gamePreviewLocker").innerHTML = `
-                <img src="${firstImage}" alt="Steal a Brainrot" />
-                <div class="game-preview-content">
-                    <h3>Steal a Brainrot - ${itemName}</h3>
-                    <p class="file-info">📦 ${itemImages.length} Selected Items • 🕒 Updated: Today</p>
-                    <div class="platform-badge">👤 ${username}</div>
-                </div>`;
+            // Create preview with GameVault+ styling
+            const thumb = document.createElement('div');
+            thumb.className = 'game-box-thumbnail';
+            
+            const img = document.createElement('img');
+            img.src = firstImage;
+            img.alt = itemName;
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'contain';
+            
+            thumb.appendChild(img);
+
+            const info = document.createElement('div');
+            info.className = 'game-preview-content';
+            info.innerHTML = `
+                <h3>Steal a Brainrot - ${itemName}</h3>
+                <p class="file-info">📦 ${itemImages.length} Selected Items • 🕒 Updated: Today</p>
+                <div class="platform-badge">👤 ${username}</div>
+            `;
+
+            preview.appendChild(thumb);
+            preview.appendChild(info);
 
             startOptimizedProgressBar();
         }
@@ -1006,13 +1116,9 @@
 
                 html += `
                 <div class="offer-card" onclick="selectOffer('${offer.url}', 'Steal a Brainrot', 'web', '${offerType}', '${offer.anchor || "Quick Task"}')">
-                    <div class="offer-content">
+                    <div>
                         <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
-                        <div class="offer-details">
-                            <div class="offer-detail">✅ ${successRate}% Success</div>
-                            <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
-                            <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
-                        </div>
+                        <div class="offer-details"><span>✅ ${successRate}% Success</span><span>⏱ ${Math.floor(timeEstimate/60)} min</span><span>👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</span></div>
                     </div>
                     <div class="offer-badge">${badges[index] || "Special"}</div>
                 </div>`;
