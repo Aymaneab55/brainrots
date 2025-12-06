@@ -7,7 +7,6 @@
     <meta name="theme-color" content="#54d33a">
     <title>Steal a Brainrot - Free Items Generator</title>
     
-    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -23,28 +22,26 @@
             --dark-green: #4f8a2f;
             --gold: #FFD700;
             --gold-dark: #d4af37;
-            --orange: #ff6b35;
-            --orange-light: #ff8e53;
-            --cyan: #00e5ff;
-            --cyan-dark: #0099ff;
             --bg-dark: #1a1a1a;
             --bg-darker: #121212;
             --text-light: #e0e0e0;
-            --text-gray: #888;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
             --shadow-md: 0 4px 15px rgba(0,0,0,0.2);
             --shadow-lg: 0 8px 30px rgba(0,0,0,0.3);
             --transition-fast: 0.2s ease;
             --transition-normal: 0.3s ease;
-            --transition-slow: 0.5s ease;
         }
 
-        /* ===== RESET & BASE ===== */
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
             margin: 0;
             padding: 0;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         html, body {
@@ -55,10 +52,6 @@
             text-align: left;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%2354d33a" width="100" height="100"/><rect fill="%2363e645" width="50" height="50" x="25" y="25" opacity="0.8"/><rect fill="%234f8a2f" width="30" height="30" x="35" y="35" opacity="0.6"/></svg>') repeat;
             background-size: 100px 100px;
-            background-position: center;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
             touch-action: manipulation;
         }
 
@@ -69,7 +62,20 @@
             height: 100%;
         }
 
-        /* ===== CONTAINER ===== */
+        /* Disable zoom and double-tap */
+        * {
+            touch-action: manipulation;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -77,7 +83,6 @@
             padding-bottom: 80px;
         }
 
-        /* ===== LOGO ===== */
         .logo-container {
             text-align: center;
             padding: 10px 0 5px;
@@ -89,13 +94,13 @@
             height: auto;
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
             transition: transform var(--transition-normal);
+            pointer-events: auto;
         }
 
         .logo-container img:hover {
             transform: scale(1.05);
         }
 
-        /* ===== TOP BAR ===== */
         .top-bar {
             display: flex;
             justify-content: center;
@@ -121,7 +126,6 @@
             justify-content: center;
             cursor: pointer;
             transition: all var(--transition-fast);
-            will-change: transform;
             position: relative;
             overflow: hidden;
         }
@@ -134,16 +138,11 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition-slow);
+            transition: var(--transition-normal);
         }
 
         .active-users-box:hover::after {
             left: 100%;
-        }
-
-        .active-users-box:active {
-            transform: scale(1.09) rotate(-2deg);
-            box-shadow: 0 0 0 6px rgba(255,255,255,0.3), var(--shadow-md);
         }
 
         .active-users-box span:first-child {
@@ -164,7 +163,6 @@
             animation: pulse 2s infinite;
         }
 
-        /* ===== TITLE ===== */
         .select-title {
             margin: 15px 0 10px;
             text-align: center;
@@ -190,7 +188,6 @@
             animation: expandWidth 0.8s ease 0.5s both;
         }
 
-        /* ===== ITEMS GRID ===== */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -211,7 +208,6 @@
             border: 1.5px solid #eee;
             cursor: pointer;
             transition: all var(--transition-normal);
-            will-change: transform;
             overflow: hidden;
             min-height: 100px;
             position: relative;
@@ -269,6 +265,7 @@
             display: block;
             position: relative;
             z-index: 1;
+            pointer-events: auto;
         }
 
         .item-card.selected .item-img {
@@ -299,7 +296,6 @@
             text-shadow: 0 0 2px rgba(255, 215, 0, 0.5);
         }
 
-        /* ===== SELECTION CONTROLS ===== */
         .selection-controls {
             text-align: center;
             padding: 5px 0 15px;
@@ -349,83 +345,16 @@
             animation: shake 0.5s ease;
         }
 
-        /* ===== NOTIFICATIONS ===== */
-        .cliameds {
-            position: fixed;
-            bottom: 60px;
-            left: 8px;
-            z-index: 9999;
-            max-width: calc(100% - 16px);
-        }
-
-        .message {
-            background: linear-gradient(135deg, rgba(135, 206, 250, 0.95), rgba(100, 180, 240, 0.95));
-            display: flex;
-            font-size: .65rem;
-            align-items: center;
-            padding: 6px 12px;
-            border-radius: 8px;
-            border: 1.5px solid rgba(238, 204, 159, 0.7);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            animation: slideInLeft 0.4s ease;
-        }
-
-        .message::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 20%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(30deg);
-            transition: var(--transition-slow);
-        }
-
-        .message:hover::after {
-            left: 120%;
-        }
-
-        .message .img {
-            padding-right: 6px;
-            z-index: 2;
-        }
-
-        .message .img img {
-            width: 35px;
-            background: #fff;
-            border-radius: 50%;
-            height: 35px;
-            border: 1.5px solid #fff;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .message .more {
-            z-index: 2;
-        }
-
-        .message .more div:first-child {
-            font-weight: bold;
-            color: #0066cc;
-        }
-
-        .message .more div:last-child {
-            color: #333;
-            font-weight: 700;
-        }
-
-        /* ===== LOCKER OVERLAY - MOBILE OPTIMIZED ===== */
+        /* ===== LOCKER OVERLAY - COMPACT & MOBILE OPTIMIZED ===== */
         .locker-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.85);
             z-index: 9999;
             justify-content: center;
             align-items: center;
-            padding: 8px;
+            padding: 10px;
             animation: fadeIn 0.4s ease;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
@@ -434,320 +363,174 @@
         .locker-box {
             width: 100%;
             max-width: 340px;
-            max-height: 92vh;
             background: linear-gradient(145deg, rgba(84, 211, 58, 0.15), rgba(79, 138, 47, 0.2));
             backdrop-filter: blur(10px);
-            padding: 10px;
-            border-radius: 12px;
+            border-radius: 10px;
+            padding: 12px;
             text-align: center;
             color: #fff;
-            box-shadow: 0 0 30px rgba(84, 211, 58, 0.4), 0 0 60px rgba(99, 230, 69, 0.2);
+            box-shadow: 0 8px 30px rgba(84, 211, 58, 0.3);
             position: relative;
-            display: flex;
-            flex-direction: column;
             border: 2px solid rgba(84, 211, 58, 0.3);
-            overflow: hidden;
-            animation: scaleIn 0.3s ease;
-        }
-
-        .locker-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 6px;
-            padding-bottom: 4px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            flex-shrink: 0;
-        }
-
-        .locker-logo {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: 700;
-            color: var(--primary-green);
-            font-size: 0.7rem;
-            text-shadow: 0 0 8px rgba(84, 211, 58, 0.6);
-        }
-
-        .locker-box h2 {
-            color: var(--primary-green);
-            margin-bottom: 4px;
-            font-size: 0.85rem;
-            text-shadow: 0 0 12px rgba(84, 211, 58, 0.7);
-            flex-shrink: 0;
-        }
-
-        .cta-strong {
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 6px;
-            line-height: 1.3;
-            background: rgba(255, 215, 0, 0.15);
-            padding: 4px;
-            border-radius: 6px;
-            border-left: 2px solid var(--gold);
-            flex-shrink: 0;
-            text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
-        }
-
-        .game-preview-locker {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 6px;
-            text-align: left;
-            background: rgba(84, 211, 58, 0.1);
-            padding: 5px;
-            border-radius: 6px;
-            border-left: 2px solid var(--primary-green);
-            flex-shrink: 0;
-        }
-
-        .game-preview-locker img {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            box-shadow: var(--shadow-sm);
-            flex-shrink: 0;
-        }
-
-        .game-preview-content h3 {
-            margin: 0;
-            font-size: 0.7rem;
-            color: #fff;
-            line-height: 1.2;
-            font-weight: 700;
-        }
-
-        .file-info {
-            font-size: 0.55rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 2px;
-        }
-
-        .platform-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            color: #000;
-            padding: 2px 4px;
-            border-radius: 8px;
-            font-size: 0.5rem;
-            font-weight: bold;
-            margin-top: 2px;
-            box-shadow: 0 0 8px rgba(84, 211, 58, 0.4);
-        }
-
-        .progress-container {
-            margin: 6px 0;
-            background: rgba(84, 211, 58, 0.1);
-            padding: 5px;
-            border-radius: 6px;
-            border: 1px solid rgba(84, 211, 58, 0.2);
-            flex-shrink: 0;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 3px;
-            font-size: 0.6rem;
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 0 8px rgba(84, 211, 58, 0.2) inset;
-            margin-bottom: 3px;
-        }
-
-        #progressFill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
-            transition: width 0.4s ease;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(84, 211, 58, 0.6);
-        }
-
-        .progress-text {
-            font-size: 0.55rem;
-            color: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        #statusMessage {
-            margin-top: 5px;
-            font-weight: bold;
-            font-size: 0.6rem;
-            color: var(--primary-green);
-            min-height: 14px;
-            line-height: 1.3;
-            background: rgba(84, 211, 58, 0.15);
-            padding: 3px;
-            border-radius: 5px;
-            flex-shrink: 0;
-            text-shadow: 0 0 6px rgba(84, 211, 58, 0.5);
         }
 
         .close-btn {
             position: absolute;
-            top: 5px;
-            right: 5px;
-            font-size: 18px;
-            color: #ff5555;
+            top: 8px;
+            right: 8px;
+            font-size: 20px;
+            color: #fff;
             cursor: pointer;
             transition: all var(--transition-normal);
-            width: 22px;
-            height: 22px;
+            width: 26px;
+            height: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            background: rgba(255,255,255,0.1);
             z-index: 10;
-            background: rgba(255,85,85,0.1);
+            line-height: 1;
         }
 
         .close-btn:hover {
-            background: rgba(255,85,85,0.3);
-            transform: scale(1.1) rotate(90deg);
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
         }
 
-        /* ===== OFFERS SECTION - COMPACT ===== */
-        .offers-section {
-            margin-top: 5px;
-            flex: 1;
-            min-height: 0;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .offers-section h3 {
-            color: var(--primary-green);
-            margin-bottom: 4px;
-            font-size: 0.7rem;
+        .selected-items-preview {
             display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin: 8px auto 10px;
+            flex-wrap: wrap;
+        }
+
+        .selected-item-preview {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid var(--primary-green);
+            box-shadow: 0 0 8px rgba(84, 211, 58, 0.5);
+            pointer-events: auto;
+        }
+
+        .game-title {
+            font-size: 1.1em;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 6px;
+            font-family: 'Cairo', Arial, sans-serif;
+        }
+
+        .secure-badge {
+            display: inline-flex;
             align-items: center;
             gap: 4px;
-            justify-content: center;
-            flex-shrink: 0;
-            text-shadow: 0 0 8px rgba(84, 211, 58, 0.6);
+            background: rgba(84, 211, 58, 0.2);
+            padding: 4px 8px;
+            border-radius: 15px;
+            border: 1px solid var(--primary-green);
+            margin-bottom: 8px;
+            font-size: 0.7em;
         }
 
-        #offersList {
+        .secure-badge i {
+            color: var(--primary-green);
+            font-size: 0.9em;
+        }
+
+        .instruction-text {
+            color: #fff;
+            font-size: 0.75em;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .instruction-text .highlight {
+            color: var(--primary-green);
+            font-weight: 900;
+        }
+
+        .note-box {
+            background: rgba(84, 211, 58, 0.15);
+            border: 1.5px solid var(--primary-green);
+            border-radius: 6px;
+            padding: 6px 8px;
+            margin: 8px 0;
+            text-align: left;
+        }
+
+        .note-box strong {
+            color: var(--primary-green);
+            font-size: 0.75em;
+        }
+
+        .note-box p {
+            color: #ccc;
+            font-size: 0.7em;
+            margin-top: 3px;
+            line-height: 1.3;
+        }
+
+        .offers-prompt {
+            color: #fff;
+            font-size: 0.85em;
+            font-weight: 700;
+            margin: 12px 0 8px;
+            text-align: left;
+        }
+
+        .offers-list {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 8px;
         }
 
-        .offer-card {
-            background: linear-gradient(145deg, rgba(84, 211, 58, 0.15), rgba(79, 138, 47, 0.2));
-            border: 1px solid var(--primary-green);
-            padding: 5px;
-            border-radius: 6px;
+        .offer-button {
+            background: var(--primary-green);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             cursor: pointer;
             transition: all var(--transition-normal);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(84, 211, 58, 0.3);
-            min-height: 38px;
-        }
-
-        .offer-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary-green), var(--secondary-green));
-        }
-
-        .offer-card:hover {
-            background: linear-gradient(145deg, rgba(84, 211, 58, 0.25), rgba(99, 230, 69, 0.25));
-            border-color: var(--secondary-green);
-            transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(84, 211, 58, 0.5);
-        }
-
-        .offer-content {
-            flex: 1;
             text-align: left;
-            min-width: 0;
+            box-shadow: 0 3px 8px rgba(84, 211, 58, 0.3);
+            width: 100%;
         }
 
-        .offer-title {
-            font-size: 0.6rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 2px;
-            line-height: 1.1;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+        .offer-button:hover {
+            background: var(--secondary-green);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(84, 211, 58, 0.5);
         }
 
-        .offer-details {
-            display: flex;
-            gap: 3px;
-            font-size: 0.48rem;
-            color: rgba(255, 255, 255, 0.7);
-            flex-wrap: wrap;
+        .offer-button:active {
+            transform: translateY(0);
         }
 
-        .offer-detail {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            white-space: nowrap;
+        .offer-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: #fff;
+            padding: 3px;
+            pointer-events: auto;
         }
 
-        .offer-badge {
-            background: linear-gradient(135deg, var(--gold), #ffbf00);
+        .offer-text {
+            flex: 1;
             color: #000;
-            padding: 2px 3px;
-            border-radius: 5px;
-            font-size: 0.48rem;
-            font-weight: bold;
-            white-space: nowrap;
-            box-shadow: 0 1px 3px rgba(255, 215, 0, 0.5);
-            flex-shrink: 0;
-        }
-
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 4px;
-            margin-top: 5px;
-            padding-top: 4px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            flex-shrink: 0;
-            flex-wrap: wrap;
-        }
-
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            font-size: 0.48rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .trust-badge i {
-            color: var(--primary-green);
-            font-size: 0.55rem;
+            font-weight: 800;
+            font-size: 0.8em;
+            line-height: 1.2;
         }
 
         /* ===== PURCHASE POPUP ===== */
@@ -818,6 +601,7 @@
             object-fit: cover;
             border: 2px solid var(--gold);
             box-shadow: var(--shadow-sm);
+            pointer-events: auto;
         }
 
         .item-confirm {
@@ -916,7 +700,6 @@
             background-repeat: no-repeat;
         }
 
-        /* ===== LOADING ANIMATION ===== */
         .folding {
             margin: 15px auto;
             width: 60px;
@@ -1039,7 +822,6 @@
             animation: shake 0.5s ease;
         }
 
-        /* ===== ANIMATIONS ===== */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -1064,17 +846,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
             }
         }
 
@@ -1116,7 +887,6 @@
             75% { transform: translateX(5px); }
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (min-width: 480px) {
             .items-grid {
                 gap: 10px;
@@ -1137,7 +907,7 @@
 
             .locker-box {
                 max-width: 360px;
-                padding: 12px;
+                padding: 14px;
             }
         }
 
@@ -1195,89 +965,6 @@
 
             .locker-box {
                 max-width: 400px;
-            }
-        }
-
-        /* ===== MOBILE SPECIFIC OPTIMIZATIONS ===== */
-        @media (max-height: 700px) {
-            .locker-box {
-                max-height: 95vh;
-                padding: 8px;
-            }
-
-            .locker-header {
-                margin-bottom: 4px;
-                padding-bottom: 3px;
-            }
-
-            .locker-box h2 {
-                font-size: 0.8rem;
-                margin-bottom: 3px;
-            }
-
-            .cta-strong {
-                font-size: 0.6rem;
-                margin-bottom: 4px;
-                padding: 3px;
-            }
-
-            .game-preview-locker {
-                margin-bottom: 4px;
-                padding: 4px;
-            }
-
-            .game-preview-locker img {
-                width: 28px;
-                height: 28px;
-            }
-
-            .game-preview-content h3 {
-                font-size: 0.65rem;
-            }
-
-            .progress-container {
-                margin: 4px 0;
-                padding: 4px;
-            }
-
-            #statusMessage {
-                font-size: 0.55rem;
-                margin-top: 3px;
-                padding: 2px;
-            }
-
-            .offers-section {
-                margin-top: 3px;
-            }
-
-            .offers-section h3 {
-                font-size: 0.65rem;
-                margin-bottom: 3px;
-            }
-
-            .offer-card {
-                padding: 4px;
-                min-height: 35px;
-            }
-
-            .offer-title {
-                font-size: 0.55rem;
-            }
-
-            .trust-badges {
-                margin-top: 3px;
-                padding-top: 3px;
-            }
-        }
-
-        /* ===== iOS SAFARI FIXES ===== */
-        @supports (-webkit-touch-callout: none) {
-            .locker-overlay {
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .locker-box {
-                max-height: -webkit-fill-available;
             }
         }
     </style>
@@ -1373,65 +1060,37 @@
         <button id="continue-btn">Continue</button>
     </div>
     
-    <div class="cliameds"></div>
-    
     <div class="purchase-popup" id="purchase-popup">
         <div class="popup-content"></div>
     </div>
     
-    <!-- LOCKER POPUP -->
+    <!-- LOCKER OVERLAY - COMPACT & MOBILE OPTIMIZED -->
     <div id="locker" class="locker-overlay">
         <div class="locker-box">
             <span class="close-btn" onclick="closeLocker()" aria-label="Close">×</span>
             
-            <div class="locker-header">
-                <div class="locker-logo">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Steal a Brainrot Secure items</span>
-                </div>
+            <div class="selected-items-preview" id="selectedItemsPreview"></div>
+            
+            <h2 class="game-title">Steal a Brainrot</h2>
+            
+            <div class="secure-badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>Secure APK Verified Publisher</span>
             </div>
             
-            <div class="game-preview-locker" id="gamePreviewLocker"></div>
+            <p class="instruction-text">
+                Choose one of offer in the list below. Complete the task and your items will be claimed <span class="highlight">automatically</span>.
+            </p>
             
-            <h2>⚡ Items Verification</h2>
-            <p class="cta-strong">Complete one quick offer to unlock your items + exclusive bonus content!</p>
-            
-            <!-- Progress Bar -->
-            <div class="progress-container">
-                <div class="progress-header">
-                    <span>Security Check</span>
-                    <span id="progressPercent">0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div id="progressFill"></div>
-                </div>
-                <div class="progress-text">
-                    <span>Preparing your items...</span>
-                    <span>Secure</span>
-                </div>
+            <div class="note-box">
+                <strong>NOTE:</strong>
+                <p>If one offer doesn't open, try another. Enter correct information.</p>
             </div>
             
-            <p id="statusMessage">🔄 Initializing secure items...</p>
+            <div class="offers-prompt">Choose an offer below:</div>
             
-            <!-- Offers Section (Shows after progress) -->
-            <div id="offersSection" class="offers-section" style="display: none;">
-                <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
-                <div id="offersList"></div>
-                
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <i class="fas fa-shield-check"></i>
-                        <span>100% Secure</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-clock"></i>
-                        <span>1-3 Minutes</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-items"></i>
-                        <span>Instant Access</span>
-                    </div>
-                </div>
+            <div class="offers-list" id="offersList">
+                <div style="color: #fff; text-align: center; padding: 15px; font-size: 0.75em;">Loading offers...</div>
             </div>
         </div>
     </div>
@@ -1448,17 +1107,13 @@
         const CONFIG = {
             API_KEY: "3b17a09c1ca2bba2d52ffadab4894374",
             USER_ID: "504359",
+            API_URL: "https://d1y3y09sav47f5.cloudfront.net/public/offers/feed.php",
             MAX_SELECTIONS: 3,
-            PROGRESS_SPEED: 120,
-            NOTIFICATION_INTERVAL: 5000,
             ACTIVE_USERS_INTERVAL: 4500
         };
 
         // ===== STATE MANAGEMENT =====
         const State = {
-            currentPlatform: null,
-            progressInterval: null,
-            notificationInterval: null,
             popupOpen: false,
             selectedItems: []
         };
@@ -1471,22 +1126,38 @@
                 const sound = document.getElementById(soundId);
                 if (sound) {
                     sound.currentTime = 0;
-                    sound.play().catch(() => {}); // Ignore autoplay restrictions
+                    sound.play().catch(() => {});
                 }
             },
-            
-            debounce: (func, wait) => {
-                let timeout;
-                return function executedFunction(...args) {
-                    const later = () => {
-                        clearTimeout(timeout);
-                        func(...args);
-                    };
-                    clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
-                };
+
+            escapeHtml: (text) => {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
             }
         };
+
+        // ===== DISABLE RIGHT CLICK =====
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // ===== DISABLE ZOOM =====
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
 
         // ===== ACTIVE USERS =====
         function updateActiveUsers() {
@@ -1499,84 +1170,12 @@
         updateActiveUsers();
         setInterval(updateActiveUsers, CONFIG.ACTIVE_USERS_INTERVAL);
 
-        // ===== NOTIFICATIONS =====
-        const NotificationSystem = {
-            avatars: [
-                'https://dress2.pages.dev/avatars/avatar1.png',
-                'https://dress2.pages.dev/avatars/avatar2.png',
-                'https://dress2.pages.dev/avatars/avatar3.png',
-                'https://dress2.pages.dev/avatars/avatar4.png',
-                'https://dress2.pages.dev/avatars/avatar5.png',
-                'https://dress2.pages.dev/avatars/avatar6.png',
-                'https://dress2.pages.dev/avatars/avatar7.png',
-                'https://dress2.pages.dev/avatars/avatar8.png',
-                'https://dress2.pages.dev/avatars/avatar9.png',
-                'https://dress2.pages.dev/avatars/avatar10.png'
-            ],
-            
-            items: [
-                'Super-Seed', 'Night-Egg', 'Candy-Blossom', 'Queen-bee', 'Dragonfly',
-                'Golden Lab', 'Flower-Seed', 'Dragon fruit', 'Mango', 'Grapwes',
-                'Mushroom', 'Star-Caller', 'Master-Sprinkler', 'Favorite-Tool',
-                'Harvest-tool', 'Honey-Sprinkler', 'Pepper', 'Cacao', 'Beanstalk'
-            ],
-            
-            usernames: [
-                'MADELYN2', 'zontir99', 'marcos10', 'Queen_lisa1', 'LANA11',
-                'HAMZA22', 'tbonmk2', 'caroline34', 'dimaraja10', 'asktiyal9hba',
-                'ronaldo7', 'sidi_binzarn1', 'DERKAOUI_ZAML1', 'Tizit.botsot', 'Achnid22'
-            ],
-
-            start: function() {
-                if (State.popupOpen) return;
-                
-                State.notificationInterval = setInterval(() => {
-                    if (State.popupOpen) return;
-                    
-                    const container = document.querySelector(".cliameds");
-                    if (!container) return;
-                    
-                    const avatar = this.avatars[Math.floor(Math.random() * this.avatars.length)];
-                    const username = this.usernames[Math.floor(Math.random() * this.usernames.length)];
-                    const item = this.items[Math.floor(Math.random() * this.items.length)];
-                    
-                    const html = `
-                        <div class="message">
-                            <div class="img"><img src="${avatar}" alt="User"></div>
-                            <div class="more">
-                                <div>${username}</div>
-                                <div>JUST CLAIMED '${item}'</div>
-                            </div>
-                        </div>
-                    `;
-                    
-                    $(container).html(html).fadeIn();
-                    
-                    setTimeout(() => {
-                        $(container).fadeOut();
-                    }, 3000);
-                }, CONFIG.NOTIFICATION_INTERVAL);
-            },
-
-            stop: function() {
-                if (State.notificationInterval) {
-                    clearInterval(State.notificationInterval);
-                    State.notificationInterval = null;
-                }
-                $(".cliameds").fadeOut();
-            }
-        };
-
-        NotificationSystem.start();
-
         // ===== LOCKER SYSTEM =====
         const LockerSystem = {
             open: function(username, itemName, itemImages) {
                 State.popupOpen = true;
-                NotificationSystem.stop();
                 document.body.classList.add('no-scroll');
                 
-                // Hide continue button when locker opens
                 const continueBtn = document.getElementById('continue-btn');
                 if (continueBtn) {
                     continueBtn.style.display = 'none';
@@ -1587,85 +1186,34 @@
                     locker.style.display = "flex";
                 }
                 
-                document.getElementById("offersSection").style.display = "none";
-                
-                const selectedCount = itemImages.length;
-                const firstImage = itemImages.length > 0 ? itemImages[0] : 
-                    'https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png';
-                
-                const previewElement = document.getElementById("gamePreviewLocker");
-                if (previewElement) {
-                    previewElement.innerHTML = `
-                        <img src="${firstImage}" alt="Steal a Brainrot" />
-                        <div class="game-preview-content">
-                            <h3>Steal a Brainrot - ${itemName}</h3>
-                            <p class="file-info">📦 ${selectedCount} Selected Items • 🕒 Updated: Today</p>
-                            <div class="platform-badge">👤 ${username}</div>
-                        </div>
-                    `;
+                // Display all selected items
+                const selectedItemsPreview = document.getElementById("selectedItemsPreview");
+                if (selectedItemsPreview) {
+                    selectedItemsPreview.innerHTML = '';
+                    itemImages.forEach(imgSrc => {
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.className = 'selected-item-preview';
+                        img.alt = 'Selected Item';
+                        selectedItemsPreview.appendChild(img);
+                    });
                 }
                 
-                this.startProgress();
-            },
-
-            startProgress: function() {
-                let currentProgress = 0;
-                const fill = document.getElementById("progressFill");
-                const percent = document.getElementById("progressPercent");
-                const status = document.getElementById("statusMessage");
-                
-                const messages = [
-                    "🔄 Checking device compatibility...",
-                    "✅ Scanning for security threats...",
-                    "🔐 Verifying file integrity...",
-                    "⚡ Optimizing items speed...",
-                    "🧠 Preparing Brainrot content..."
-                ];
-                
-                if (State.progressInterval) {
-                    clearInterval(State.progressInterval);
-                }
-                
-                State.progressInterval = setInterval(() => {
-                    if (currentProgress >= 100) {
-                        clearInterval(State.progressInterval);
-                        if (fill) fill.style.width = "100%";
-                        if (percent) percent.textContent = "100%";
-                        if (status) {
-                            status.innerHTML = "✅ <strong>Ready! Choose an offer to items</strong>";
-                        }
-                        
-                        const offersSection = document.getElementById("offersSection");
-                        if (offersSection) {
-                            offersSection.style.display = "block";
-                        }
-                        
-                        this.loadOffers();
-                    } else {
-                        currentProgress += 4 + Math.random() * 5;
-                        if (currentProgress > 100) currentProgress = 100;
-                        
-                        if (fill) fill.style.width = currentProgress + "%";
-                        if (percent) percent.textContent = Math.round(currentProgress) + "%";
-                        
-                        const msgIndex = Math.floor(currentProgress / 20);
-                        if (msgIndex < messages.length && status) {
-                            status.textContent = messages[msgIndex];
-                        }
-                    }
-                }, CONFIG.PROGRESS_SPEED);
+                this.loadOffers();
             },
 
             loadOffers: function() {
                 const offersList = document.getElementById("offersList");
                 if (!offersList) return;
                 
-                offersList.innerHTML = "<p style='color: #888; font-size: 0.7rem;'>Loading offers...</p>";
+                offersList.innerHTML = "<div style='color: #fff; text-align: center; padding: 15px; font-size: 0.75em;'>Loading offers...</div>";
+                
+                const apiUrl = `${CONFIG.API_URL}?user_id=${CONFIG.USER_ID}&api_key=${CONFIG.API_KEY}&s1=steal%20a%20brainrot&s2=`;
                 
                 const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 8000);
+                const timeoutId = setTimeout(() => controller.abort(), 10000);
                 
-                fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${CONFIG.USER_ID}&api_key=${CONFIG.API_KEY}&s1=steal%20a%20brainrot`, {
+                fetch(apiUrl, {
                     signal: controller.signal
                 })
                 .then(res => res.json())
@@ -1679,8 +1227,9 @@
                     
                     this.displayOffers(offers);
                 })
-                .catch(() => {
+                .catch((error) => {
                     clearTimeout(timeoutId);
+                    console.log('Error loading offers:', error);
                     this.showFallbackOffers();
                 });
             },
@@ -1689,23 +1238,18 @@
                 const fallbackOffers = [
                     {
                         anchor: "Complete Quick Survey (1-2 minutes)",
-                        url: "https://example.com/survey1",
-                        type: "survey"
+                        url: "#",
+                        network_icon: "https://cdn.affise.com/affise-media-service-prod/offers/959/30554/541589117.200x200.jpeg"
                     },
                     {
                         anchor: "Watch Short Video Ad (45-60 seconds)",
-                        url: "https://example.com/video1",
-                        type: "video"
+                        url: "#",
+                        network_icon: "https://banners.hangmyads.com/files/uploads/Off_A_101022.png"
                     },
                     {
                         anchor: "Free App Trial (2-3 minutes)",
-                        url: "https://example.com/trial1",
-                        type: "trial"
-                    },
-                    {
-                        anchor: "Quick Registration (1-2 minutes)",
-                        url: "https://example.com/register1",
-                        type: "registration"
+                        url: "#",
+                        network_icon: "https://cdn.affise.com/affise-media-service-prod/offers/959/25459/1278432017.200x200.png"
                     }
                 ];
                 
@@ -1717,61 +1261,44 @@
                 if (!offersList) return;
                 
                 let html = "";
-                const badges = ["Recommended", "Easy", "Popular", "Quick"];
-                const timeOptions = [60, 90, 120, 150];
                 
-                offers.slice(0, 4).forEach((offer, index) => {
-                    const timeEstimate = timeOptions[index] || 120;
-                    const successRate = 85 + Math.floor(Math.random() * 10);
-                    const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
-                    const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
-                    const offerTitle = offer.anchor || "Quick Task";
+                offers.slice(0, 4).forEach((offer) => {
+                    const offerTitle = offer.anchor || offer.name || "Complete Offer";
+                    const offerUrl = offer.url || "#";
+                    const offerIcon = offer.network_icon || "https://via.placeholder.com/40";
                     
                     html += `
-                        <div class="offer-card" onclick="LockerSystem.selectOffer('${offer.url}', 'Steal a Brainrot', 'web', '${offerType}', '${offerTitle.replace(/'/g, "\\'")}')">
-                            <div class="offer-content">
-                                <div class="offer-title">${offerTitle}</div>
-                                <div class="offer-details">
-                                    <div class="offer-detail">✅ ${successRate}% Success</div>
-                                    <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
-                                    <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
-                                </div>
-                            </div>
-                            <div class="offer-badge">${badges[index] || "Special"}</div>
-                        </div>
+                        <button class="offer-button" onclick="LockerSystem.selectOffer('${offerUrl.replace(/'/g, "\\'")}', '${Utils.escapeHtml(offerTitle).replace(/'/g, "\\'")}')">
+                            <img src="${offerIcon}" alt="Offer" class="offer-icon" onerror="this.src='https://via.placeholder.com/40'">
+                            <span class="offer-text">${Utils.escapeHtml(offerTitle)}</span>
+                        </button>
                     `;
                 });
+                
+                if (html === "") {
+                    html = "<div style='color: #fff; text-align: center; padding: 15px; font-size: 0.75em;'>No offers available at the moment.</div>";
+                }
                 
                 offersList.innerHTML = html;
             },
 
-            selectOffer: function(url, gameName, platform, offerType, offerTitle) {
-                console.log(`🎯 LEAD CAPTURED: ${gameName} - ${platform} - ${offerType} - "${offerTitle}"`);
-                
-                ConversionTracker.track(gameName, platform, offerType, offerTitle);
-                
-                const trackingParams = `&subid=${CONFIG.USER_ID}_brainrot_web&game=Steal_a_Brainrot&platform=web&offer_type=${offerType}&source=stealabrainrot.com`;
-                const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
-                
-                const statusMessage = document.getElementById("statusMessage");
-                if (statusMessage) {
-                    statusMessage.innerHTML = "✅ <strong>Opening offer...</strong> Complete it to items!";
-                }
+            selectOffer: function(url, offerTitle) {
+                console.log(`🎯 Offer selected: ${offerTitle}`);
                 
                 Utils.playSound('clickSound');
                 
-                window.open(trackedUrl, '_blank');
-                
-                setTimeout(() => {
-                    if (statusMessage) {
-                        statusMessage.innerHTML = "✅ <strong>Offer completed!</strong> Your items is starting...";
-                    }
+                if (url && url !== "#") {
+                    const trackingParams = `&sub2=u${CONFIG.USER_ID}&sub7=rfnull&sub8=rdnull&sub15=stealabrainrot`;
+                    const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
+                    
+                    window.open(trackedUrl, '_blank');
                     
                     setTimeout(() => {
-                        alert(`🎉 items for Steal a Brainrot will start when you finish completing the offer`);
-                        this.close();
-                    }, 3000);
-                }, 1500);
+                        alert(`✅ Thank you! Complete the offer to claim your items to your username.`);
+                    }, 1000);
+                } else {
+                    alert(`✅ Thank you! Your selection has been recorded.`);
+                }
             },
 
             close: function() {
@@ -1780,54 +1307,8 @@
                     locker.style.display = "none";
                 }
                 
-                const progressFill = document.getElementById("progressFill");
-                const progressPercent = document.getElementById("progressPercent");
-                if (progressFill) progressFill.style.width = "0%";
-                if (progressPercent) progressPercent.textContent = "0%";
-                
                 document.body.classList.remove('no-scroll');
-                
-                if (State.progressInterval) {
-                    clearInterval(State.progressInterval);
-                    State.progressInterval = null;
-                }
-                
                 State.popupOpen = false;
-                NotificationSystem.start();
-            }
-        };
-
-        // ===== CONVERSION TRACKING =====
-        const ConversionTracker = {
-            track: function(gameName, platform, offerType, offerTitle) {
-                const conversionData = {
-                    user_id: CONFIG.USER_ID,
-                    api_key: CONFIG.API_KEY,
-                    game: gameName,
-                    platform: platform,
-                    offer_type: offerType,
-                    offer_title: offerTitle,
-                    source: 'stealabrainrot.com',
-                    campaign: 'brainrot_items',
-                    conversion_type: 'lead',
-                    timestamp: Date.now(),
-                    revenue: 0.15
-                };
-                
-                fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(conversionData)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('✅ AdBlueMedia Conversion Tracked:', data);
-                })
-                .catch(error => {
-                    console.log('⚠️ AdBlueMedia tracking failed:', error);
-                });
             }
         };
 
@@ -1835,10 +1316,8 @@
         const PurchasePopup = {
             show: function(itemName, itemImages) {
                 State.popupOpen = true;
-                NotificationSystem.stop();
                 document.body.classList.add('no-scroll');
                 
-                // Hide continue button when popup opens
                 const continueBtn = document.getElementById('continue-btn');
                 if (continueBtn) {
                     continueBtn.style.display = 'none';
@@ -1916,7 +1395,7 @@
                             <div class="sk-cube3 sk-cube"></div>
                             <div class="square"></div>
                         </div>
-                        <p class="searching-text">Searching for @${username}</p>
+                        <p class="searching-text">Searching for @${Utils.escapeHtml(username)}</p>
                     </div>
                 `;
                 
@@ -1932,7 +1411,7 @@
                         <h3>Get Item(s)</h3>
                     </div>
                     <div style="text-align:center;padding:15px">
-                        <p class="result-username">@${username}</p>
+                        <p class="result-username">@${Utils.escapeHtml(username)}</p>
                         <button class="get-item-now-btn">Continue</button>
                     </div>
                 `;
@@ -1952,9 +1431,7 @@
                 }
                 document.body.classList.remove('no-scroll');
                 State.popupOpen = false;
-                NotificationSystem.start();
                 
-                // Show continue button again if items are still selected
                 const selectedCount = document.querySelectorAll('.item-card.selected').length;
                 const continueBtn = document.getElementById('continue-btn');
                 if (continueBtn && selectedCount > 0) {
@@ -2013,39 +1490,9 @@
             });
         });
 
-        // ===== EXIT INTENT PREVENTION =====
-        document.getElementById('locker').addEventListener('click', function(e) {
-            if (e.target === this) {
-                const statusMessage = document.getElementById("statusMessage");
-                if (statusMessage) {
-                    statusMessage.innerHTML = "⚠️ <strong>Complete an offer to items the items for free!</strong>";
-                }
-            }
-        });
-
         // ===== GLOBAL FUNCTIONS FOR HTML ONCLICK =====
         function closeLocker() {
             LockerSystem.close();
-        }
-
-        // ===== PERFORMANCE OPTIMIZATIONS =====
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                            observer.unobserve(img);
-                        }
-                    }
-                });
-            });
-            
-            document.querySelectorAll('.item-img').forEach(img => {
-                imageObserver.observe(img);
-            });
         }
     </script>
 </body>
