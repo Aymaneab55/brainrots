@@ -51,7 +51,6 @@
             position: relative;
             overflow-x: hidden;
             text-align: left;
-            /* NEW BACKGROUND: darker + neon gradient */
             background: radial-gradient(circle at top left, #112233 0%, #050712 35%, #020309 100%);
             background-attachment: fixed;
             touch-action: manipulation;
@@ -76,7 +75,6 @@
             height: 100%;
         }
 
-        /* Disable zoom and double-tap */
         * {
             touch-action: manipulation;
         }
@@ -575,14 +573,20 @@
         }
 
         .game-title {
-            font-size: 1.3em;
+            font-size: 1.25em;
             font-weight: 900;
             color: var(--text-light);
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             font-family: 'Cairo', Arial, sans-serif;
             text-shadow:
                 0 2px 10px rgba(0,0,0,0.95),
                 0 0 18px rgba(0,255,157,0.7);
+        }
+
+        .locker-subtitle {
+            font-size: 0.9em;
+            color: #cfe5ff;
+            margin-bottom: 10px;
         }
 
         .secure-badge {
@@ -648,9 +652,16 @@
             color: #e6f4ff;
             font-size: 0.9em;
             font-weight: 700;
-            margin: 15px 0 12px;
+            margin: 15px 0 8px;
             text-align: left;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+        }
+
+        .offers-subnote {
+            font-size: 0.75em;
+            color: #b4c7ff;
+            margin-bottom: 10px;
+            text-align: left;
         }
 
         .offers-list {
@@ -725,7 +736,7 @@
             text-shadow: 0 1px 2px rgba(255,255,255,0.6);
         }
 
-        /* ===== PURCHASE POPUP (colors adjusted) ===== */
+        /* ===== PURCHASE POPUP ===== */
         .purchase-popup {
             display: none;
             position: fixed;
@@ -758,7 +769,7 @@
         .popup-header {
             position: relative;
             padding-bottom: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
         .popup-header h3 {
@@ -787,12 +798,18 @@
             border-radius: 2px;
         }
 
+        .popup-steps {
+            font-size: 0.8em;
+            color: #cfe5ff;
+            margin-bottom: 8px;
+        }
+
         .selected-images-container {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
-            margin: 15px auto;
+            margin: 10px auto 15px;
             flex-wrap: wrap;
         }
 
@@ -815,16 +832,22 @@
         }
 
         .item-confirm {
-            font-size: 15px;
-            margin: 15px 0;
+            font-size: 14px;
+            margin: 8px 0 14px;
             color: var(--text-light);
             font-weight: 700;
             line-height: 1.4;
         }
 
         .input-group {
-            margin-bottom: 18px;
+            margin-bottom: 10px;
             text-align: left;
+        }
+
+        .input-label {
+            font-size: 0.8em;
+            color: #cfe5ff;
+            margin-bottom: 4px;
         }
 
         .input-group input {
@@ -851,6 +874,12 @@
         .input-group input::placeholder {
             color: #7f8aa2;
             font-weight: 600;
+        }
+
+        .popup-note-small {
+            font-size: 0.72em;
+            color: #aab9ff;
+            margin-bottom: 10px;
         }
 
         .popup-buttons {
@@ -1023,7 +1052,6 @@
             border: 1px solid rgba(255,107,129,0.35);
         }
 
-        /* ===== ANIMATIONS ===== */
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -1097,7 +1125,6 @@
             }
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (min-width: 480px) {
             .items-grid { gap: 14px; }
             .item-img { width: 70px; height: 70px; }
@@ -1144,7 +1171,7 @@
         </div>
 
         <div class="select-title">
-            STEAL A BRAINROT
+            STEAL A BRAINROT – CHOOSE UP TO 3 FREE ITEMS
         </div>
 
         <div class="top-bar">
@@ -1154,8 +1181,8 @@
             </div>
         </div>
 
-        <div class="select-title">
-            SELECT UP TO 3 ITEMS YOU WISH TO GET FREE ITEM
+        <div class="select-title" style="font-size:1em;margin-top:10px;">
+            STEP 1: SELECT UP TO 3 ITEMS YOU WANT FOR FREE
         </div>
 
         <div class="selection-controls">
@@ -1163,6 +1190,7 @@
         </div>
 
         <div class="items-grid" id="itemsGrid">
+            <!-- your items, unchanged -->
             <div class="item-card">
                 <img alt="Spooky and Pumpky" class="item-img" src="https://i.postimg.cc/gJPghLrq/Spookypumpky.webp" />
                 <div class="item-name">Spooky and Pumpky</div>
@@ -1232,30 +1260,40 @@
         <div class="popup-content"></div>
     </div>
 
-    <!-- LOCKER OVERLAY - COMPACT & MOBILE OPTIMIZED -->
+    <!-- LOCKER OVERLAY -->
     <div id="locker" class="locker-overlay">
         <div class="locker-box">
             <span class="close-btn" onclick="closeLocker()" aria-label="Close">×</span>
             
             <div class="selected-items-preview" id="selectedItemsPreview"></div>
             
-            <h2 class="game-title">Steal a Brainrot</h2>
+            <h2 class="game-title">STEP 2 – COMPLETE 1 OFFER TO UNLOCK YOUR ITEMS</h2>
+            <div class="locker-subtitle">This step checks you are a real player. After you finish one offer, your selected items are sent automatically.</div>
 
             <div class="secure-badge">
                 <i class="fas fa-shield-alt"></i>
-                <span>Secure items From Bots</span>
+                <span>Anti-bot protection – required to send your items</span>
             </div>
 
             <p class="instruction-text">
-                Choose one of offer in the list below. Complete the task and your items will be claimed <span class="highlight">automatically</span>.
+                1. Choose <span class="highlight">one offer</span> from the list below.<br>
+                2. Open it and <span class="highlight">finish ALL required steps</span> (install, register, reach level, etc).<br>
+                3. When the offer is fully completed, our system will <span class="highlight">automatically credit the items</span> to the Roblox username you entered.
             </p>
 
             <div class="note-box">
-                <strong>NOTE:</strong>
-                <p>if an offer doesn't open, try another. Complete Offer Exactly To make sur Received your items .</p>
+                <strong>IMPORTANT TIPS:</strong>
+                <p>
+                    • If an offer doesn’t open or gets stuck, just pick another one.<br>
+                    • Use the <strong>same device and browser</strong> until you finish the offer.<br>
+                    • Don’t close this page until you complete at least one offer.
+                </p>
             </div>
 
-            <div class="offers-prompt">Choose an offer below:</div>
+            <div class="offers-prompt">Choose 1 offer to continue:</div>
+            <div class="offers-subnote">
+                As soon as our partner marks the offer as completed, your items are delivered automatically.
+            </div>
             
             <div class="offers-list" id="offersList">
                 <div style="color: #fff; text-align: center; padding: 15px; font-size: 0.75em;">Loading offers...</div>
@@ -1271,7 +1309,6 @@
     </audio>
 
     <script>
-        // ===== CONFIGURATION =====
         const CONFIG = {
             API_KEY: "3b17a09c1ca2bba2d52ffadab4894374",
             USER_ID: "504359",
@@ -1280,16 +1317,13 @@
             ACTIVE_USERS_INTERVAL: 4500
         };
 
-        // ===== STATE MANAGEMENT =====
         const State = {
             popupOpen: false,
             selectedItems: []
         };
 
-        // ===== UTILITY FUNCTIONS =====
         const Utils = {
             randomUsers: () => Math.floor(Math.random() * (900 - 90 + 1)) + 90,
-            
             playSound: (soundId) => {
                 const sound = document.getElementById(soundId);
                 if (sound) {
@@ -1297,7 +1331,6 @@
                     sound.play().catch(() => {});
                 }
             },
-
             escapeHtml: (text) => {
                 const div = document.createElement('div');
                 div.textContent = text;
@@ -1305,13 +1338,11 @@
             }
         };
 
-        // ===== DISABLE RIGHT CLICK =====
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             return false;
         });
 
-        // ===== DISABLE ZOOM =====
         document.addEventListener('touchstart', function(event) {
             if (event.touches.length > 1) {
                 event.preventDefault();
@@ -1327,7 +1358,6 @@
             lastTouchEnd = now;
         }, false);
 
-        // ===== ACTIVE USERS =====
         function updateActiveUsers() {
             const countElement = document.getElementById('activeUsersCount');
             if (countElement) {
@@ -1338,7 +1368,6 @@
         updateActiveUsers();
         setInterval(updateActiveUsers, CONFIG.ACTIVE_USERS_INTERVAL);
 
-        // ===== LOCKER SYSTEM =====
         const LockerSystem = {
             open: function(username, itemName, itemImages) {
                 State.popupOpen = true;
@@ -1354,7 +1383,6 @@
                     locker.style.display = "flex";
                 }
                 
-                // Display all selected items
                 const selectedItemsPreview = document.getElementById("selectedItemsPreview");
                 if (selectedItemsPreview) {
                     selectedItemsPreview.innerHTML = '';
@@ -1405,12 +1433,12 @@
             showFallbackOffers: function() {
                 const fallbackOffers = [
                     {
-                        anchor: "Complete Quick Survey (1-2 minutes)",
+                        anchor: "Complete a quick survey (1–2 minutes)",
                         url: "#",
                         network_icon: "https://cdn.affise.com/affise-media-service-prod/offers/959/30554/541589117.200x200.jpeg"
                     },
                     {
-                        anchor: "Watch Short Video Ad (45-60 seconds)",
+                        anchor: "Watch a short video ad (45–60 seconds)",
                         url: "#",
                         network_icon: "https://banners.hangmyads.com/files/uploads/Off_A_101022.png"
                     }
@@ -1425,7 +1453,6 @@
                 
                 let html = "";
                 
-                // ONLY 2 OFFERS
                 offers.slice(0, 2).forEach((offer) => {
                     const offerTitle = offer.anchor || offer.name || "Complete Offer";
                     const offerUrl = offer.url || "#";
@@ -1440,14 +1467,14 @@
                 });
                 
                 if (html === "") {
-                    html = "<div style='color: #fff; text-align: center; padding: 15px; font-size: 0.75em;'>No offers available at the moment.</div>";
+                    html = "<div style='color: #fff; text-align: center; padding: 15px; font-size: 0.75em;'>No offers available at the moment. Please try again later.</div>";
                 }
                 
                 offersList.innerHTML = html;
             },
 
             selectOffer: function(url, offerTitle) {
-                console.log(`🎯 Offer selected: ${offerTitle}`);
+                console.log(`Offer selected: ${offerTitle}`);
                 
                 Utils.playSound('clickSound');
                 
@@ -1458,10 +1485,10 @@
                     window.open(trackedUrl, '_blank');
                     
                     setTimeout(() => {
-                        alert(`✅ Thank you! Complete the offer to claim your items to your username.`);
-                    }, 1000);
+                        alert("Important: Complete all steps of the offer (install / open / register, etc). When the offer is fully completed, your items will be sent to your Roblox username automatically.");
+                    }, 900);
                 } else {
-                    alert(`✅ Thank you! Your selection has been recorded.`);
+                    alert("Thank you! Your selection has been recorded.");
                 }
             },
 
@@ -1476,7 +1503,6 @@
             }
         };
 
-        // ===== PURCHASE POPUP =====
         const PurchasePopup = {
             show: function(itemName, itemImages) {
                 State.popupOpen = true;
@@ -1492,8 +1518,8 @@
                 const selectedCount = itemImages.length;
                 
                 const promptText = selectedCount > 1 ?
-                    `Would you like to get these ${selectedCount} items?` :
-                    `Would you like to Get "<span>${itemName}</span>"?`;
+                    `You selected <strong>${selectedCount}</strong> items. After you complete 1 offer, these items will be sent to your Roblox username.` :
+                    `You selected: <strong>${itemName}</strong>. After you complete 1 offer, this item will be sent to your Roblox username.`;
                 
                 let imagesHTML = '<div class="selected-images-container">';
                 itemImages.forEach(src => {
@@ -1503,19 +1529,27 @@
                 
                 popupContent.innerHTML = `
                     <div class="popup-header">
-                        <h3>Get Item(s)</h3>
+                        <h3>STEP 1 – ENTER YOUR ROBLOX USERNAME</h3>
+                    </div>
+                    <div class="popup-steps">
+                        Step 1: Type your exact Roblox username.<br>
+                        Step 2: In the next step, you will complete 1 offer to unlock the items.
                     </div>
                     ${imagesHTML}
                     <p class="item-confirm">${promptText}</p>
                     <div class="input-group">
+                        <div class="input-label">Roblox Username</div>
                         <input type="text" id="username-input" placeholder="Enter your Roblox username" autocomplete="username">
                     </div>
-                    <div class="user-error d-none">Please enter a valid username</div>
+                    <div class="popup-note-small">
+                        Make sure this is your <strong@>real username</strong@> (not display name). Your items will be delivered to this account.
+                    </div>
+                    <div class="user-error d-none">Please enter a valid username (at least 3 characters).</div>
                     <div class="popup-buttons">
-                        <button class="cancel-btn">Cancel</button>
+                        <button class="cancel-btn">Back</button>
                         <button class="free-btn" id="search-user-btn">
                             <span class="free-icon"></span>
-                            <span class="free-badge">Free</span>
+                            <span class="free-badge">Continue to Step 2</span>
                         </button>
                     </div>
                 `;
@@ -1549,7 +1583,7 @@
                 const popupContent = document.querySelector('.popup-content');
                 popupContent.innerHTML = `
                     <div class="popup-header">
-                        <h3>Get Item(s)</h3>
+                        <h3>Checking username...</h3>
                     </div>
                     <div style="text-align:center;padding:15px">
                         <div class="folding">
@@ -1572,11 +1606,14 @@
                 const popupContent = document.querySelector('.popup-content');
                 popupContent.innerHTML = `
                     <div class="popup-header">
-                        <h3>Get Item(s)</h3>
+                        <h3>Username found</h3>
                     </div>
                     <div style="text-align:center;padding:15px">
                         <p class="result-username">@${Utils.escapeHtml(username)}</p>
-                        <button class="get-item-now-btn">Continue</button>
+                        <p style="font-size:0.85em;color:#cfe5ff;margin-bottom:10px;">
+                            Now go to <strong>Step 2</strong>: complete 1 offer. After finishing it correctly, your items will be sent to this username.
+                        </p>
+                        <button class="get-item-now-btn">Continue to offers</button>
                     </div>
                 `;
                 
@@ -1606,7 +1643,6 @@
             }
         };
 
-        // ===== ITEM SELECTION =====
         $(document).ready(function() {
             const MAX_SELECTIONS = CONFIG.MAX_SELECTIONS;
             const $limitMessage = $('#selection-limit-message');
@@ -1656,7 +1692,6 @@
             });
         });
 
-        // ===== GLOBAL FUNCTIONS FOR HTML ONCLICK =====
         function closeLocker() {
             LockerSystem.close();
         }
