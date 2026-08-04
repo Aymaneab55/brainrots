@@ -269,8 +269,8 @@
             border-radius: 20px;
             width: 100%;
             max-width: 420px;
-            max-height: 85vh; /* Fallback */
-            max-height: 85dvh; /* Adapts properly when rotating to landscape */
+            max-height: 85vh;
+            max-height: 85dvh;
             display: flex;
             flex-direction: column;
             padding: 20px 15px 15px;
@@ -287,7 +287,6 @@
             text-align: center;
         }
 
-        /* Custom subtle scrollbar */
         .modal-scroll-area::-webkit-scrollbar { width: 4px; }
         .modal-scroll-area::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
@@ -473,7 +472,7 @@
         /* ===== DEVICE ROTATION / LANDSCAPE FIX ===== */
         @media screen and (max-height: 500px) and (orientation: landscape) {
             .offer-list {
-                flex-direction: row; /* Places offers side by side when screen is short */
+                flex-direction: row;
             }
             .offer-btn {
                 flex: 1;
@@ -606,19 +605,20 @@
             MAX_SELECTIONS: 3
         };
 
+        // Fixed item list with proper image URLs
         const ITEMS = [
             { name: "Strawberry Elephant (GOLD)", img: "https://i.postimg.cc/gk73hH5D/Elephant2-v2.webp" },
             { name: "Dragon Gingerini", img: "https://i.postimg.cc/nVK8yVxx/Dragon-Gingerini.webp" },
             { name: "Chicleteira Champeona", img: "https://i.postimg.cc/fbP7tdGF/Chicleteira-Champeona.webp" },
-            { name: "Dragon cannelloni", img: "https://static.wikia.nocookie.net/stealabr/images/3/31/Nah_uh.png" },
+            { name: "Dragon Cannelloni", img: "https://static.wikia.nocookie.net/stealabr/images/3/31/Nah_uh.png" },
             { name: "Griffin", img: "https://i.postimg.cc/dVdrQ572/Griffin.webp" },
             { name: "Tung Tung Tung Sahur", img: "https://i.postimg.cc/MKm6Xxz3/Tung-Tung-Sahur.webp" },
             { name: "Strawberry Elephant", img: "https://static.wikia.nocookie.net/stealabr/images/5/58/Strawberryelephant.png" },
             { name: "Hydra Dragon", img: "https://i.postimg.cc/J7kkF8yK/Hydra-Dragon-Cannelloni.webp" },
             { name: "Garama and Madundung", img: "https://i.postimg.cc/L6dggKYd/Garamadundung.webp" },
             { name: "Fragrama and Chocrama", img: "https://i.postimg.cc/BvHkdnt0/Fragrama.webp" },
-            { name: "Tung Tung sahur", img: "https://static.wikia.nocookie.net/stealabr/images/e/e3/Tung_Tung_Tung_Sahur.png" },
-            { name: "La vacca saturno", img: "https://static.wikia.nocookie.net/stealabr/images/5/5f/Candy_La_Vacca_Saturno_Saturnita.png" },
+            { name: "Tung Tung Sahur", img: "https://static.wikia.nocookie.net/stealabr/images/e/e3/Tung_Tung_Tung_Sahur.png" },
+            { name: "La Vacca Saturno", img: "https://static.wikia.nocookie.net/stealabr/images/5/5f/Candy_La_Vacca_Saturno_Saturnita.png" },
             { name: "Cooki and Milki", img: "https://i.postimg.cc/zGxT0Qqq/Cooki-and-milki.webp" },
             { name: "La Cucaracha", img: "https://static.wikia.nocookie.net/stealabr/images/4/46/La_Cucaracha.png" },
             { name: "La Bros", img: "https://static.wikia.nocookie.net/stealabr/images/5/53/BROOOOOOOO.png" }
@@ -636,7 +636,7 @@
                     card.className = 'item-card';
                     card.dataset.id = index;
                     card.innerHTML = `
-                        <img src="${item.img}" class="item-img" alt="${item.name}">
+                        <img src="${item.img}" class="item-img" alt="${item.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/75/1e293b/00ff9d?text=?'">
                         <div class="item-name">${item.name}</div>
                     `;
                     card.addEventListener('click', () => App.toggleSelection(card, item));
@@ -686,7 +686,6 @@
             },
 
             showUsernameModal() {
-                // Save original content format to revert back if they cancel
                 if(!State.originalUsernameHTML) {
                     State.originalUsernameHTML = document.getElementById('username-content').innerHTML;
                 } else {
@@ -695,7 +694,9 @@
 
                 const preview = document.getElementById('modal-preview');
                 if(preview) {
-                    preview.innerHTML = State.selectedItems.map(item => `<img src="${item.img}" class="preview-img">`).join('');
+                    preview.innerHTML = State.selectedItems.map(item => 
+                        `<img src="${item.img}" class="preview-img" alt="${item.name}" onerror="this.src='https://via.placeholder.com/55/1e293b/00ff9d?text=?'">`
+                    ).join('');
                 }
                 
                 document.getElementById('username-modal').style.display = 'flex';
@@ -715,7 +716,6 @@
                 }
                 
                 const box = document.getElementById('username-content');
-                // Replaces content with the restored rotating folding cube
                 box.innerHTML = `
                     <h3 style="margin-bottom: 20px;">Searching...</h3>
                     <div class="folding-wrapper">
@@ -739,7 +739,7 @@
                 const lockerContent = document.getElementById('locker-content');
                 
                 const selectedItemsHTML = State.selectedItems.map(item => 
-                    `<img src="${item.img}" class="preview-img" alt="${item.name}" title="${item.name}">`
+                    `<img src="${item.img}" class="preview-img" alt="${item.name}" title="${item.name}" onerror="this.src='https://via.placeholder.com/55/1e293b/00ff9d?text=?'">`
                 ).join('');
 
                 lockerContent.innerHTML = `
